@@ -78,7 +78,12 @@ class Usuarios extends CI_Controller {
 			$additional_data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
+				'active' => $this->input->post('active'),
 			);
+			echo '<pre>';
+			echo print_r($additional_data);
+			exit;
+			
 			$group = array('1'); // Sets user to admin.
 			if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
 				setMsg('message','O novo usuário foi cadastrado.','Sucesso!','sucesso');

@@ -31,10 +31,10 @@ class Login extends CI_Controller {
                 		Seja bem vindo ao sistema.
               		</div>              	
 				');
-				redirect('/admin','refresh');
+				redirect('admin','refresh');
 			}else{
 				$this->session->set_flashdata('message', '<div class="callout callout-danger">Usuário ou senha inválido!</div>');
-				redirect('/admin/login','refresh');
+				redirect('admin/login','refresh');
 			}
 		} else {
 			$this->load->view('admin/template/login');
@@ -45,7 +45,7 @@ class Login extends CI_Controller {
 	{
 		$this->ion_auth->logout();
 		$this->session->set_flashdata('message', '<div class="callout callout-success">Você fez logout do sistema.</div>');
-		redirect('/admin','refresh');
+		redirect('admin','refresh');
 	}	
 }
 

@@ -35,7 +35,7 @@ function getMsg($id)
 }
 function errosValidacao($id)
 {
-	if (validation_errors()){
-		echo '<p class="callout callout-danger">' . validation_errors() .'</p>';
+	if (validation_errors($id)){
+		echo validation_errors('<p class="callout callout-danger">','</p>');
 	}
 }

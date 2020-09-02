@@ -39,7 +39,7 @@
 		<?= getMsg('message') ?>
 		<p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
-		<form action="/admin/login" method="post">
+		<form action="<?= base_url('admin/login') ?>" method="post">
 			<div class="form-group has-feedback">
 				<input name="email" type="email" class="form-control" placeholder="Email">
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
