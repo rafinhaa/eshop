@@ -28,26 +28,26 @@
 				<!-- form start -->
 				<form role="form" action="<?= base_url('admin/usuarios/core')?>" method="post">
 					<div class="box-body">
-						<?= validation_errors('<p class="callout callout-danger">','</p>') ?>
+						<?= errosValidacao('message') ?>
 						<div class="form-group">
 								<label>Usuário</label>
-								<input name="username" type="text" class="form-control" placeholder="Usuário" value="<?= set_value('username')?>">
+								<input name="username" type="text" class="form-control" placeholder="Usuário" value="<?= ($it_user != NULL) ? $it_user->username : set_value('username')?>">
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-xs-4">
 									<label>Nome</label>
-									<input name="first_name" type="text" class="form-control" placeholder="Nome" value="<?= set_value('first_name')?>">
+									<input name="first_name" type="text" class="form-control" placeholder="Nome" value="<?= ($it_user != NULL) ? $it_user->first_name : set_value('first_name')?>">
 								</div>
 								<div class="col-xs-4">
 									<label>Sobrenome</label>
-									<input name="last_name" type="text" class="form-control" placeholder="Sobrenome" value="<?= set_value('last_name')?>">
+									<input name="last_name" type="text" class="form-control" placeholder="Sobrenome" value="<?= ($it_user != NULL) ? $it_user->last_name : set_value('last_name')?>">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">E-mail</label>
-							<input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="<?= set_value('email')?>">
+							<input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="<?= ($it_user != NULL) ? $it_user->email : set_value('email')?>">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Senha</label>
@@ -56,10 +56,18 @@
 						<div class="form-group">
 							<label>Ativar Usuário</label>
 							<select name="active" class="form-control">
-								<option value="0" <?= (set_value('active') == 0)? 'selected': '' ?>>Não</option>
-								<option value="1" <?= (set_value('active') == 1)? 'selected': '' ?>>Sim</option>
+								<?php if ($it_user ) { ?>
+									<option value="0" <?= ($it_user->active == 0 ? 'selected' : '') ?> >Não</option>
+									<option value="1" <?= ($it_user->active == 1 ? 'selected' : '') ?> >Sim</option>
+								<?php } else { ?>
+									<option value="0" >Não</option>
+									<option value="1" selected >Sim</option>
+								<?php } ?>
 							</select>
 						</div>
+						<?php if ($it_user ) { ?>
+							<input type="hidden" name="id" value="<?= $it_user->id ?>"
+						<?php } ?>
 					</div>
 					<!-- /.box-body -->
 

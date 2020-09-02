@@ -20,7 +20,7 @@ class Usuarios extends CI_Controller {
 			'home' => base_url('admin'),
 			'this_page' => $data['title_h2'],
 		);
-		$data['user'] = $this->ion_auth->user()->row();
+		$data['user_admin'] = $this->ion_auth->user()->row();
 		$data['users'] = $this->ion_auth->users()->result();
 
 		$data['view'] = 'admin/usuarios/listar';
@@ -29,20 +29,24 @@ class Usuarios extends CI_Controller {
 
 	public function modulo($id=NULL)
 	{
-		$dados = NULL;
 		if ($id){
 			$data['title'] = 'LojasWEB - Atualizar cadastro';
+			$data['it_user'] = $this->ion_auth->user($id)->row();
+			if(!$data['it_user']){
+				setMsg('message','Usuário não foi encontrado.','Ops! um erro aconteceu.','erro');
+				redirect('admin/usuarios','refresh');
+			}
 		}else{
 			$data['title'] = 'LojasWEB - Novo cadastro';
+			$data['it_user'] = NULL;
 		}
-		$data['dados'] = $dados;
 		$data['title_h2'] = 'Cadastrar Usuários';
 		$data['breadcrumb'] = array(
 			'home' => base_url('admin'),
 			'previous_page' => base_url('admin/usuarios'),
 			'this_page' => $data['title_h2'],
 		);
-		$data['user'] = $this->ion_auth->user()->row();
+		$data['user_admin'] = $this->ion_auth->user()->row();
 		$data['users'] = $this->ion_auth->users()->result();
 
 		$data['view'] = 'admin/usuarios/modulo';
@@ -62,8 +66,12 @@ class Usuarios extends CI_Controller {
 		print_r($this->input->post());
 		exit;
 		*/
-
-		if ($this->form_validation->run() == TRUE) {
+		if($this->input->post('id')){
+			echo '<pre>';
+			print_r($this->input->post());
+			exit;
+		}elseif ( $this->form_validation->run() == TRUE)
+		{
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$email = $this->input->post('email');
@@ -73,13 +81,7 @@ class Usuarios extends CI_Controller {
 			);
 			$group = array('1'); // Sets user to admin.
 			if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
-				$this->session->set_flashdata('message', '
-					<div class="alert alert-success alert-dismissible">
-                		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                		<h4><i class="icon fa fa-check"></i> Sucesso!</h4>
-                		Usuário cadastrado
-              		</div>              	
-				');
+				setMsg('message','O novo usuário foi cadastrado.','Sucesso!','sucesso');
 				redirect('admin/usuarios','refresh');
 			}
 		} else {

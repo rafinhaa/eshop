@@ -75,7 +75,7 @@
 					<img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-user-vector-avatar-png-image_4830521.jpg" class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
-					<p><?= $user->first_name . ' ' . $user->last_name ?></p>
+					<p><?= $user_admin->first_name . ' ' . $user_admin->last_name ?></p>
 					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 				</div>
 			</div>
@@ -97,13 +97,26 @@
 					<a href="#">
 						<i class="fa fa-hand-o-right"></i> <span>Cadastro</span>
 						<span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right"></i>
             </span>
 					</a>
 					<ul class="treeview-menu">
 						<li><a href="#"><i class="fa fa-plus"></i> Produto</a></li>
 						<li><a href="#"><i class="fa fa-plus"></i> Categoria</a></li>
 						<li><a href="#"><i class="fa fa-plus"></i> Marcas</a></li>
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-cog"></i> <span>Configurações</span>
+						<span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-plus"></i> Loja</a></li>
+						<li><a href="<?= base_url('admin/usuarios/')?>"><i class="fa fa-users"></i> Usuários</a></li>
+						<li><a href="#"><i class="fa  fa-square"></i> Correios</a></li>
 					</ul>
 				</li>
 

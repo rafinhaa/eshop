@@ -35,8 +35,8 @@
 	</div>
 	<!-- /.login-logo -->
 	<div class="login-box-body">
-		<?= validation_errors('<p class="callout callout-danger">','</p>') ?>
-		<?= $this->session->flashdata('message') ?>
+		<?= errosValidacao('message') ?>
+		<?= getMsg('message') ?>
 		<p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
 		<form action="/admin/login" method="post">

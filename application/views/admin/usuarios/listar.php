@@ -12,7 +12,7 @@
 
 <!-- Main content -->
 <section class="content">
-	<?= $this->session->flashdata('message') ?>
+	<?= getMsg('message') ?>
 	<!-- Default box -->
 	<div class="row">
 		<div class="col-md-12">
@@ -45,7 +45,7 @@
 								<td class="text-center"><?= ($u->active == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center">
 									<div class="btn-group">
-										<a href="" type="button" class="btn btn-info">Editar</a>
+										<a href="<?= base_url('admin/usuarios/modulo/' . $u->id) ?>" type="button" class="btn btn-info">Editar</a>
 										<a href="" type="button" class="btn btn-danger">Apagar</a>
 									</div>
 								</td>
@@ -55,7 +55,7 @@
 						<tfoot>
 						<tr>
 							<th style="width: 10px">#</th>
-							<th>Nome</th>
+							<th>Usuário</th>
 							<th>Email</th>
 							<th>Status</th>
 							<th>Opções</th>

@@ -14,7 +14,7 @@ class Principal extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'LojaWEB - Dasboard';
-		$data['user'] = $this->ion_auth->user()->row();
+		$data['user_admin'] = $this->ion_auth->user()->row();
 
 		$this->load->view('admin/template/index', $data);
 	}
