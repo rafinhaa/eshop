@@ -67,10 +67,25 @@ class Usuarios extends CI_Controller {
 		exit;
 		*/
 		if($this->input->post('id')){
-			echo '<pre>';
-			print_r($this->input->post());
-			exit;
-		}elseif ( $this->form_validation->run() == TRUE)
+			$id = $this->input->post('id');
+			$data = array(
+				'username' => $this->input->post('username'),
+				'first_name' => $this->input->post('first_name'),
+				'last_name' =>  $this->input->post('last_name'),
+				'email' =>  $this->input->post('email'),
+				'active' =>  $this->input->post('active'),
+			);
+			if($this->input->post('password')){
+				$data['password'] = $this->input->post('password');
+			}
+			if ($this->ion_auth->update($id, $data)){
+				setMsg('message','O usuário foi atualizado.','Sucesso!','sucesso');
+				redirect('admin/usuarios','refresh');
+			}else {
+				setMsg('message','Não foi possível atualizar o usuário.','Ops! ocorreu um erro!','erro');
+				redirect('admin/usuarios/modulo','refresh');
+			}
+		}	elseif ( $this->form_validation->run() == TRUE)
 		{
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
@@ -80,17 +95,35 @@ class Usuarios extends CI_Controller {
 				'last_name' => $this->input->post('last_name'),
 				'active' => $this->input->post('active'),
 			);
-			echo '<pre>';
-			echo print_r($additional_data);
-			exit;
-			
+
 			$group = array('1'); // Sets user to admin.
 			if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
 				setMsg('message','O novo usuário foi cadastrado.','Sucesso!','sucesso');
 				redirect('admin/usuarios','refresh');
+			}else {
+				setMsg('message','Não foi possível cadastrar o usuário.','Ops! ocorreu um erro!','erro');
+				redirect('admin/usuarios/modulo','refresh');
 			}
 		} else {
 			$this->modulo();
+		}
+	}
+	public function delete($id=NULL){
+		if($id){
+			if ( $id == 1){
+				setMsg('message','Não é possível deletar o administrador.','Ops! ocorreu um erro.','erro');
+				redirect('admin/usuarios','refresh');
+			}
+			if ( $this->session->userdata('user_id') == $id){
+				setMsg('message','Você não pode se deletar.','Ops! ocorreu um erro.','erro');
+				redirect('admin/usuarios','refresh');
+			}
+			$this->ion_auth->delete_user($id);
+			setMsg('message','Usuario deletado.','Sucesso!','sucesso');
+			redirect('admin/usuarios','refresh');
+		} else {
+			setMsg('message','Você precisa selecionar um usuário.','Ops! ocorreu um erro!','erro');
+			redirect('admin/usuarios/modulo','refresh');
 		}
 	}
 

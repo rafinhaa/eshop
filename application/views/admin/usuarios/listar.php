@@ -46,7 +46,7 @@
 								<td class="text-center">
 									<div class="btn-group">
 										<a href="<?= base_url('admin/usuarios/modulo/' . $u->id) ?>" type="button" class="btn btn-info">Editar</a>
-										<a href="" type="button" class="btn btn-danger">Apagar</a>
+										<a href="<?= base_url('admin/usuarios/delete/' . $u->id) ?>" type="button" class="btn btn-danger">Apagar</a>
 									</div>
 								</td>
 							</tr>
