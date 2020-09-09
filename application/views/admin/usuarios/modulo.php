@@ -20,9 +20,6 @@
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">Formulário de Cadastro</h3>
-					<div class="box-tools pull-right">
-						<a href="<?= base_url('admin/usuarios') ?>" type="button" class="btn btn-block btn-success btn-sm">Voltar</a>
-					</div>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
@@ -73,6 +70,7 @@
 
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary">Enviar</button>
+						<a href="<?= base_url('admin/usuarios') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 					</div>
 				</form>
 			</div>

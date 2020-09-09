@@ -19,9 +19,6 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">Usuários</h3>
-					<div class="box-tools pull-right">
-						<a href="<?= base_url('admin/usuarios/modulo') ?>" type="button" class="btn btn-block btn-success btn-sm">Adicionar</a>
-					</div>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -64,6 +61,12 @@
 					</table>
 				</div>
 				<!-- /.box-body -->
+				<!-- box-footer -->
+				<div class="box-footer clearfix">
+					<a href="<?= base_url('admin/usuarios/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>              	
+              		<a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
+            	</div>
+				<!-- /.box-footer -->
 			</div>
 			<!-- /.box -->
 			</div>
