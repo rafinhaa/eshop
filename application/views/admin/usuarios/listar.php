@@ -64,7 +64,7 @@
 				<!-- box-footer -->
 				<div class="box-footer clearfix">
 					<a href="<?= base_url('admin/usuarios/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>              	
-              		<a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
+              		<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
             	</div>
 				<!-- /.box-footer -->
 			</div>

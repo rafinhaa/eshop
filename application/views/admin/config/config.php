@@ -68,6 +68,7 @@
 
 			<div class="box-footer">
 				<button type="submit" class="btn btn-primary">Salvar</button>
+				<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 			</div>
 		</form>
 	</div>

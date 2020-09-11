@@ -39,3 +39,10 @@ function errosValidacao($id)
 		echo validation_errors('<p class="callout callout-danger">','</p>');
 	}
 }
+
+function dataDiaDb(){
+	date_default_timezone_get('America/Sao_paulo');
+	$formato = 'DATE_W3C';
+	$time = time();
+	return date(DATE_RFC822, $time);
+}

@@ -11,6 +11,18 @@ class Config_model extends CI_Model
 		return $query->row();
 	}
 
+	public function doUpdate ($dados=NULL)
+	{
+		if(is_array($dados)){
+			$this->db->update('config', $dados, array('id' => 1) );
+			if($this->db->affected_rows() > 0){
+				return true;
+			}else {
+				return false;
+			}
+		}
+	}
+
 }
 
 /* End of file .php */
