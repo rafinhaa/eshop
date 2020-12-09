@@ -104,6 +104,7 @@
 						<li><a href="#"><i class="fa fa-plus"></i> Produto</a></li>
 						<li><a href="#"><i class="fa fa-plus"></i> Categoria</a></li>
 						<li><a href="#"><i class="fa fa-plus"></i> Marcas</a></li>
+						<li><a href="<?= base_url('admin/clientes/')?>"><i class="fa fa-plus"></i> Clientes</a></li>
 					</ul>
 				</li>
 				<li class="treeview">

@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Usuários</h3>
+					<h3 class="box-title">Clientes</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -35,7 +35,18 @@
 						</thead>
 						<tbody>
 						<?php foreach ($clientes as $c) { ?>
-							<?php echo $c->id ?>
+							<tr>
+								<td><?= $c->id ?></td>
+								<td><?= $c->nome ?></td>
+								<td><?= $c->email ?></td>
+								<td class="text-center"><?= ($c->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
+								<td class="text-center">
+									<div class="btn-group">
+										<a href="<?= base_url('admin/clientes/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
+										<a href="<?= base_url('admin/clientes/delete/' . $c->id) ?>" type="button" class="btn btn-danger">Apagar</a>
+									</div>
+								</td>
+							</tr>
 						<?php } ?>
 						</tbody>
 						<tfoot>
