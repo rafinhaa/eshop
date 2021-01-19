@@ -61,9 +61,34 @@ class Clientes extends CI_Controller
 
 	public function core()
 	{
-		echo '<pre>';
-		 print_r($this->input->post());
-		 exit;
+		$this->form_validation->set_rules('name', 'Nome', 'trim|required|min_length[2]');
+		$this->form_validation->set_rules('cpf', 'CPF', 'trim|required|min_length[14]|max_length[14]');
+		$this->form_validation->set_rules('dt_nascimento', 'Data de nascimento', 'trim|required|min_length[10]|max_length[10]');
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
+
+
+		if ($this->form_validation->run() == TRUE) {
+			$dadosClientes['name'] = $this->input->post('name');
+			$dadosClientes['cpf'] = $this->input->post('cpf');
+			$dadosClientes['dt_nascimento'] = $this->input->post('dt_nascimento');
+			$dadosClientes['CEP'] = $this->input->post('CEP');
+			$dadosClientes['endereco'] = $this->input->post('endereco');
+			$dadosClientes['numero'] = $this->input->post('numero');
+			$dadosClientes['bairro'] = $this->input->post('bairro');
+			$dadosClientes['complemento'] = $this->input->post('complemento');
+			$dadosClientes['cidade'] = $this->input->post('cidade');
+			$dadosClientes['estado'] = $this->input->post('estado');
+			$dadosClientes['email'] = $this->input->post('email');
+			$dadosClientes['password'] = $this->input->post('password');
+			$dadosClientes['active'] = $this->input->post('active');
+			$dadosClientes['data_cadastro'] = dataDiaDb();
+
+			$this->clientes_model->doInsert($dadosClientes);
+			redirect('admin/clientes/modulo', 'refresh');
+		} else {
+			$this->modulo();
+		}
+
 	}
 }
 

@@ -167,6 +167,8 @@
 <!-- Datatable -->
 <script src="<?= base_url('/public/dist/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('/public/dist/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
+<!-- jQuery Mask -->
+<script src="<?= base_url('/public/dist/jquery-mask-plugin/jquery.mask.min.js') ?>"></script>
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
@@ -257,6 +259,23 @@
             'autoWidth'   : false
         });
     })
+</script>
+<script>
+    $(document).ready(function () {
+        $('.date').mask('00/00/0000');
+        $('.cpf').mask('000.000.000-00', {reverse: true});
+        $('.cep').mask('00000-000');
+        var SPMaskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+            },
+            spOptions = {
+                onKeyPress: function(val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+
+        $('.sp_celphones').mask(SPMaskBehavior, spOptions);
+	});
 </script>
 </body>
 </html>

@@ -32,17 +32,17 @@
 						</div>
 						<div class="form-group">
 							<label>CPF</label>
-							<input name="cpf" type="text" class="form-control" placeholder="CPF" value="<?= ($it_client != NULL) ? $it_client->cpf : set_value('cpf')?>">
+							<input name="cpf" type="text" class="form-control cpf" placeholder="CPF" value="<?= ($it_client != NULL) ? $it_client->cpf : set_value('cpf')?>">
 						</div>
 						<div class="form-group">
 							<label>Data de nascimento</label>
-							<input name="dt_nascimento" type="text" class="form-control" placeholder="Data de nascimento" value="<?= ($it_client != NULL) ? $it_client->data_nascimento : set_value('data_nascimento')?>">
+							<input name="dt_nascimento" type="text" class="form-control date" placeholder="Data de nascimento" value="<?= ($it_client != NULL) ? $it_client->data_nascimento : set_value('dt_nascimento')?>">
 						</div>
 						<div class="form-group">
 							<div class="row">
 								<div class="col-xs-4">
 									<label>CEP</label>
-									<input name="CEP" type="text" class="form-control" placeholder="CEP" value="<?= ($it_client != NULL) ? $it_client->cep : set_value('CEP')?>">
+									<input name="CEP" type="text" class="form-control cep" placeholder="CEP" value="<?= ($it_client != NULL) ? $it_client->cep : set_value('CEP')?>">
 								</div>
 							</div>
 						</div>
