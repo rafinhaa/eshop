@@ -68,9 +68,9 @@ class Clientes extends CI_Controller
 
 
 		if ($this->form_validation->run() == TRUE) {
-			$dadosClientes['name'] = $this->input->post('name');
+			$dadosClientes['nome'] = $this->input->post('name');
 			$dadosClientes['cpf'] = $this->input->post('cpf');
-			$dadosClientes['dt_nascimento'] = $this->input->post('dt_nascimento');
+			$dadosClientes['data_nascimento'] = $this->input->post('dt_nascimento');
 			$dadosClientes['CEP'] = $this->input->post('CEP');
 			$dadosClientes['endereco'] = $this->input->post('endereco');
 			$dadosClientes['numero'] = $this->input->post('numero');
@@ -79,12 +79,18 @@ class Clientes extends CI_Controller
 			$dadosClientes['cidade'] = $this->input->post('cidade');
 			$dadosClientes['estado'] = $this->input->post('estado');
 			$dadosClientes['email'] = $this->input->post('email');
-			$dadosClientes['password'] = $this->input->post('password');
-			$dadosClientes['active'] = $this->input->post('active');
-			$dadosClientes['data_cadastro'] = dataDiaDb();
+			$dadosClientes['senha'] = $this->input->post('password');
+			$dadosClientes['ativo'] = $this->input->post('active');
 
-			$this->clientes_model->doInsert($dadosClientes);
-			redirect('admin/clientes/modulo', 'refresh');
+			if($this->input->post('id')){
+				$dadosClientes['ultima_atualizacao'] = dataDiaDb();
+				$this->clients->doUpdate($dadosClientes,$this->input->post('id'));
+				redirect('admin/clientes', 'refresh');
+			}else{
+				$dadosClientes['data_cadastro'] = dataDiaDb();
+				$this->clients->doInsert($dadosClientes);
+				redirect('admin/clientes/modulo', 'refresh');
+			}
 		} else {
 			$this->modulo();
 		}
