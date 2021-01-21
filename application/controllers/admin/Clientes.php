@@ -96,6 +96,21 @@ class Clientes extends CI_Controller
 		}
 
 	}
+	public function delete($id=NULL){
+		if($id){
+			if($this->clients->doDelete($id)){
+				setMsg('message','Cliente foi deletado.','Sucesso!','sucesso');
+				redirect('admin/clientes', 'refresh');
+			}else{
+				setMsg('message','Cliente não foi deletado.','Ops! um erro aconteceu.','erro');
+				redirect('admin/clientes', 'refresh');
+			}
+		}else{
+			setMsg('message','Cliente não foi deletado.','Ops! um erro aconteceu.','erro');
+			redirect('admin/clientes', 'refresh');
+		}
+	}
+
 }
 
 /* End of file .php */

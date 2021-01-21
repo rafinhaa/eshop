@@ -34,6 +34,17 @@ class Clientes_model extends CI_Model
 			}
 		}
 	}
+	public function doDelete($id=NULL)
+	{
+		if($id){
+			$this->db->delete('clientes',array('id' => $id));
+			if($this->db->affected_rows() > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
 }
 
 
