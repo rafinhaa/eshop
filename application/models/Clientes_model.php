@@ -26,18 +26,18 @@ class Clientes_model extends CI_Model
 	public function doUpdate($dados=NULL, $id=NULL)
 	{
 		if(is_array($dados) && $id){
-			$this->db->update('clientes',$dados,array('id' => $id));
+			$this->db->update('categorias',$dados,array('id' => $id));
 			if($this->db->affected_rows() > 0){
-				setMsg('message','Cliente alterado.','Sucesso!','sucesso');
+				setMsg('message','Categoria alterada.','Sucesso!','sucesso');
 			}else{
-				setMsg('message','Cliente não foi alterado.','Ops! um erro aconteceu.','erro');
+				setMsg('message','Categoria não foi alterada.','Ops! um erro aconteceu.','erro');
 			}
 		}
 	}
 	public function doDelete($id=NULL)
 	{
 		if($id){
-			$this->db->delete('clientes',array('id' => $id));
+			$this->db->delete('categorias',array('id' => $id));
 			if($this->db->affected_rows() > 0){
 				return true;
 			}else{

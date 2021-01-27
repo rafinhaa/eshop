@@ -42,8 +42,8 @@
 								<td class="text-center"><?= ($c->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center">
 									<div class="btn-group">
-										<a href="<?= base_url('admin/categoria/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
-										<a href="<?= base_url('admin/categoria/delete/' . $c->id) ?>" type="button" class="btn btn-danger">Apagar</a>
+										<a href="<?= base_url('admin/categorias/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
+										<a href="<?= base_url('admin/categorias/delete/' . $c->id) ?>" type="button" class="btn btn-danger">Apagar</a>
 									</div>
 								</td>
 							</tr>
@@ -63,7 +63,7 @@
 				<!-- /.box-body -->
 				<!-- box-footer -->
 				<div class="box-footer clearfix">
-					<a href="<?= base_url('admin/clientes/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
+					<a href="<?= base_url('admin/categorias/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
 					<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 				</div>
 				<!-- /.box-footer -->
