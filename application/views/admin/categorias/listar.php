@@ -38,7 +38,7 @@
 							<tr>
 								<td><?= $c->id ?></td>
 								<td><?= $c->nome ?></td>
-								<td><?= $c->id_categoriapai ?></td>
+								<td><?= $this->categories->getCategoriaPaiNome($c->id_categoriapai) ?></td>
 								<td class="text-center"><?= ($c->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center">
 									<div class="btn-group">

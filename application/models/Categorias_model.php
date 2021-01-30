@@ -37,13 +37,27 @@ class Categorias_model extends CI_Model
 	public function doDelete($id=NULL)
 	{
 		if($id){
-			$this->db->delete('clientes',array('id' => $id));
+			$this->db->delete('categorias',array('id' => $id));
 			if($this->db->affected_rows() > 0){
 				return true;
 			}else{
 				return false;
 			}
 		}
+	}
+
+	public function getCatPai()
+	{
+		$this->db->where('id_categoriapai',NULL);
+		return $this->db->get('categorias')->result();
+	}
+
+	public function getCategoriaPaiNome($id=NULL)
+	{
+		if($id){
+			return  $this->db->get_where('categorias', array('id' => $id))->row('nome');
+		}
+
 	}
 }
 

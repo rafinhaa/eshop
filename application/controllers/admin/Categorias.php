@@ -53,6 +53,7 @@ class Categorias extends CI_Controller {
 			'this_page' => $data['title_h2'],
 		);
 		$data['user_admin'] = $this->ion_auth->user()->row();
+		$data['cat_pai'] = $this->categories->getCatPai();
 		//$data['users'] = $this->ion_auth->users()->result();
 
 		$data['view'] = 'admin/categorias/modulo';
@@ -66,6 +67,11 @@ class Categorias extends CI_Controller {
 			$dadosCategoria['nome'] = $this->input->post('name');
 			$dadosCategoria['ativo'] = $this->input->post('active');
 
+			if($this->input->post('id_categoria_pai')){
+				$dadosCategoria['id_categoriapai'] = $this->input->post('id_categoria_pai');
+			}else{
+				$dadosCategoria['id_categoriapai'] = NULL;
+			}
 			if($this->input->post('id')){
 				$this->categories->doUpdate($dadosCategoria,$this->input->post('id'));
 				redirect('admin/categorias', 'refresh');
@@ -77,6 +83,20 @@ class Categorias extends CI_Controller {
 			$this->modulo();
 		}
 
+	}
+	public function delete($id=NULL){
+		if($id){
+			if($this->categories->doDelete($id)){
+				setMsg('message','Categoria deletada.','Sucesso!','sucesso');
+				redirect('admin/categorias', 'refresh');
+			}else{
+				setMsg('message','Categoria não foi deletada.','Ops! um erro aconteceu.','erro');
+				redirect('admin/categorias', 'refresh');
+			}
+		}else{
+			setMsg('message','Cliente não foi deletado.','Ops! um erro aconteceu.','erro');
+			redirect('admin/clientes', 'refresh');
+		}
 	}
 }
 
