@@ -9,17 +9,16 @@ class Categorias_model extends CI_Model
 	}
 	public function getCategoria($id)
 	{
-		//return $this->db->get('clientes')->where($id + '= id')->result();
-		return  $this->db->get_where('categorias', array('id' => $id));
+		return  $this->db->get_where('categorias', array('id' => $id))->row();
 	}
 	public function doInsert($dados=NULL)
 	{
 		if(is_array($dados)){
 			$this->db->insert('categorias',$dados);
 			if($this->db->affected_rows() > 0){
-				setMsg('message','Categoria cadastrada.','Sucesso!','sucesso');
+				return true;
 			}else{
-				setMsg('message','Categoria não foi cadastada.','Ops! um erro aconteceu.','erro');
+				return false;
 			}
 		}
 	}
@@ -28,9 +27,9 @@ class Categorias_model extends CI_Model
 		if(is_array($dados) && $id){
 			$this->db->update('categorias',$dados,array('id' => $id));
 			if($this->db->affected_rows() > 0){
-				setMsg('message','Cliente alterado.','Sucesso!','sucesso');
+				return true;
 			}else{
-				setMsg('message','Cliente não foi alterado.','Ops! um erro aconteceu.','erro');
+				return false;
 			}
 		}
 	}
@@ -45,13 +44,11 @@ class Categorias_model extends CI_Model
 			}
 		}
 	}
-
 	public function getCatPai()
 	{
 		$this->db->where('id_categoriapai',NULL);
 		return $this->db->get('categorias')->result();
 	}
-
 	public function getCategoriaPaiNome($id=NULL)
 	{
 		if($id){

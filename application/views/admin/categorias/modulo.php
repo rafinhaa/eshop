@@ -47,10 +47,17 @@
 							<div class="form-group">
 								<label>Categoria pai</label>
 								<select class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true" name="id_categoria_pai">
-									<option>Nenhum</option>
-									<?php foreach ($cat_pai as $cat) { ?>
-										<option value="<?= $cat->id ?>" <?= ($it_category->id_categoriapai ==  $cat->id ? 'selected' : '') ?> ><?= $cat->nome ?></option>
-									<?php } ?>
+									<option value="0">Nenhum</option>
+									<?php if ($it_category == NULL){
+										foreach ($cat_pai as $cat) { ?>
+											<option value="<?= $cat->id ?>"><?= $cat->nome ?></option>
+										<?php }
+									}else{
+										foreach ($cat_pai as $cat) { ?>
+											<option value="<?= $cat->id ?>" <?= ($it_category->id_categoriapai ==  $cat->id ? 'selected' : '') ?> ><?= $cat->nome ?></option>
+										<?php }
+									}
+									?>
 								</select>
 							</div>
 						<?php if ($it_category ) { ?>

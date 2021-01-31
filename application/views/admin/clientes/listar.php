@@ -26,7 +26,7 @@
 						<thead>
 						<tr>
 							<th style="width: 10px">#</th>
-							<th>Usuário</th>
+							<th>Nome</th>
 							<th>Email</th>
 							<th>Status</th>
 							<th>Opções</th>
@@ -52,7 +52,7 @@
 						<tfoot>
 						<tr>
 							<th style="width: 10px">#</th>
-							<th>Usuário</th>
+							<th>Nome</th>
 							<th>Email</th>
 							<th>Status</th>
 							<th>Opções</th>

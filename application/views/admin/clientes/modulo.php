@@ -87,7 +87,7 @@
 							<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
 						</div>
 						<div class="form-group">
-							<label>Ativar Usuário</label>
+							<label>Ativar Cliente</label>
 							<select name="active" class="form-control">
 								<?php if ($it_client ) { ?>
 									<option value="0" <?= ($it_client->ativo == 0 ? 'selected' : '') ?> >Não</option>

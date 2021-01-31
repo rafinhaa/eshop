@@ -28,8 +28,10 @@ class Categorias extends CI_Controller {
 		$data['view'] = 'admin/categorias/listar';
 
 		$data['categorias'] = $this->categories->getCategorias() ;
-
-
+		foreach($data['categorias'] as $key => $value)
+		{
+			$value->id_categoriapai = $this->categories->getCategoriaPaiNome($value->id_categoriapai);
+		}
 		$this->load->view('admin/template/index', $data);
 	}
 
@@ -37,7 +39,7 @@ class Categorias extends CI_Controller {
 	{
 		if($id){
 			$data['title']='Atualizar categoria';
-			$data['it_category'] = $this->categories->getCategoria($id)->row();
+			$data['it_category'] = $this->categories->getCategoria($id);
 			if(!$data['it_category']){
 				setMsg('message','Categoria não foi encontrada.','Ops! um erro aconteceu.','erro');
 				redirect('admin/categorias','refresh');
@@ -54,8 +56,6 @@ class Categorias extends CI_Controller {
 		);
 		$data['user_admin'] = $this->ion_auth->user()->row();
 		$data['cat_pai'] = $this->categories->getCatPai();
-		//$data['users'] = $this->ion_auth->users()->result();
-
 		$data['view'] = 'admin/categorias/modulo';
 		$this->load->view('admin/template/index', $data);
 	}
@@ -73,10 +73,19 @@ class Categorias extends CI_Controller {
 				$dadosCategoria['id_categoriapai'] = NULL;
 			}
 			if($this->input->post('id')){
-				$this->categories->doUpdate($dadosCategoria,$this->input->post('id'));
+				$dadosCategoria['ultima_atualizacao'] = dataDiaDb();
+				if($this->categories->doUpdate($dadosCategoria,$this->input->post('id'))){
+					setMsg('message','Categoria alterada.','Sucesso!','sucesso');
+				}else{
+					setMsg('message','Categoria não foi alterada.','Ops! um erro aconteceu.','erro');
+				}
 				redirect('admin/categorias', 'refresh');
 			}else{
-				$this->categories->doInsert($dadosCategoria);
+				if($this->categories->doInsert($dadosCategoria)){
+					setMsg('message','Categoria cadastrada.','Sucesso!','sucesso');
+				}else{
+					setMsg('message','Categoria não foi cadastada.','Ops! um erro aconteceu.','erro');
+				}
 				redirect('admin/categorias/modulo', 'refresh');
 			}
 		} else {
@@ -94,7 +103,7 @@ class Categorias extends CI_Controller {
 				redirect('admin/categorias', 'refresh');
 			}
 		}else{
-			setMsg('message','Cliente não foi deletado.','Ops! um erro aconteceu.','erro');
+			setMsg('message','Categoria não foi deletado.','Ops! um erro aconteceu.','erro');
 			redirect('admin/clientes', 'refresh');
 		}
 	}

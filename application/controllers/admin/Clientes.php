@@ -13,7 +13,6 @@ class Clientes extends CI_Controller
 		$this->load->model('clientes_model','clients');
 		$this->load->library('form_validation');
 	}
-
 	public function index()
 	{
 		$data['title'] = 'LojasWEB - Clientes cadastrados';
@@ -32,7 +31,6 @@ class Clientes extends CI_Controller
 
 		$this->load->view('admin/template/index', $data);
 	}
-
 	public function modulo($id=NULL)
 	{
 		if($id){
@@ -58,7 +56,6 @@ class Clientes extends CI_Controller
 		$data['view'] = 'admin/clientes/modulo';
 		$this->load->view('admin/template/index', $data);
 	}
-
 	public function core()
 	{
 		$this->form_validation->set_rules('name', 'Nome', 'trim|required|min_length[2]');
@@ -110,7 +107,6 @@ class Clientes extends CI_Controller
 			redirect('admin/clientes', 'refresh');
 		}
 	}
-
 }
 
 /* End of file .php */
