@@ -46,3 +46,45 @@ function dataDiaDb(){
 	$time = time();
 	return date(DATE_RFC822, $time);
 }
+
+function createModelButton($type,$button_name,$data_target){
+	switch ($type) {
+		case 'modal-info':
+			echo anchor('#',$button_name, array('class'=>'btn btn-info','data-toggle'=>'modal','data-target'=>$data_target));
+			break;
+		case 'modal-danger':
+			echo anchor('#',$button_name, array('class'=>'btn btn-danger','data-toggle'=>'modal','data-target'=>$data_target));
+			break;
+		case 'modal-warning':
+			echo anchor('#',$button_name, array('class'=>'btn btn-warning','data-toggle'=>'modal','data-target'=>$data_target));
+			break;
+		case 'modal-success':
+			echo anchor('#',$button_name, array('class'=>'btn btn-success','data-toggle'=>'modal','data-target'=>$data_target));
+			break;
+	}
+}
+function createModalMessage($type,$data_target,$modal_title,$modal_body,$link){
+	echo '
+		<div class="modal '.$type.' fade" id="'.$data_target.'">
+			  <div class="modal-dialog">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">×</span></button>
+					<h4 class="modal-title">'.$modal_title.'</h4>
+				  </div>
+				  <div class="modal-body">
+					<p>'.$modal_body.'</p>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Voltar</button>
+					<a href="'.$link.'" type="button" class="btn btn-outline">Sim</a>
+				  </div>
+				</div>
+				<!-- /.modal-content -->
+			  </div>
+			  <!-- /.modal-dialog -->
+			</div>
+	';
+
+}

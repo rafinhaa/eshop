@@ -43,7 +43,8 @@
 								<td class="text-center">
 									<div class="btn-group">
 										<a href="<?= base_url('admin/clientes/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
-										<a href="<?= base_url('admin/clientes/delete/' . $c->id) ?>" type="button" class="btn btn-danger">Apagar</a>
+										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
+										<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse cliente?', base_url('admin/clientes/delete/'.$c->id)) ?>
 									</div>
 								</td>
 							</tr>

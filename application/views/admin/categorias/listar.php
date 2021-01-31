@@ -43,7 +43,8 @@
 								<td class="text-center">
 									<div class="btn-group">
 										<a href="<?= base_url('admin/categorias/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
-										<a href="<?= base_url('admin/categorias/delete/' . $c->id) ?>" type="button" class="btn btn-danger">Apagar</a>
+										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
+										<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar essa categoria?', base_url('admin/categorias/delete/'.$c->id)) ?>
 									</div>
 								</td>
 							</tr>
@@ -72,6 +73,7 @@
 		</div>
 	</div>
 	</div>
+
 </section>
 <!-- /.content -->
 
