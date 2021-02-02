@@ -23,52 +23,34 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="<?= base_url('admin/categorias/core')?>" method="post">
+				<form role="form" action="<?= base_url('admin/marcas/core')?>" method="post">
 					<div class="box-body">
 						<?= errosValidacao('message') ?>
 						<div class="form-group">
 							<label>Nome</label>
-							<input name="name" type="text" class="form-control" placeholder="Nome" value="<?= ($it_category != NULL) ? $it_category->nome : set_value('name')?>">
+							<input name="name" type="text" class="form-control" placeholder="Nome" value="<?= ($it_brand != NULL) ? $it_brand->nome : set_value('name')?>">
 						</div>
 						<div class="form-group">
-							<label>Ativar Categoria</label>
+							<label>Ativar Marca</label>
 							<select name="active" class="form-control">
-								<?php if ($it_category ) { ?>
-									<option value="0" <?= ($it_category->ativo == 0 ? 'selected' : '') ?> >Não</option>
-									<option value="1" <?= ($it_category->ativo == 1 ? 'selected' : '') ?> >Sim</option>
+								<?php if ($it_brand ) { ?>
+									<option value="0" <?= ($it_brand->ativo == 0 ? 'selected' : '') ?> >Não</option>
+									<option value="1" <?= ($it_brand->ativo == 1 ? 'selected' : '') ?> >Sim</option>
 								<?php } else { ?>
 									<option value="0" >Não</option>
 									<option value="1" selected >Sim</option>
 								<?php } ?>
 							</select>
 						</div>
-
-						<div class="form-group">
-							<div class="form-group">
-								<label>Categoria pai</label>
-								<select class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true" name="id_categoria_pai">
-									<option value="0">Nenhum</option>
-									<?php if ($it_category == NULL){
-										foreach ($cat_pai as $cat) { ?>
-											<option value="<?= $cat->id ?>"><?= $cat->nome ?></option>
-										<?php }
-									}else{
-										foreach ($cat_pai as $cat) { ?>
-											<option value="<?= $cat->id ?>" <?= ($it_category->id_categoriapai ==  $cat->id ? 'selected' : '') ?> ><?= $cat->nome ?></option>
-										<?php }
-									}
-									?>
-								</select>
-							</div>
-						<?php if ($it_category ) { ?>
-							<input type="hidden" name="id" value="<?= $it_category->id ?>"
+						<?php if ($it_brand ) { ?>
+							<input type="hidden" name="id" value="<?= $it_brand->id ?>"
 						<?php } ?>
 					</div>
 					<!-- /.box-body -->
 
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary">Enviar</button>
-						<a href="<?= base_url('admin/categorias') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
+						<a href="<?= base_url('admin/marcas') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 					</div>
 				</form>
 			</div>

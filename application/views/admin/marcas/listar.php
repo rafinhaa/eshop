@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Categorias</h3>
+					<h3 class="box-title">Marcas</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,25 +26,23 @@
 						<thead>
 						<tr>
 							<th style="width: 10px">#</th>
-							<th>Usuário</th>
-							<th>Categoria pai</th>
+							<th>Nome</th>
 							<th>Status</th>
 							<th>Opções</th>
 						</tr>
 						</tr>
 						</thead>
 						<tbody>
-						<?php foreach ($categorias as $c) { ?>
+						<?php foreach ($marcas as $m) { ?>
 							<tr>
-								<td><?= $c->id ?></td>
-								<td><?= $c->nome ?></td>
-								<td><?= $c->id_categoriapai ?></td>
-								<td class="text-center"><?= ($c->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
+								<td><?= $m->id ?></td>
+								<td><?= $m->nome ?></td>
+								<td class="text-center"><?= ($m->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center">
 									<div class="btn-group">
-										<a href="<?= base_url('admin/categorias/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
+										<a href="<?= base_url('admin/marcas/modulo/' . $m->id) ?>" type="button" class="btn btn-info">Editar</a>
 										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
-										<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar essa categoria?', base_url('admin/categorias/delete/'.$c->id)) ?>
+										<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar essa categoria?', base_url('admin/marcas/delete/'.$m->id)) ?>
 									</div>
 								</td>
 							</tr>
@@ -53,8 +51,7 @@
 						<tfoot>
 						<tr>
 							<th style="width: 10px">#</th>
-							<th>Usuário</th>
-							<th>Categoria pai</th>
+							<th>Nome</th>
 							<th>Status</th>
 							<th>Opções</th>
 						</tr>
@@ -64,7 +61,7 @@
 				<!-- /.box-body -->
 				<!-- box-footer -->
 				<div class="box-footer clearfix">
-					<a href="<?= base_url('admin/categorias/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
+					<a href="<?= base_url('admin/marcas/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
 					<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 				</div>
 				<!-- /.box-footer -->
