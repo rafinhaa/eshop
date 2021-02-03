@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Jan-2021 às 17:35
+-- Tempo de geração: 03-Fev-2021 às 01:09
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.2.34
 
@@ -41,10 +41,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nome`, `id_categoriapai`, `ativo`, `metalink`, `ultima_atualizacao`) VALUES
-(1, 'Computadores', NULL, 1, 'PC', NULL),
-(21, 'Processador i3', 1, 1, NULL, NULL),
-(22, 'celular', NULL, 1, NULL, NULL),
-(23, 'Fone de ouvido 1', 22, 1, NULL, '0000-00-00 00:00:00');
+(1, 'HD', NULL, 1, NULL, NULL),
+(2, 'Memoria', NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,7 +103,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `titulo`, `empresa`, `cep`, `bairro`, `complemento`, `cidade`, `estado`, `email`, `telefone`, `p_destaque`, `data_atualizacao`) VALUES
-(1, 'LojaWEB', 'ERRE Sofrware', '08000000', 'Sé', 'comple', 'São Paulo', 'SP', 'suporte@webloja.com', '11-20205578', 30, 'Fri, 11 Sep 20 03:27:50 +0200');
+(1, 'LojaWEB', 'ERRE Software', '08000000', 'Sé', 'comple', 'São Paulo', 'SP', 'suporte@webloja.com', '11-20205578', 30, 'Sun, 31 Jan 21 19:35:06 +0100');
 
 -- --------------------------------------------------------
 
@@ -143,6 +141,81 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `marcas`
+--
+
+CREATE TABLE `marcas` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `ativo` tinyint(1) DEFAULT NULL,
+  `ultima_atualizacao` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `marcas`
+--
+
+INSERT INTO `marcas` (`id`, `nome`, `ativo`, `ultima_atualizacao`) VALUES
+(1, 'Philco', 1, 'Tue, 02 Feb 21 01:01:11 +0100'),
+(2, 'Positivo', 0, 'Tue, 02 Feb 21 01:01:15 +0100'),
+(3, 'Intel', 1, 'Tue, 02 Feb 21 01:00:21 +0100'),
+(4, 'AMD', 0, 'Tue, 02 Feb 21 01:01:21 +0100');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos`
+--
+
+CREATE TABLE `produtos` (
+  `id` int(11) NOT NULL,
+  `id_marca` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `cod_produto` varchar(10) DEFAULT NULL,
+  `valor` decimal(15,2) DEFAULT NULL,
+  `destaque` tinyint(4) DEFAULT NULL,
+  `ativo` tinyint(4) DEFAULT NULL,
+  `controlar_estoque` tinyint(4) DEFAULT NULL,
+  `estoque` int(11) DEFAULT NULL,
+  `data_cadastro` varchar(50) DEFAULT NULL,
+  `ultima_atualizacao` varchar(50) DEFAULT NULL,
+  `peso` int(11) DEFAULT NULL,
+  `altura` int(11) DEFAULT NULL,
+  `largura` int(11) DEFAULT NULL,
+  `comprimento` int(11) DEFAULT NULL,
+  `info` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `valor`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`) VALUES
+(4, 1, 1, 'Teste', '1', '50.00', 1, 1, 1, 50, '02/02/2021', NULL, 50, 3, 3, 3, 'Teste');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos_fotos`
+--
+
+CREATE TABLE `produtos_fotos` (
+  `id` int(11) NOT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `foto` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `produtos_fotos`
+--
+
+INSERT INTO `produtos_fotos` (`id`, `id_produto`, `foto`) VALUES
+(1, 4, 'foto1.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users`
 --
 
@@ -173,7 +246,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1612104811, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1612308476, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -230,6 +303,27 @@ ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `marcas`
+--
+ALTER TABLE `marcas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `produtos_categorias_id_fk` (`id_categoria`),
+  ADD KEY `produtos_marcas_id_fk` (`id_marca`);
+
+--
+-- Índices para tabela `produtos_fotos`
+--
+ALTER TABLE `produtos_fotos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fotos_produtos_id_fk` (`id_produto`);
+
+--
 -- Índices para tabela `users`
 --
 ALTER TABLE `users`
@@ -256,7 +350,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
@@ -283,6 +377,24 @@ ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT de tabela `marcas`
+--
+ALTER TABLE `marcas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `produtos_fotos`
+--
+ALTER TABLE `produtos_fotos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
@@ -297,6 +409,19 @@ ALTER TABLE `users_groups`
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD CONSTRAINT `produtos_categorias_id_fk` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`),
+  ADD CONSTRAINT `produtos_marcas_id_fk` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`);
+
+--
+-- Limitadores para a tabela `produtos_fotos`
+--
+ALTER TABLE `produtos_fotos`
+  ADD CONSTRAINT `fotos_produtos_id_fk` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`);
 
 --
 -- Limitadores para a tabela `users_groups`
