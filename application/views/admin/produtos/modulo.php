@@ -68,7 +68,7 @@
 						</div>
 						<div class="form-group">
 							<label>Informações</label>
-							<textarea name="information" type="text" class="form-control" placeholder="Informações" value="<?= ($it_product != NULL) ? $it_product->info : set_value('information')?>"></textarea>
+							<textarea name="information" type="text" class="form-control" placeholder="Informações"><?= ($it_product != NULL) ? $it_product->info : set_value('information')?></textarea>
 						</div>
 						<div class="form-group">
 							<label>Controlar estoque</label>

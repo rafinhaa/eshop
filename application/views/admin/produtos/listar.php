@@ -37,7 +37,11 @@
 						</tr>
 						</thead>
 						<tbody>
-
+						<?php
+						echo '<pre>';
+						print_r($produtos);
+						die;
+						?>
 
 						<?php foreach ($produtos as $p) { ?>
 							<tr>
