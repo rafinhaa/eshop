@@ -90,11 +90,13 @@
 							<label>Marca</label>
 							<select name="brandy" class="form-control">
 								<?php if ($it_product ) { ?>
-									<option value="0" <?= ($it_product->destaque == 0 ? 'selected' : '') ?> >Não</option>
-									<option value="1" <?= ($it_product->destaque == 1 ? 'selected' : '') ?> >Sim</option>
+									<?php foreach ($marcas as $m) { ?>
+										<option value="<?= $m->id ?>" <?= ($it_product->id == $m->id ? 'selected' : '') ?> ><?= $m->nome ?></option>
+									<?php } ?>
 								<?php } else { ?>
-									<option value="0" >Não</option>
-									<option value="1" selected >Sim</option>
+									<?php foreach ($marcas as $m) { ?>
+										<option value="<?= $m->id ?>" ><?= $m->nome ?></option>
+									<?php } ?>
 								<?php } ?>
 							</select>
 						</div>
@@ -102,17 +104,19 @@
 							<label>Categoria</label>
 							<select name="category" class="form-control">
 								<?php if ($it_product ) { ?>
-									<option value="0" <?= ($it_product->destaque == 0 ? 'selected' : '') ?> >Não</option>
-									<option value="1" <?= ($it_product->destaque == 1 ? 'selected' : '') ?> >Sim</option>
+									<?php foreach ($categorias as $c) { ?>
+										<option value="<?= $c->id ?>" <?= ($it_product->id == $c->id ? 'selected' : '') ?> ><?= $c->nome ?></option>
+									<?php } ?>
 								<?php } else { ?>
-									<option value="0" >Não</option>
-									<option value="1" selected >Sim</option>
+									<?php foreach ($categorias as $c) { ?>
+										<option value="<?= $c->id ?>" ><?= $c->nome ?></option>
+									<?php } ?>
 								<?php } ?>
 							</select>
 						</div>
 						<div class="form-group">
 							<label>Destaque</label>
-							<select name="active" class="form-control">
+							<select name="featured" class="form-control">
 								<?php if ($it_product ) { ?>
 									<option value="0" <?= ($it_product->destaque == 0 ? 'selected' : '') ?> >Não</option>
 									<option value="1" <?= ($it_product->destaque == 1 ? 'selected' : '') ?> >Sim</option>

@@ -49,6 +49,14 @@ class Produtos_model extends CI_Model
 			}
 		}
 	}
+	public function getMarcas(){
+		$this->db->where('ativo',1);
+		return $this->db->get('marcas')->result();
+	}
+	public function getCategorias(){
+		$this->db->where('ativo',1);
+		return $this->db->get('categorias')->result();
+	}
 }
 
 

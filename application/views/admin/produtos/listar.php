@@ -43,8 +43,8 @@
 							<tr>
 								<td><?= $p->id ?></td>
 								<td><?= $p->nome_produto ?></td>
-								<td><?= $p->nome_categoria ?></td>
 								<td><?= $p->nome_marca ?></td>
+								<td><?= $p->nome_categoria ?></td>
 								<td><?= formataMoedaReal($p->valor,true) ?></td>
 								<td class="text-center"><?= ($p->controlar_estoque == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center"><?= ($p->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>

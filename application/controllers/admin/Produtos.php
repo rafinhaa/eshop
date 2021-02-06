@@ -52,36 +52,45 @@ class Produtos extends CI_Controller
 		);
 		$data['user_admin'] = $this->ion_auth->user()->row();
 
+		$data['marcas'] = $this->products->getMarcas();
+		$data['categorias'] = $this->products->getCategorias();
+
 		$data['view'] = 'admin/produtos/modulo';
 		$this->load->view('admin/template/index', $data);
 	}
 	public function core()
 	{
+
 		$this->form_validation->set_rules('name', 'Nome', 'trim|required|min_length[2]');
+/**
 		$this->form_validation->set_rules('cpf', 'CPF', 'trim|required|min_length[14]|max_length[14]');
 		$this->form_validation->set_rules('dt_nascimento', 'Data de nascimento', 'trim|required|min_length[10]|max_length[10]');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
-
+ * echo '<pre>';
+print_r($this->input->post());
+die;
+*/
 
 		if ($this->form_validation->run() == TRUE) {
 			$dadosProdutos['nome'] = $this->input->post('name');
-			$dadosProdutos['cpf'] = $this->input->post('cpf');
-			$dadosProdutos['data_nascimento'] = $this->input->post('dt_nascimento');
-			$dadosProdutos['CEP'] = $this->input->post('CEP');
-			$dadosProdutos['endereco'] = $this->input->post('endereco');
-			$dadosProdutos['numero'] = $this->input->post('numero');
-			$dadosProdutos['bairro'] = $this->input->post('bairro');
-			$dadosProdutos['complemento'] = $this->input->post('complemento');
-			$dadosProdutos['cidade'] = $this->input->post('cidade');
-			$dadosProdutos['estado'] = $this->input->post('estado');
-			$dadosProdutos['email'] = $this->input->post('email');
-			$dadosProdutos['senha'] = $this->input->post('password');
+			$dadosProdutos['cod_produto'] = $this->input->post('code');
+			$dadosProdutos['valor'] = $this->input->post('value');
+			$dadosProdutos['peso'] = $this->input->post('size');
+			$dadosProdutos['altura'] = $this->input->post('height');
+			$dadosProdutos['largura'] = $this->input->post('width');
+			$dadosProdutos['comprimento'] = $this->input->post('length');
+			$dadosProdutos['info'] = $this->input->post('information');
+			$dadosProdutos['controlar_estoque'] = $this->input->post('control_stok');
+			$dadosProdutos['estoque'] = $this->input->post('stock');
+			$dadosProdutos['id_marca'] = $this->input->post('brandy');
+			$dadosProdutos['id_categoria'] = $this->input->post('category');
+			$dadosProdutos['destaque'] = $this->input->post('featured');
 			$dadosProdutos['ativo'] = $this->input->post('active');
 
 			if($this->input->post('id')){
 				$dadosProdutos['ultima_atualizacao'] = dataDiaDb();
 				$this->products->doUpdate($dadosProdutos,$this->input->post('id'));
-				redirect('admin/Produtos', 'refresh');
+				redirect('admin/produtos', 'refresh');
 			}else{
 				$dadosProdutos['data_cadastro'] = dataDiaDb();
 				$this->products->doInsert($dadosProdutos);
