@@ -23,19 +23,19 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="<?= base_url('admin/produtos/core')?>" method="post">
+				<form role="form" action="<?= base_url('admin/categorias/core')?>" method="post">
 					<div class="box-body">
 						<?= errosValidacao('message') ?>
 						<div class="form-group">
 							<label>Nome</label>
-							<input name="name" type="text" class="form-control" placeholder="Nome" value="<?= ($it_product != NULL) ? $it_product->nome : set_value('name')?>">
+							<input name="name" type="text" class="form-control" placeholder="Nome" value="<?= ($it_category != NULL) ? $it_category->nome : set_value('name')?>">
 						</div>
 						<div class="form-group">
 							<label>Ativar Categoria</label>
 							<select name="active" class="form-control">
-								<?php if ($it_product ) { ?>
-									<option value="0" <?= ($it_product->ativo == 0 ? 'selected' : '') ?> >Não</option>
-									<option value="1" <?= ($it_product->ativo == 1 ? 'selected' : '') ?> >Sim</option>
+								<?php if ($it_category ) { ?>
+									<option value="0" <?= ($it_category->ativo == 0 ? 'selected' : '') ?> >Não</option>
+									<option value="1" <?= ($it_category->ativo == 1 ? 'selected' : '') ?> >Sim</option>
 								<?php } else { ?>
 									<option value="0" >Não</option>
 									<option value="1" selected >Sim</option>

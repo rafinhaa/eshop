@@ -42,7 +42,7 @@ class Produtos extends CI_Controller
 			}
 		}else{
 			$data['title']='Novo cadastro';
-			$data['product'] = NULL;
+			$data['it_product'] = NULL;
 		}
 		$data['title_h2'] = 'Cadastrar Produtos';
 		$data['breadcrumb'] = array(
