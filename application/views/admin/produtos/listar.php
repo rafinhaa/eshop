@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Clientes</h3>
+					<h3 class="box-title">Produtos</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -27,25 +27,33 @@
 						<tr>
 							<th style="width: 10px">#</th>
 							<th>Nome</th>
-							<th>Email</th>
+							<th>Marca</th>
+							<th>Categoria</th>
+							<th>Valor</th>
+							<th>Estoque</th>
 							<th>Status</th>
 							<th>Opções</th>
 						</tr>
 						</tr>
 						</thead>
 						<tbody>
-						<?php foreach ($clientes as $c) { ?>
+
+
+						<?php foreach ($produtos as $p) { ?>
 							<tr>
-								<td><?= $c->id ?></td>
-								<td><?= $c->nome ?></td>
-								<td><?= $c->email ?></td>
-								<td class="text-center"><?= ($c->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
+								<td><?= $p->id ?></td>
+								<td><?= $p->nome_produto ?></td>
+								<td><?= $p->nome_categoria ?></td>
+								<td><?= $p->nome_marca ?></td>
+								<td><?= formataMoedaReal($p->valor,true) ?></td>
+								<td class="text-center"><?= ($p->controlar_estoque == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
+								<td class="text-center"><?= ($p->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center">
 									<div class="btn-group">
-										<a href="<?= base_url('admin/clientes/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
+										<a href="<?= base_url('admin/produtos/modulo/' . $p->id) ?>" type="button" class="btn btn-info">Editar</a>
 										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
-										<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse cliente?', base_url('admin/clientes/delete/'.$c->id)) ?>
 									</div>
+									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id)) ?>
 								</td>
 							</tr>
 						<?php } ?>
@@ -54,7 +62,10 @@
 						<tr>
 							<th style="width: 10px">#</th>
 							<th>Nome</th>
-							<th>Email</th>
+							<th>Marca</th>
+							<th>Categoria</th>
+							<th>Valor</th>
+							<th>Estoque</th>
 							<th>Status</th>
 							<th>Opções</th>
 						</tr>
@@ -64,7 +75,7 @@
 				<!-- /.box-body -->
 				<!-- box-footer -->
 				<div class="box-footer clearfix">
-					<a href="<?= base_url('admin/clientes/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
+					<a href="<?= base_url('admin/produtos/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
 					<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 				</div>
 				<!-- /.box-footer -->

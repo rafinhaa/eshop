@@ -86,5 +86,10 @@ function createModalMessage($type,$data_target,$modal_title,$modal_body,$link){
 			  <!-- /.modal-dialog -->
 			</div>
 	';
+}
 
+function formataMoedaReal($valor,$real=NULL){
+	if($valor){
+		return $valor = ($valor == true ? 'R$ ' : '' ) . number_format($valor, 2,',','.');
+	}
 }

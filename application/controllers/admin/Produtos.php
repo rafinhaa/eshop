@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Clientes extends CI_Controller
+class Produtos extends CI_Controller
 {
 	public function __construct()
 	{
@@ -10,13 +10,13 @@ class Clientes extends CI_Controller
 		{
 			redirect('admin/login');
 		}
-		$this->load->model('clientes_model','clients');
+		$this->load->model('produtos_model','products');
 		$this->load->library('form_validation');
 	}
 	public function index()
 	{
-		$data['title'] = 'LojasWEB - Clientes cadastrados';
-		$data['title_h2'] = 'Clientes cadastrados';
+		$data['title'] = 'LojasWEB - Produtos cadastrados';
+		$data['title_h2'] = 'Produtos cadastrados';
 		$data['breadcrumb'] = array(
 			'home' => base_url('admin'),
 			'this_page' => $data['title_h2'],
@@ -24,9 +24,9 @@ class Clientes extends CI_Controller
 		$data['user_admin'] = $this->ion_auth->user()->row();
 		$data['users'] = $this->ion_auth->users()->result();
 
-		$data['view'] = 'admin/clientes/listar';
+		$data['view'] = 'admin/produtos/listar';
 
-		$data['clientes'] = $this->clients->getClientes() ;
+		$data['produtos'] = $this->products->getProdutos() ;
 
 
 		$this->load->view('admin/template/index', $data);
@@ -34,26 +34,25 @@ class Clientes extends CI_Controller
 	public function modulo($id=NULL)
 	{
 		if($id){
-			$data['title']='Atualizar cadastro';
-			$data['it_client'] = $this->clients->getCliente($id)->row();
-			if(!$data['it_client']){
-				setMsg('message','Cliente não foi encontrado.','Ops! um erro aconteceu.','erro');
-				redirect('admin/clientes','refresh');
+			$data['title']='Atualizar produto';
+			$data['it_product'] = $this->products->getProduto($id)->row();
+			if(!$data['it_product']){
+				setMsg('message','Produto não foi encontrado.','Ops! um erro aconteceu.','erro');
+				redirect('admin/produtos','refresh');
 			}
 		}else{
 			$data['title']='Novo cadastro';
-			$data['it_client'] = NULL;
+			$data['product'] = NULL;
 		}
-		$data['title_h2'] = 'Cadastrar Clientes';
+		$data['title_h2'] = 'Cadastrar Produtos';
 		$data['breadcrumb'] = array(
 			'home' => base_url('admin'),
-			'previous_page' => base_url('admin/clientes'),
+			'previous_page' => base_url('admin/produtos'),
 			'this_page' => $data['title_h2'],
 		);
 		$data['user_admin'] = $this->ion_auth->user()->row();
-		//$data['users'] = $this->ion_auth->users()->result();
 
-		$data['view'] = 'admin/clientes/modulo';
+		$data['view'] = 'admin/produtos/modulo';
 		$this->load->view('admin/template/index', $data);
 	}
 	public function core()
@@ -65,28 +64,28 @@ class Clientes extends CI_Controller
 
 
 		if ($this->form_validation->run() == TRUE) {
-			$dadosClientes['nome'] = $this->input->post('name');
-			$dadosClientes['cpf'] = $this->input->post('cpf');
-			$dadosClientes['data_nascimento'] = $this->input->post('dt_nascimento');
-			$dadosClientes['CEP'] = $this->input->post('CEP');
-			$dadosClientes['endereco'] = $this->input->post('endereco');
-			$dadosClientes['numero'] = $this->input->post('numero');
-			$dadosClientes['bairro'] = $this->input->post('bairro');
-			$dadosClientes['complemento'] = $this->input->post('complemento');
-			$dadosClientes['cidade'] = $this->input->post('cidade');
-			$dadosClientes['estado'] = $this->input->post('estado');
-			$dadosClientes['email'] = $this->input->post('email');
-			$dadosClientes['senha'] = $this->input->post('password');
-			$dadosClientes['ativo'] = $this->input->post('active');
+			$dadosProdutos['nome'] = $this->input->post('name');
+			$dadosProdutos['cpf'] = $this->input->post('cpf');
+			$dadosProdutos['data_nascimento'] = $this->input->post('dt_nascimento');
+			$dadosProdutos['CEP'] = $this->input->post('CEP');
+			$dadosProdutos['endereco'] = $this->input->post('endereco');
+			$dadosProdutos['numero'] = $this->input->post('numero');
+			$dadosProdutos['bairro'] = $this->input->post('bairro');
+			$dadosProdutos['complemento'] = $this->input->post('complemento');
+			$dadosProdutos['cidade'] = $this->input->post('cidade');
+			$dadosProdutos['estado'] = $this->input->post('estado');
+			$dadosProdutos['email'] = $this->input->post('email');
+			$dadosProdutos['senha'] = $this->input->post('password');
+			$dadosProdutos['ativo'] = $this->input->post('active');
 
 			if($this->input->post('id')){
-				$dadosClientes['ultima_atualizacao'] = dataDiaDb();
-				$this->clients->doUpdate($dadosClientes,$this->input->post('id'));
-				redirect('admin/clientes', 'refresh');
+				$dadosProdutos['ultima_atualizacao'] = dataDiaDb();
+				$this->products->doUpdate($dadosProdutos,$this->input->post('id'));
+				redirect('admin/Produtos', 'refresh');
 			}else{
-				$dadosClientes['data_cadastro'] = dataDiaDb();
-				$this->clients->doInsert($dadosClientes);
-				redirect('admin/clientes/modulo', 'refresh');
+				$dadosProdutos['data_cadastro'] = dataDiaDb();
+				$this->products->doInsert($dadosProdutos);
+				redirect('admin/Produtos/modulo', 'refresh');
 			}
 		} else {
 			$this->modulo();
@@ -95,16 +94,16 @@ class Clientes extends CI_Controller
 	}
 	public function delete($id=NULL){
 		if($id){
-			if($this->clients->doDelete($id)){
-				setMsg('message','Cliente foi deletado.','Sucesso!','sucesso');
-				redirect('admin/clientes', 'refresh');
+			if($this->products->doDelete($id)){
+				setMsg('message','Produto foi deletado.','Sucesso!','sucesso');
+				redirect('admin/produtos', 'refresh');
 			}else{
-				setMsg('message','Cliente não foi deletado.','Ops! um erro aconteceu.','erro');
-				redirect('admin/clientes', 'refresh');
+				setMsg('message','Produto não foi deletado.','Ops! um erro aconteceu.','erro');
+				redirect('admin/produtos', 'refresh');
 			}
 		}else{
-			setMsg('message','Cliente não foi deletado.','Ops! um erro aconteceu.','erro');
-			redirect('admin/clientes', 'refresh');
+			setMsg('message','Produto não foi deletado.','Ops! um erro aconteceu.','erro');
+			redirect('admin/produtos', 'refresh');
 		}
 	}
 }

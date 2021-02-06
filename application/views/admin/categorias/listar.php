@@ -44,8 +44,8 @@
 									<div class="btn-group">
 										<a href="<?= base_url('admin/categorias/modulo/' . $c->id) ?>" type="button" class="btn btn-info">Editar</a>
 										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
-										<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar essa categoria?', base_url('admin/categorias/delete/'.$c->id)) ?>
 									</div>
+									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar essa categoria?', base_url('admin/categorias/delete/'.$c->id)) ?>
 								</td>
 							</tr>
 						<?php } ?>
