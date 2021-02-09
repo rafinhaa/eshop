@@ -38,7 +38,7 @@
 								</div>
 								<div class="col-xs-4">
 									<label>Valor</label>
-									<input name="value" type="text" class="form-control" placeholder="Valor" value="<?= ($it_product != NULL) ? $it_product->valor : set_value('value')?>">
+									<input name="value" type="text" class="form-control money" placeholder="Valor" value="<?= ($it_product != NULL) ? $it_product->valor : set_value('value')?>">
 								</div>
 							</div>
 						</div>

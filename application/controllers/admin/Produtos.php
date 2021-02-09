@@ -74,7 +74,7 @@ die;
 		if ($this->form_validation->run() == TRUE) {
 			$dadosProdutos['nome'] = $this->input->post('name');
 			$dadosProdutos['cod_produto'] = $this->input->post('code');
-			$dadosProdutos['valor'] = $this->input->post('value');
+			$dadosProdutos['valor'] = formataDecinal($this->input->post('value'));
 			$dadosProdutos['peso'] = $this->input->post('size');
 			$dadosProdutos['altura'] = $this->input->post('height');
 			$dadosProdutos['largura'] = $this->input->post('width');

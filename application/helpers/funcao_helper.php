@@ -93,3 +93,7 @@ function formataMoedaReal($valor,$real=NULL){
 		return $valor = ($valor == true ? 'R$ ' : '' ) . number_format($valor, 2,',','.');
 	}
 }
+
+function formataDecinal($valor){
+	return str_replace('.','',$valor).str_replace(',','.',$valor);
+}

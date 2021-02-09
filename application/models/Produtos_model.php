@@ -5,7 +5,7 @@ class Produtos_model extends CI_Model
 {
 	public function getProdutos()
 	{
-		$this->db->select('*, p.nome AS nome_produto, m.nome AS nome_marca, c.nome AS nome_categoria');
+		$this->db->select('*, p.id AS id_produto, p.nome AS nome_produto, m.nome AS nome_marca, c.nome AS nome_categoria');
 		$this->db->from('produtos AS p');
 		$this->db->join('marcas AS m','m.id = p.id_marca','left');
 		$this->db->join('categorias AS c','c.id = p.id_categoria','left');
