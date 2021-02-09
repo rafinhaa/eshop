@@ -115,6 +115,28 @@ die;
 			redirect('admin/produtos', 'refresh');
 		}
 	}
+
+	public function upload()
+	{
+		$folder = './upload/produtos';
+		$config['upload_path'] = $folder;
+		$config['allowed_type'] = 'jpg|png|gif';
+		$config['max_size'] = 2048;
+		$config['encrypt_name'] = TRUE;
+
+		$this->load->library('upload',$config);
+
+		if($this->upload->do_upload('foto_livro')){
+			$retorno['file_name'] = $this->upload->data('file_name');
+			$retorno['msg'] = 'Foto Enviada com Sucesso!';
+			$retorno['erro'] = 0;
+		}else{
+			$retorno['msg'] = $this->upload->display_errors();
+			$retorno['erro'] = 25;
+
+		}
+		echo json_encode($retorno);
+	}
 }
 
 /* End of file .php */
