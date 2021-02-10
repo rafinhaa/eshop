@@ -118,15 +118,35 @@ die;
 
 	public function upload()
 	{
+		/*
+		echo '<pre>';
+		print_r($_FILES);		
+		$array = 
+		[	
+				"foto_produto" => array(
+					"name" =>	  $_FILES['aksfileupload']['name'][0],
+					"type" => 	  $_FILES['aksfileupload']['type'][0],
+					"tmp_name" => $_FILES['aksfileupload']['tmp_name'][0],
+					"error" =>	  $_FILES['aksfileupload']['error'][0],
+					"size" =>     $_FILES['aksfileupload']['size'][0]	
+				)
+				
+			
+		];
+		$_FILES = $array;
+		print_r($_FILES);
+		*/
 		$folder = './upload/produtos';
 		$config['upload_path'] = $folder;
-		$config['allowed_type'] = 'jpg|png|gif';
+		$config['allowed_types'] = 'jpg|png|gif|jpeg';
 		$config['max_size'] = 2048;
 		$config['encrypt_name'] = TRUE;
 
+		print_r($_FILES);
+
 		$this->load->library('upload',$config);
 
-		if($this->upload->do_upload('foto_livro')){
+		if($this->upload->do_upload('foto_produto')){
 			$retorno['file_name'] = $this->upload->data('file_name');
 			$retorno['msg'] = 'Foto Enviada com Sucesso!';
 			$retorno['erro'] = 0;

@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="<?= base_url('/public/dist/Ionicons/css/ionicons.min.css') ?>">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?= base_url('/public/css/AdminLTE.min.css') ?>">
+	<!-- Uploader -->
+	<link rel="stylesheet" href="<?= base_url('/public/css/uploadfile.css') ?>">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
 		 folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?= base_url('/public/css/skin-blue.min.css') ?>">
@@ -183,6 +185,8 @@
 <script src="<?= base_url('/public/dist/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
 <!-- jQuery Mask -->
 <script src="<?= base_url('/public/dist/jquery-mask-plugin/jquery.mask.min.js') ?>"></script>
+<!-- jQuery Upload -->
+<script src="<?= base_url('/public/js/jquery.uploadfile.min.js') ?>"></script>
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
@@ -290,6 +294,14 @@
             };
 
         $('.sp_celphones').mask(SPMaskBehavior, spOptions);
+	});
+</script>
+<script>
+	$(function () {
+	$("#fileuploader").uploadFile({
+			url: "http://localhost/loja-web/admin/produtos/upload",
+			fileName: "foto_produto",
+	});
 	});
 </script>
 </body>

@@ -23,7 +23,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="<?= base_url('admin/produtos/core')?>" method="post">
+				<form role="form" action="<?= base_url('admin/produtos/core')?>" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						<?= errosValidacao('message') ?>
 						<div class="form-group">
@@ -137,6 +137,10 @@
 									<option value="1" selected >Sim</option>
 								<?php } ?>
 							</select>
+						</div>
+						<div class="form-group">
+							<label>Upload</label>	
+							<div id=fileuploader></div>
 						</div>
 						<?php if ($it_product ) { ?>
 							<input type="hidden" name="id" value="<?= $it_product->id ?>"
