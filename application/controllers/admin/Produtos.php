@@ -142,8 +142,6 @@ die;
 		$config['max_size'] = 2048;
 		$config['encrypt_name'] = TRUE;
 
-		print_r($_FILES);
-
 		$this->load->library('upload',$config);
 
 		if($this->upload->do_upload('foto_produto')){

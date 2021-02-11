@@ -29,9 +29,13 @@
 			display: block;
 			z-index: 1;
 		}
-
 		.example-modal .modal {
 			background: transparent !important;
+		}
+		.img_foto_upload img{
+			width: 100px;
+			height: 100px;
+			border-radius: 2px;
 		}
 	</style>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -186,7 +190,7 @@
 <!-- jQuery Mask -->
 <script src="<?= base_url('/public/dist/jquery-mask-plugin/jquery.mask.min.js') ?>"></script>
 <!-- jQuery Upload -->
-<script src="<?= base_url('/public/js/jquery.uploadfile.min.js') ?>"></script>
+<script src="<?= base_url('/public/js/jquery.uploadfile.js') ?>"></script>
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
@@ -298,10 +302,23 @@
 </script>
 <script>
 	$(function () {
-	$("#fileuploader").uploadFile({
+		$("#fileuploader").uploadFile({
 			url: "http://localhost/loja-web/admin/produtos/upload",
 			fileName: "foto_produto",
-	});
+            returnType: 'json',
+            onSuccess: function (file,data) {
+				$('.ajax-file-upload-statusbar').hide();
+				if(data.erro == 0){
+					$('.retorno_fotos_produtos').append('<div class="col-sm-3 img_foto_upload" ><img src=http://localhost/loja-web/upload/produtos/' + data.file_name + '><input type="text" value="' + data.file_name +'" name="foto_produto[]"></div>');
+				}else{
+                    alert(data.msg);
+				}
+            },
+            onError: function (files,status,errMsg,pd) {
+                alert(files + '<br>' + errMsg);
+            },
+
+		});
 	});
 </script>
 </body>

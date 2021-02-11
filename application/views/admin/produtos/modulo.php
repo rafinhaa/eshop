@@ -142,6 +142,9 @@
 							<label>Upload</label>	
 							<div id=fileuploader></div>
 						</div>
+						<div class="form-group">
+							<div class="retorno_fotos_produtos"></div>
+						</div>
 						<?php if ($it_product ) { ?>
 							<input type="hidden" name="id" value="<?= $it_product->id ?>"
 						<?php } ?>
