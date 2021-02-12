@@ -21,6 +21,10 @@ class Produtos_model extends CI_Model
 		if(is_array($dados)){
 			$this->db->insert('produtos',$dados);
 			if($this->db->affected_rows() > 0){
+				$last_id = $this->db->insert_id();
+				echo $last_id;
+				die();
+				$this->session->set_userdata('last_id',$last_id);
 				setMsg('message','Produto cadastrado.','Sucesso!','sucesso');
 			}else{
 				setMsg('message','Produto não foi cadastado.','Ops! um erro aconteceu.','erro');
@@ -56,6 +60,12 @@ class Produtos_model extends CI_Model
 	public function getCategorias(){
 		$this->db->where('ativo',1);
 		return $this->db->get('categorias')->result();
+	}
+	public function doInsertFotos($dados=NULL)
+	{
+		if(is_array($dados)){
+			$this->db->insert('produtos_fotos',$dados);
+		}
 	}
 }
 

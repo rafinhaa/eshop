@@ -90,10 +90,30 @@ die;
 			if($this->input->post('id')){
 				$dadosProdutos['ultima_atualizacao'] = dataDiaDb();
 				$this->products->doUpdate($dadosProdutos,$this->input->post('id'));
+
+				$id_produto = $this->session->userdata('last_id');
+				$foto_produto = $this->input->post('foto_produto');
+				$t_produto = count($foto_produto);
+				for ($i=0; $i < $t_produto; $i++){
+					$fotos['id_produto'] = $id_produto;
+					$fotos['foto'] = $foto_produto[$i];
+					$this->products->doInsertFotos($fotos);
+				}
+
 				redirect('admin/produtos', 'refresh');
 			}else{
 				$dadosProdutos['data_cadastro'] = dataDiaDb();
 				$this->products->doInsert($dadosProdutos);
+
+				$id_produto = $this->session->userdata('last_id');
+				$foto_produto = $this->input->post('foto_produto');
+				$t_produto = count($foto_produto);
+				for ($i=0; $i < $t_produto; $i++){
+					$fotos['id_produto'] = $id_produto;
+					$fotos['foto'] = $foto_produto[$i];
+					$this->products->doInsertFotos($fotos);
+				}
+
 				redirect('admin/Produtos/modulo', 'refresh');
 			}
 		} else {
