@@ -33,6 +33,7 @@ class Produtos extends CI_Controller
 	}
 	public function modulo($id=NULL)
 	{
+		$fotos = NULL;
 		if($id){
 			$data['title']='Atualizar produto';
 			$data['it_product'] = $this->products->getProduto($id)->row();
@@ -40,6 +41,7 @@ class Produtos extends CI_Controller
 				setMsg('message','Produto não foi encontrado.','Ops! um erro aconteceu.','erro');
 				redirect('admin/produtos','refresh');
 			}
+			$fotos = $this->products->getFotosProdutos($id);
 		}else{
 			$data['title']='Novo cadastro';
 			$data['it_product'] = NULL;
@@ -54,22 +56,14 @@ class Produtos extends CI_Controller
 
 		$data['marcas'] = $this->products->getMarcas();
 		$data['categorias'] = $this->products->getCategorias();
+		$data['fotos'] = $fotos;
 
 		$data['view'] = 'admin/produtos/modulo';
 		$this->load->view('admin/template/index', $data);
 	}
 	public function core()
 	{
-
 		$this->form_validation->set_rules('name', 'Nome', 'trim|required|min_length[2]');
-/**
-		$this->form_validation->set_rules('cpf', 'CPF', 'trim|required|min_length[14]|max_length[14]');
-		$this->form_validation->set_rules('dt_nascimento', 'Data de nascimento', 'trim|required|min_length[10]|max_length[10]');
-		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
- * echo '<pre>';
-print_r($this->input->post());
-die;
-*/
 
 		if ($this->form_validation->run() == TRUE) {
 			$dadosProdutos['nome'] = $this->input->post('name');
@@ -94,6 +88,7 @@ die;
 				$id_produto = $this->session->userdata('last_id');
 				$foto_produto = $this->input->post('foto_produto');
 				$t_produto = count($foto_produto);
+
 				for ($i=0; $i < $t_produto; $i++){
 					$fotos['id_produto'] = $id_produto;
 					$fotos['foto'] = $foto_produto[$i];
@@ -103,8 +98,8 @@ die;
 				redirect('admin/produtos', 'refresh');
 			}else{
 				$dadosProdutos['data_cadastro'] = dataDiaDb();
-				$this->products->doInsert($dadosProdutos);
 
+				$this->products->doInsert($dadosProdutos);
 				$id_produto = $this->session->userdata('last_id');
 				$foto_produto = $this->input->post('foto_produto');
 				$t_produto = count($foto_produto);
@@ -135,7 +130,6 @@ die;
 			redirect('admin/produtos', 'refresh');
 		}
 	}
-
 	public function upload()
 	{
 		/*

@@ -5,7 +5,7 @@ class Produtos_model extends CI_Model
 {
 	public function getProdutos()
 	{
-		$this->db->select('*, p.id AS id_produto, p.nome AS nome_produto, m.nome AS nome_marca, c.nome AS nome_categoria');
+		$this->db->select('p.*');
 		$this->db->from('produtos AS p');
 		$this->db->join('marcas AS m','m.id = p.id_marca','left');
 		$this->db->join('categorias AS c','c.id = p.id_categoria','left');
@@ -22,8 +22,6 @@ class Produtos_model extends CI_Model
 			$this->db->insert('produtos',$dados);
 			if($this->db->affected_rows() > 0){
 				$last_id = $this->db->insert_id();
-				echo $last_id;
-				die();
 				$this->session->set_userdata('last_id',$last_id);
 				setMsg('message','Produto cadastrado.','Sucesso!','sucesso');
 			}else{
@@ -65,6 +63,12 @@ class Produtos_model extends CI_Model
 	{
 		if(is_array($dados)){
 			$this->db->insert('produtos_fotos',$dados);
+		}
+	}
+	public function getFotosProdutos($id=NULL){
+		if($id){
+			$this->db->where('id_produto',$id);
+			return $this->db->get('produtos_fotos')->result();
 		}
 	}
 }

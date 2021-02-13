@@ -38,21 +38,21 @@
 						</thead>
 						<tbody>
 
-						<?php foreach ($produtos as $p) { ?>
+						<?php foreach ($produtos as $p) {?>
 							<tr>
-								<td><?= $p->id_produto ?></td>
-								<td><?= $p->nome_produto ?></td>
-								<td><?= $p->nome_marca ?></td>
-								<td><?= $p->nome_categoria ?></td>
+								<td><?= $p->id ?></td>
+								<td><?= $p->nome ?></td>
+								<td><?= $p->id_marca ?></td>
+								<td><?= $p->id_categoria ?></td>
 								<td><?= formataMoedaReal($p->valor,true) ?></td>
-								<td class="text-center"><?= ($p->controlar_estoque == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
+								<td class="text-center"><?= ($p->controlar_estoque == 1)? '<small class="label bg-green">sim</small>' : '<small class="label center bg-red">não</small>' ?></td>
 								<td class="text-center"><?= ($p->ativo == 1)? '<small class="label bg-green">ativo</small>' : '<small class="label center bg-red">inativo</small>' ?></td>
 								<td class="text-center">
 									<div class="btn-group">
-										<a href="<?= base_url('admin/produtos/modulo/' . $p->id_produto) ?>" type="button" class="btn btn-info">Editar</a>
+										<a href="<?= base_url('admin/produtos/modulo/' . $p->id) ?>" type="button" class="btn btn-info">Editar</a>
 										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
 									</div>
-									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id_produto)) ?>
+									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id)) ?>
 								</td>
 							</tr>
 						<?php } ?>
