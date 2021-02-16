@@ -71,6 +71,17 @@ class Produtos_model extends CI_Model
 			return $this->db->get('produtos_fotos')->result();
 		}
 	}
+	public function doDeleteFotoProduto($id=NULL)
+	{
+		if($id){
+			$this->db->delete('produtos_fotos',['id_produto' => $id]);
+			if($this->db->affected_rows() > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
 }
 
 

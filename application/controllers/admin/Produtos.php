@@ -85,6 +85,8 @@ class Produtos extends CI_Controller
 				$dadosProdutos['ultima_atualizacao'] = dataDiaDb();
 				$this->products->doUpdate($dadosProdutos,$this->input->post('id'));
 
+				$this->products->doDeleteFotoProduto($this->input->post('id'));
+
 				$id_produto = $this->session->userdata('last_id');
 				$foto_produto = $this->input->post('foto_produto');
 				$t_produto = count($foto_produto);
@@ -94,11 +96,9 @@ class Produtos extends CI_Controller
 					$fotos['foto'] = $foto_produto[$i];
 					$this->products->doInsertFotos($fotos);
 				}
-
 				redirect('admin/produtos', 'refresh');
 			}else{
 				$dadosProdutos['data_cadastro'] = dataDiaDb();
-
 				$this->products->doInsert($dadosProdutos);
 				$id_produto = $this->session->userdata('last_id');
 				$foto_produto = $this->input->post('foto_produto');
@@ -108,7 +108,6 @@ class Produtos extends CI_Controller
 					$fotos['foto'] = $foto_produto[$i];
 					$this->products->doInsertFotos($fotos);
 				}
-
 				redirect('admin/Produtos/modulo', 'refresh');
 			}
 		} else {
