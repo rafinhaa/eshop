@@ -146,12 +146,17 @@
 							<div class="retorno_fotos_produtos"></div>
 						</div>
 						<?php if ($it_product ) { ?>
-							<input type="hidden" name="id" value="<?= $it_product->id ?>"
+							<input type="hidden" name="id" value="<?= $it_product->id ?>">
 						<?php } ?>
-						<div>
+						<div class="row">
 							<?php if( $fotos != NULL){ foreach ($fotos as $f) { ?>
-								<div class="col-sm-3 img_foto_upload" >
-									<img src="<?= base_url('upload/produtos/' . $f->foto)?> "><input type="text" value="<?= $f->foto ?>" name="foto_produto[]">
+								<div class="col-sm-3 img_foto_upload " >
+									<div class="img img-bordered">
+										<img src="<?= base_url('upload/produtos/' . $f->foto)?> " class="img-fluid mb-2"><input type="hidden" value="<?= $f->foto ?>" name="foto_produto[]">
+									</div>
+									<span class="eg">
+										<a href="#" type="button" class="btn btn-block btn-danger btn-xs btn-apagar-foto-produto">Apagar</a>
+									</span>
 								</div>
 							<?php } }?>
 						</div>

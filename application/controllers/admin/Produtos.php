@@ -87,10 +87,9 @@ class Produtos extends CI_Controller
 
 				$this->products->doDeleteFotoProduto($this->input->post('id'));
 
-				$id_produto = $this->session->userdata('last_id');
+				$id_produto = $this->input->post('id');
 				$foto_produto = $this->input->post('foto_produto');
 				$t_produto = count($foto_produto);
-
 				for ($i=0; $i < $t_produto; $i++){
 					$fotos['id_produto'] = $id_produto;
 					$fotos['foto'] = $foto_produto[$i];

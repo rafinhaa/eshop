@@ -309,7 +309,7 @@
             onSuccess: function (file,data) {
 				$('.ajax-file-upload-statusbar').hide();
 				if(data.erro == 0){
-					$('.retorno_fotos_produtos').append('<div class="col-sm-3 img_foto_upload" ><img src=http://localhost/loja-web/upload/produtos/' + data.file_name + '><input type="text" value="' + data.file_name +'" name="foto_produto[]"></div>');
+					$('.retorno_fotos_produtos').append('<div class="col-sm-3 img_foto_upload" ><div class="img img-bordered"><img src=<?= base_url("upload/produtos/")?>' + data.file_name + ' class="img-fluid mb-2"></div><input type="hidden" value="' + data.file_name +'" name="foto_produto[]"><span class="eg"><a href="#" type="button" class="btn btn-block btn-danger btn-xs btn-apagar-foto-produto">Apagar</a></span></div>');
 				}else{
                     alert(data.msg);
 				}
@@ -317,9 +317,11 @@
             onError: function (files,status,errMsg,pd) {
                 alert(files + '<br>' + errMsg);
             },
-
 		});
 	});
+    $(document).on('click', '.btn-apagar-foto-produto', function () {
+		$(this).parent().parent().remove();
+    });
 </script>
 </body>
 </html>
