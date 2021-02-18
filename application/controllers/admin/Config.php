@@ -90,6 +90,35 @@ class Config extends CI_Controller {
 			$this->load->view('admin/template/index', $data);
 		}
 	}
+	public function correios()
+	{
+		$this->form_validation->set_rules('cep_origem', 'CEP', 'required');
+		if ($this->form_validation->run() == TRUE) {
+			$dadosCorreios['cep_origem'] = $this->input->post('cep_origem');
+			$dadosCorreios['somar_frete'] = formataDecimal($this->input->post('somar_frete'));
+			$dadosCorreios['data_atualizacao'] = dataDiaDb();
+
+			if ($this->config_model->doUpdateCorreios($dadosCorreios)) {
+				setMsg('message', 'Todas as configurações foram salvas.', 'Sucesso!', 'sucesso');
+				redirect('admin/config/correios', 'refresh');
+			} else {
+				setMsg('message', 'Não foi possível salvar as configurações.', 'Ops! um erro aconteceu.', 'erro');
+				redirect('admin/config/correios', 'refresh');
+			}
+		} else {
+			$data['title'] = 'LojaWEB - Configuração Correios';
+			$data['title_h2'] = 'Configuração';
+			$data['user_admin'] = $this->ion_auth->user()->row();
+			$data['breadcrumb'] = array(
+				'home' => base_url('admin'),
+				'this_page' => $data['title_h2'],
+			);
+			$data['view'] = 'admin/config/correios';
+			$data['query'] = $this->config_model->getConfigCorreios();
+
+			$this->load->view('admin/template/index', $data);
+		}
+	}
 }
 
 /* End of file Controllername.php */
