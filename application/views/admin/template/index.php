@@ -137,7 +137,8 @@
 					<ul class="treeview-menu">
 						<li><a href="<?= base_url('admin/config/')?>"><i class="fa fa-plus"></i> Loja</a></li>
 						<li><a href="<?= base_url('admin/usuarios/')?>"><i class="fa fa-users"></i> Usuários</a></li>
-						<li><a href="#"><i class="fa  fa-square"></i> Correios</a></li>
+						<li><a href="<?= base_url('admin/config/pagseguro/')?>"><i class="fa fa-money"></i> PagSeguro</a></li>
+						<li><a href="#"><i class="fa fa-dropbox"></i> Correios</a></li>
 					</ul>
 				</li>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Fev-2021 às 01:09
+-- Tempo de geração: 18-Fev-2021 às 01:39
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.2.34
 
@@ -41,8 +41,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nome`, `id_categoriapai`, `ativo`, `metalink`, `ultima_atualizacao`) VALUES
-(1, 'HD', NULL, 1, NULL, NULL),
-(2, 'Memoria', NULL, 1, NULL, NULL);
+(29, 'Informática', NULL, 1, NULL, NULL),
+(30, 'HD', 29, 1, NULL, NULL),
+(31, 'Memoria', 29, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,50 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `titulo`, `empresa`, `cep`, `bairro`, `complemento`, `cidade`, `estado`, `email`, `telefone`, `p_destaque`, `data_atualizacao`) VALUES
-(1, 'LojaWEB', 'ERRE Software', '08000000', 'Sé', 'comple', 'São Paulo', 'SP', 'suporte@webloja.com', '11-20205578', 30, 'Sun, 31 Jan 21 19:35:06 +0100');
+(1, 'LojaWEB', 'ERRE Software', '08000000', 'Sé', 'comple', 'São Paulo', 'SP', 'admin@admin.com', '11-20205578', 30, 'Thu, 18 Feb 21 01:15:10 +0100');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `config_correios`
+--
+
+CREATE TABLE `config_correios` (
+  `id` int(11) NOT NULL,
+  `cep_origem` varchar(12) DEFAULT NULL,
+  `somar_frete` decimal(10,2) DEFAULT NULL,
+  `data_atualizacao` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `config_correios`
+--
+
+INSERT INTO `config_correios` (`id`, `cep_origem`, `somar_frete`, `data_atualizacao`) VALUES
+(1, '08050000', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `config_pagseguro`
+--
+
+CREATE TABLE `config_pagseguro` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `token` varchar(50) DEFAULT NULL,
+  `cartao` tinyint(1) DEFAULT NULL,
+  `boleto` tinyint(1) DEFAULT NULL,
+  `transferencia` tinyint(1) DEFAULT NULL,
+  `data_atualizacao` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `config_pagseguro`
+--
+
+INSERT INTO `config_pagseguro` (`id`, `email`, `token`, `cartao`, `boleto`, `transferencia`, `data_atualizacao`) VALUES
+(1, 'aa@aa.com.br', 'ABCDEFGHI0123456789', 1, 0, 0, 'Thu, 18 Feb 21 01:39:08 +0100');
 
 -- --------------------------------------------------------
 
@@ -137,6 +181,13 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(14, '::1', 'admin@admin.com.br', 1613606352);
 
 -- --------------------------------------------------------
 
@@ -192,7 +243,8 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `valor`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`) VALUES
-(4, 1, 1, 'Teste', '1', '50.00', 1, 1, 1, 50, '02/02/2021', NULL, 50, 3, 3, 3, 'Teste');
+(17, 1, 29, 'Teste', '1', '11.00', 1, 1, 1, 1, 'Tue, 16 Feb 21 01:11:30 +0100', 'Wed, 17 Feb 21 01:37:17 +0100', 1, 1, 1, 1, '1'),
+(18, 1, 29, '233', '2', '22.00', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2');
 
 -- --------------------------------------------------------
 
@@ -205,13 +257,6 @@ CREATE TABLE `produtos_fotos` (
   `id_produto` int(11) DEFAULT NULL,
   `foto` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `produtos_fotos`
---
-
-INSERT INTO `produtos_fotos` (`id`, `id_produto`, `foto`) VALUES
-(1, 4, 'foto1.jpg');
 
 -- --------------------------------------------------------
 
@@ -246,7 +291,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1612308476, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1613606363, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -288,6 +333,18 @@ ALTER TABLE `clientes`
 -- Índices para tabela `config`
 --
 ALTER TABLE `config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `config_correios`
+--
+ALTER TABLE `config_correios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `config_pagseguro`
+--
+ALTER TABLE `config_pagseguro`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -350,7 +407,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
@@ -365,6 +422,12 @@ ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `config_pagseguro`
+--
+ALTER TABLE `config_pagseguro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `groups`
 --
 ALTER TABLE `groups`
@@ -374,7 +437,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT de tabela `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
@@ -386,13 +449,13 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `produtos_fotos`
 --
 ALTER TABLE `produtos_fotos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `users`

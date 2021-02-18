@@ -16,7 +16,7 @@ class Config extends CI_Controller {
 	public function index()
 	{
 		$this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[5]|max_length[12]');
-		if ($this->form_validation->run() == TRUE or FALSE) {
+		if ($this->form_validation->run() == TRUE) {
 			/*echo '<pre>';
 			print_r($this->input->post());*/
 			$dados['titulo'] = $this->input->post('titulo');
@@ -51,13 +51,45 @@ class Config extends CI_Controller {
 			$data['view'] = 'admin/config/config';
 			$data['query'] = $this->config_model->getConfig();
 
-
-
-
 			$this->load->view('admin/template/index', $data);
 		}
 	}
 
+	public function pagSeguro()
+	{
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
+		$this->form_validation->set_rules('token', 'Token', 'trim|required');
+		if ($this->form_validation->run() == TRUE) {
+			$dadosPagseguro['email'] = $this->input->post('email');
+			$dadosPagseguro['token'] = $this->input->post('token');
+			$dadosPagseguro['boleto'] = $this->input->post('boleto');
+			$dadosPagseguro['cartao'] = $this->input->post('cartao');
+			$dadosPagseguro['transferencia'] = $this->input->post('transferencia');
+			$dadosPagseguro['data_atualizacao'] = dataDiaDb();
+
+			if ($this->config_model->doUpdatePagseguro($dadosPagseguro)) {
+				setMsg('message', 'Todas as configurações foram salvas.', 'Sucesso!', 'sucesso');
+				redirect('admin/config/pagseguro', 'refresh');
+			} else {
+				setMsg('message', 'Não foi possível salvar as configurações.', 'Ops! um erro aconteceu.', 'erro');
+				redirect('admin/config/pagseguro', 'refresh');
+			}
+
+
+		} else {
+			$data['title'] = 'LojaWEB - Configuração Pagseguro';
+			$data['title_h2'] = 'Configuração';
+			$data['user_admin'] = $this->ion_auth->user()->row();
+			$data['breadcrumb'] = array(
+				'home' => base_url('admin'),
+				'this_page' => $data['title_h2'],
+			);
+			$data['view'] = 'admin/config/pagseguro';
+			$data['query'] = $this->config_model->getConfigPagseguro();
+
+			$this->load->view('admin/template/index', $data);
+		}
+	}
 }
 
 /* End of file Controllername.php */
