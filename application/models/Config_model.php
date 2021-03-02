@@ -28,7 +28,7 @@ class Config_model extends CI_Model
 		$query = $this->db->get('config_pagseguro');
 		return $query->row();
 	}
-	public function doUpdatePagseguro ($dados=NULL)
+	public function doUpdatePagseguro($dados=NULL)
 	{
 		if(is_array($dados)){
 			$this->db->update('config_pagseguro', $dados, array('id' => 1) );
@@ -46,7 +46,7 @@ class Config_model extends CI_Model
 		$query = $this->db->get('config_correios');
 		return $query->row();
 	}
-	public function doUpdateCorreios ($dados=NULL)
+	public function doUpdateCorreios($dados=NULL)
 	{
 		if(is_array($dados)){
 			$this->db->update('config_correios', $dados, array('id' => 1) );

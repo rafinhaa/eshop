@@ -115,6 +115,17 @@
 				<li class="header">MENU PRINCIPAL</li>
 				<li class="treeview">
 					<a href="#">
+						<i class="fa fa-shopping-cart"></i> <span>Pedidos</span>
+						<span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="<?= base_url('admin/pedidos/')?>"><i class="fa fa-list"></i> Listar </a></li>									
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="#">
 						<i class="fa fa-hand-o-right"></i> <span>Cadastro</span>
 						<span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

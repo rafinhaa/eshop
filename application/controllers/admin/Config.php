@@ -90,23 +90,21 @@ class Config extends CI_Controller {
 			$this->load->view('admin/template/index', $data);
 		}
 	}
-	public function Correios()
+	public function correios()
 	{
-		$this->form_validation->set_rules('cep_origem', 'CEP de origem', 'required');
+		$this->form_validation->set_rules('cep_origem', 'CEP', 'required');
 		if ($this->form_validation->run() == TRUE) {
-			$dadosPagseguro['cep_origem'] = $this->input->post('cep_origem');
-			$dadosPagseguro['somar_frete'] = formataDecinal($this->input->post('somar_frete'));
-			$dadosPagseguro['data_atualizacao'] = dataDiaDb();
+			$dadosCorreios['cep_origem'] = $this->input->post('cep_origem');
+			$dadosCorreios['somar_frete'] = formataDecimal($this->input->post('somar_frete'));
+			$dadosCorreios['data_atualizacao'] = dataDiaDb();
 
-			if ($this->config_model->doUpdateCorreios($dadosPagseguro)) {
+			if ($this->config_model->doUpdateCorreios($dadosCorreios)) {
 				setMsg('message', 'Todas as configurações foram salvas.', 'Sucesso!', 'sucesso');
 				redirect('admin/config/correios', 'refresh');
 			} else {
 				setMsg('message', 'Não foi possível salvar as configurações.', 'Ops! um erro aconteceu.', 'erro');
 				redirect('admin/config/correios', 'refresh');
 			}
-
-
 		} else {
 			$data['title'] = 'LojaWEB - Configuração Correios';
 			$data['title_h2'] = 'Configuração';

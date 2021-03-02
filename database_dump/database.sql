@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Fev-2021 às 01:39
+-- Tempo de geração: 03-Mar-2021 às 00:38
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.2.34
 
@@ -124,7 +124,7 @@ CREATE TABLE `config_correios` (
 --
 
 INSERT INTO `config_correios` (`id`, `cep_origem`, `somar_frete`, `data_atualizacao`) VALUES
-(1, '08050000', NULL, NULL);
+(1, '08051-000', '15.92', 'Tue, 02 Mar 21 22:46:06 +0100');
 
 -- --------------------------------------------------------
 
@@ -182,13 +182,6 @@ CREATE TABLE `login_attempts` (
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(14, '::1', 'admin@admin.com.br', 1613606352);
-
 -- --------------------------------------------------------
 
 --
@@ -211,6 +204,64 @@ INSERT INTO `marcas` (`id`, `nome`, `ativo`, `ultima_atualizacao`) VALUES
 (2, 'Positivo', 0, 'Tue, 02 Feb 21 01:01:15 +0100'),
 (3, 'Intel', 1, 'Tue, 02 Feb 21 01:00:21 +0100'),
 (4, 'AMD', 0, 'Tue, 02 Feb 21 01:01:21 +0100');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `nome` varchar(200) DEFAULT NULL,
+  `cpf` varchar(20) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `cep` varchar(20) DEFAULT NULL,
+  `endereco` varchar(200) DEFAULT NULL,
+  `numero` varchar(200) DEFAULT NULL,
+  `bairro` varchar(200) DEFAULT NULL,
+  `complemento` varchar(200) DEFAULT NULL,
+  `cidade` varchar(200) DEFAULT NULL,
+  `estado` varchar(200) DEFAULT NULL,
+  `total_produto` decimal(15,2) DEFAULT NULL,
+  `total_frete` decimal(15,2) DEFAULT NULL,
+  `total_pedido` decimal(15,2) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `data_cadastro` varchar(200) DEFAULT NULL,
+  `ultima_atualizacao` varchar(200) DEFAULT NULL,
+  `cod_rastreio` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `id_cliente`, `nome`, `cpf`, `email`, `cep`, `endereco`, `numero`, `bairro`, `complemento`, `cidade`, `estado`, `total_produto`, `total_frete`, `total_pedido`, `status`, `data_cadastro`, `ultima_atualizacao`, `cod_rastreio`) VALUES
+(1, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', '11.00', '25.00', '36.00', 1, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pedidos_item`
+--
+
+CREATE TABLE `pedidos_item` (
+  `id` int(11) NOT NULL,
+  `id_pedido` int(11) DEFAULT NULL,
+  `nome_item` varchar(200) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  `valor_unitario` decimal(15,2) DEFAULT NULL,
+  `valor_total` decimal(15,2) DEFAULT NULL,
+  `valor_total_item` decimal(15,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos_item`
+--
+
+INSERT INTO `pedidos_item` (`id`, `id_pedido`, `nome_item`, `quantidade`, `valor_unitario`, `valor_total`, `valor_total_item`) VALUES
+(1, 1, 'Teste', 1, '25.00', '25.00', '25.00');
 
 -- --------------------------------------------------------
 
@@ -291,7 +342,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1613606363, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1614719710, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -364,6 +415,20 @@ ALTER TABLE `login_attempts`
 --
 ALTER TABLE `marcas`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pedidos_clientes_id_fk` (`id_cliente`);
+
+--
+-- Índices para tabela `pedidos_item`
+--
+ALTER TABLE `pedidos_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pedidos_item_pedidos_id_fk` (`id_pedido`);
 
 --
 -- Índices para tabela `produtos`
@@ -446,6 +511,18 @@ ALTER TABLE `marcas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `pedidos_item`
+--
+ALTER TABLE `pedidos_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -472,6 +549,18 @@ ALTER TABLE `users_groups`
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `pedidos_clientes_id_fk` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE SET NULL;
+
+--
+-- Limitadores para a tabela `pedidos_item`
+--
+ALTER TABLE `pedidos_item`
+  ADD CONSTRAINT `pedidos_item_pedidos_id_fk` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `produtos`

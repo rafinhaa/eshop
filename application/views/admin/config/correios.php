@@ -25,14 +25,13 @@
 			<div class="box-body">
 				<?= errosValidacao('message') ?>
 				<div class="form-group">
-					<label for="exampleInputEmail">CEP de origem</label>
-					<input type="text" class="form-control cep" id="exampleInputEmail" placeholder="CEP de origem" name="cep_origem" value="<?= $query->cep_origem?>">
+					<label for="exampleInputEmail">Cep de origem</label>
+					<input type="text" class="form-control cep" id="exampleInputEmail" placeholder="CEP" name="cep_origem" value="<?= $query->cep_origem?>">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputToken">Somar valor ao frete</label>
-					<input type="text" class="form-control money" id="exampleInputToken" placeholder="0,00" name="somar_frete" value="<?= $query->somar_frete?>">
+					<label for="exampleInputFrete">Somar frete</label>
+					<input type="text" class="form-control money" id="exampleInputFrete" placeholder="00,0" name="somar_frete" value="<?= $query->somar_frete?>">
 				</div>
-			</div>
 			<!-- /.box-body -->
 
 			<div class="box-footer">

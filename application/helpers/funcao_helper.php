@@ -41,7 +41,7 @@ function errosValidacao($id)
 }
 
 function dataDiaDb(){
-	date_default_timezone_get('America/Sao_paulo');
+	date_default_timezone_get();
 	$formato = 'DATE_W3C';
 	$time = time();
 	return date(DATE_RFC822, $time);
@@ -94,6 +94,7 @@ function formataMoedaReal($valor,$real=NULL){
 	}
 }
 
-function formataDecinal($valor){
-	return str_replace('.','',$valor).str_replace(',','.',$valor);
+function formataDecimal($valor){
+	$v = str_replace('.','',$valor);	
+	return str_replace(',','.',$v);
 }
