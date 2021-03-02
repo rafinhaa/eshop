@@ -39,6 +39,24 @@ class Config_model extends CI_Model
 			}
 		}
 	}
+	public function getConfigCorreios()
+	{
+		$this->db->where('id',1);
+		$this->db->limit(1);
+		$query = $this->db->get('config_correios');
+		return $query->row();
+	}
+	public function doUpdateCorreios ($dados=NULL)
+	{
+		if(is_array($dados)){
+			$this->db->update('config_correios', $dados, array('id' => 1) );
+			if($this->db->affected_rows() > 0){
+				return true;
+			}else {
+				return false;
+			}
+		}
+	}
 
 }
 
