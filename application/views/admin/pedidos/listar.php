@@ -59,10 +59,12 @@
 								</td>
 								<td class="text-center">
 									<div class="btn-group">
+										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
 										<a href="<?= base_url('admin/pedidos/mudar_status/' . $p->id) ?>" type="button" class="btn btn-primary">Mudar Status</a>
 										<a href="<?= base_url('admin/pedidos/cod_ratreio/' . $p->id) ?>" type="button" class="btn btn-primary">Rastreio</a>
 										<a href="<?= base_url('admin/pedidos/imprimir/' . $p->id) ?>" type="button" class="btn btn-primary">Imprimir</a>
-									</div>									
+									</div>		
+									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id)) ?>							
 								</td>
 							</tr>
 						<?php } ?>
