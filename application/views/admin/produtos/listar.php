@@ -50,9 +50,9 @@
 								<td class="text-center">
 									<div class="btn-group">
 										<a href="<?= base_url('admin/produtos/modulo/' . $p->id) ?>" type="button" class="btn btn-info">Editar</a>
-										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
+										<?php createModelButton("modal-danger",'Apagar','#modal-danger'. $p->id) ?>
 									</div>
-									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id)) ?>
+									<?php createModalMessage('modal-danger','modal-danger'. $p->id,'Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id)) ?>
 								</td>
 							</tr>
 						<?php } ?>

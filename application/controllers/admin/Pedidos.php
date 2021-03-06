@@ -54,6 +54,13 @@ class Pedidos extends CI_Controller {
 			redirect('admin/pedidos', 'refresh');
 		}
 	}
+
+	public function mudar_status($id_pedido,$id_status=NULL){		
+		$dadosStatus['status'] = $this->input->post('new-status');
+		$dadosStatus['ultima_atualizacao'] = dataDiaDb();
+		$this->orders->doUpdate($dadosStatus,$id_pedido);
+		redirect('admin/pedidos', 'refresh');
+	}
 }
 
 /* End of file Controllername.php */

@@ -41,30 +41,38 @@
 								<td><?= formataMoedaReal($p->total_pedido) ?></td>
 								<td class="text-center">
 									<?php
-										switch ($p->status){
-											case 1:
-												echo '<small class="label pull-center bg-blue">Aguardando pagamento</small>';
-												break;
-											case 2:
-												echo '<small class="label pull-center bg-green">Pagamento confirmado</small>';
-												break;
-											case 3:
-												echo '<small class="label pull-center bg-yellow">Enviado</small>';
-												break;
-											case 4:
-												echo '<small class="label pull-center bg-red">Cancelado</small>';
-												break;
-										}
+											switch ($p->status) {
+												case 1:
+													echo '<small class="label pull-center bg-blue">Aguardando pagamento</small>';
+													break;
+												case 2:
+													echo '<small class="label pull-center bg-green">Pagamento confirmado</small>';
+													break;
+												case 3:
+													echo '<small class="label pull-center bg-yellow">Enviado</small>';
+													break;
+												case 4:
+													echo '<small class="label pull-center bg-red">Cancelado</small>';
+													break;
+											}
 									?>
 								</td>
 								<td class="text-center">
 									<div class="btn-group">
-										<?php createModelButton("modal-danger",'Apagar','#modal-danger') ?>
-										<a href="<?= base_url('admin/pedidos/mudar_status/' . $p->id) ?>" type="button" class="btn btn-primary">Mudar Status</a>
+										<?php createModelButton("modal-info",'Mudar Status','#modal-info-' . $p->id) ?>
 										<a href="<?= base_url('admin/pedidos/cod_ratreio/' . $p->id) ?>" type="button" class="btn btn-primary">Rastreio</a>
 										<a href="<?= base_url('admin/pedidos/imprimir/' . $p->id) ?>" type="button" class="btn btn-primary">Imprimir</a>
 									</div>		
-									<?php createModalMessage('modal-danger','modal-danger','Cuidado!','Tem certeza que deseja apagar esse produto?', base_url('admin/produtos/delete/'.$p->id)) ?>							
+									<?php createModalMessage('modal-info','modal-info-' . $p->id,'Atualizar status pedido ' . $p->id,'											
+											<div class="form-group">
+											<select name="new-status" class="form-control">
+											  <option value="1">Aguardando pagamento</option>
+											  <option value="2">Pagamento confirmado</option>
+											  <option value="3">Enviado</option>
+											  <option value="4">Cancelado</option>
+											</select>
+										  </div>
+									', base_url('admin/pedidos/mudar_status/'.$p->id),'Atualizar') ?>							
 								</td>
 							</tr>
 						<?php } ?>

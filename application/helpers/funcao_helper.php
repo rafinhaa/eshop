@@ -63,23 +63,26 @@ function createModelButton($type,$button_name,$data_target){
 			break;
 	}
 }
-function createModalMessage($type,$data_target,$modal_title,$modal_body,$link){
+function createModalMessage($type,$data_target,$modal_title,$modal_body,$link,$button_name=NULL){
+	
 	echo '
 		<div class="modal '.$type.' fade" id="'.$data_target.'">
 			  <div class="modal-dialog">
 				<div class="modal-content">
-				  <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					  <span aria-hidden="true">×</span></button>
-					<h4 class="modal-title">'.$modal_title.'</h4>
-				  </div>
-				  <div class="modal-body">
-					<p>'.$modal_body.'</p>
-				  </div>
-				  <div class="modal-footer">
-					<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Voltar</button>
-					<a href="'.$link.'" type="button" class="btn btn-outline">Sim</a>
-				  </div>
+				<form action="'. $link .'" method="POST">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span></button>
+						<h4 class="modal-title">'.$modal_title.'</h4>
+					</div>
+					<div class="modal-body">
+						<p>'.$modal_body.'</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Voltar</button>
+						<button type="submit" class="btn btn-outline">'. (!is_null($button_name) ? $button_name : 'Sim') .'</button>
+					</div>
+				 </form>   
 				</div>
 				<!-- /.modal-content -->
 			  </div>
