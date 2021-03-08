@@ -61,7 +61,7 @@
 									<div class="btn-group">
 										<?php createModelButton("modal-info",'Mudar Status','#modal-info-' . $p->id) ?>
 										<a href="<?= base_url('admin/pedidos/cod_ratreio/' . $p->id) ?>" type="button" class="btn btn-primary">Rastreio</a>
-										<a href="<?= base_url('admin/pedidos/imprimir/' . $p->id) ?>" type="button" class="btn btn-primary">Imprimir</a>
+										<a href="<?= base_url('admin/pedidos/imprimir/' . $p->id) ?>" type="button" target="_blank" class="btn btn-primary">Imprimir</a>
 									</div>		
 									<?php createModalMessage('modal-info','modal-info-' . $p->id,'Atualizar status pedido ' . $p->id,'											
 											<div class="form-group">

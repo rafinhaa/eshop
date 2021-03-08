@@ -55,11 +55,43 @@ class Pedidos extends CI_Controller {
 		}
 	}
 
-	public function mudar_status($id_pedido,$id_status=NULL){		
+	public function mudar_status($id_pedido,$id_status=NULL){	
+		if(!id){
+			setMsg('message','Erro ao carregar o pedido.','Ops! um erro aconteceu.','erro');
+			redirect('admin/pedidos', 'refresh');	
+		}	
 		$dadosStatus['status'] = $this->input->post('new-status');
 		$dadosStatus['ultima_atualizacao'] = dataDiaDb();
 		$this->orders->doUpdate($dadosStatus,$id_pedido);
 		redirect('admin/pedidos', 'refresh');
+	}
+
+	public function imprimir($id_pedido){
+		if(!$id_pedido){
+			setMsg('message','Erro ao carregar o pedido.','Ops! um erro aconteceu.','erro');
+			redirect('admin/pedidos', 'refresh');	
+		}
+		$pedido = $this->orders->getPedido($id_pedido);
+		if(!$pedido){
+			setMsg('message','Perido não existente.','Ops! um erro aconteceu.','erro');
+			redirect('admin/pedidos', 'refresh');	
+		}	
+		$data['title'] = 'LojasWEB - Imprimir Pedido ' . $id_pedido;
+		$data['title_h2'] = 'Imprimir Pedido ' . $id_pedido;
+		$data['breadcrumb'] = array(
+			'home' => base_url('admin'),
+			'this_page' => $data['title_h2'],
+		);
+		$data['user_admin'] = $this->ion_auth->user()->row();
+		$data['users'] = $this->ion_auth->users()->result();
+
+		$data['view'] = 'admin/pedidos/imprimir';
+		$data['pedido'] = $pedido;
+
+		$this->load->model('config_model');
+		$data['loja'] = $this->config_model->getConfig();
+
+		$this->load->view('admin/template/index', $data);
 	}
 }
 
