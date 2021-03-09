@@ -87,6 +87,7 @@ class Pedidos extends CI_Controller {
 
 		$data['view'] = 'admin/pedidos/imprimir';
 		$data['pedido'] = $pedido;
+		$data['itens'] = $this->orders->getItens($id_pedido);
 
 		$this->load->model('config_model');
 		$data['loja'] = $this->config_model->getConfig();

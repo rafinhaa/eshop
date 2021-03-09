@@ -5,6 +5,7 @@
       echo '<pre>';
       print_r($pedido);
       print_r($loja);
+      print_r($itens);
       ?>
       ?>
         <div class="col-xs-12">
@@ -21,7 +22,7 @@
           De
           <address>
             <strong><?= $loja->empresa ?></strong><br>
-            <?= $pedido->endereco ?><br>
+            <?= $loja->endereco ?><br>
             <?= $loja->cidade ?>, <?= $loja->cep ?><br>
             <?= $loja->bairro ?>, <?= $loja->complemento ?><br>
             Telefone: <?= $loja->telefone ?><br>
@@ -30,7 +31,7 @@
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          To
+          Para
           <address>
             <strong><?= $pedido->nome ?></strong><br>
             <?= $pedido->endereco ?><br>
@@ -42,10 +43,10 @@
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
+          <b>Invoice <?= $pedido->id ?></b><br>
           <br>
           <b>Pedido ID:</b> <?= $pedido->id ?><br>
-          <b>Payment Due:</b> 2/22/2014<br>
+          <b>Payment Due:</b> <?= $pedido->ultima_atualizacao?><br>
           <b>Account:</b> 968-34567
         </div>
         <!-- /.col -->
@@ -66,34 +67,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <td>El snort testosterone trophy driving gloves handsome</td>
-              <td>$64.50</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <td>Wes Anderson umami biodiesel</td>
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <td>Terry Richardson helvetica tousled street art master</td>
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <td>Tousled lomo letterpress</td>
-              <td>$25.99</td>
-            </tr>
+            <?php foreach ($itens as $i) { ?>
+                <tr>
+                <td><?= $i->quantidade ?></td>
+                <td><?= $i->nome_item ?></td>
+                <td>455-981-221</td>
+                <td>El snort testosterone trophy driving gloves handsome</td>
+                <td><?= formataMoedaReal($i->valor_total) ?></td>
+                </tr>  
+            <?php } ?>          
             </tbody>
           </table>
         </div>
@@ -123,7 +105,7 @@
             <table class="table">
               <tbody><tr>
                 <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
+                <td><?= formataMoedaReal($pedido->total_produto) ?></td>
               </tr>
               <tr>
                 <th>Tax (9.3%)</th>
@@ -131,11 +113,11 @@
               </tr>
               <tr>
                 <th>Shipping:</th>
-                <td>$5.80</td>
+                <td><?= formataMoedaReal($pedido->total_frete) ?></td>
               </tr>
               <tr>
                 <th>Total:</th>
-                <td>$265.24</td>
+                <td><?= formataMoedaReal($pedido->total_pedido) ?></td>
               </tr>
             </tbody></table>
           </div>
