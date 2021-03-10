@@ -37,6 +37,10 @@
 					<input type="text" class="form-control" id="exampleInputCEP" placeholder="CEP" name="cep" value="<?= $query->cep?>">
 				</div>
 				<div class="form-group">
+					<label for="exampleInputEndereco">Endereço</label>
+					<input type="text" class="form-control" id="exampleInputEndereco" placeholder="Endereço" name="endereco" value="<?= $query->endereco?>">
+				</div>
+				<div class="form-group">
 					<label for="exampleInputBairro">Bairro</label>
 					<input type="text" class="form-control" id="exampleInputBairro" placeholder="Bairro" name="bairro" value="<?= $query->bairro?>">
 				</div>

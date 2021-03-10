@@ -30,6 +30,7 @@ class Config extends CI_Controller {
 			$dados['telefone'] = $this->input->post('telefone');
     		$dados['p_destaque'] = $this->input->post('p_destaque');
     		$dados['data_atualizacao'] = dataDiaDb();
+    		$dados['endereco'] = $this->input->post('endereco');
 
 			if($this->config_model->doUpdate($dados)){
 				setMsg('message','Todas as configurações foram salvas.','Sucesso!','sucesso');
