@@ -91,7 +91,18 @@
 				<!-- /.box-body -->
 				<!-- box-footer -->
 				<div class="box-footer clearfix">
-					<a href="<?= base_url('admin/categorias/modulo') ?>" type="button" class="btn btn-primary">Adicionar</a>
+					<div class="btn-group">
+					<button type="button" class="btn bg-red">Relatórios</button>
+					<button type="button" class="btn bg-red dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Vendas diárias</a></li>
+						<li><a href="#">Vendas por período</a></li>
+						<li><a href="#">Produtos mais vendidos</a></li>
+					</ul>
+					</div>					
 					<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
 				</div>
 				<!-- /.box-footer -->

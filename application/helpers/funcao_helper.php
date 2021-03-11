@@ -40,11 +40,26 @@ function errosValidacao($id)
 	}
 }
 
-function dataDiaDb(){
-	date_default_timezone_get();
-	$formato = 'DATE_W3C';
-	$time = time();
-	return date(DATE_RFC822, $time);
+function dataDiaDb($mode=NULL){
+	if(!is_null($mode) && $mode==1){
+		date_default_timezone_get('America/Sao_Paulo');	
+		$formato = 'DATE_W3C';
+		$stringdedata = "d-m-Y";
+		$data = time();
+		$data = date($stringdedata, $data);
+		return $data;
+	}else{
+		date_default_timezone_get();
+		$formato = 'DATE_W3C';
+		$time = time();
+		return date(DATE_RFC822, $time);
+	}
+}
+
+function formataDataDiaDb($data=NULL){
+	if(!is_null($data) ){
+		return str_replace('-','/',$data);
+	}
 }
 
 function createModelButton($type,$button_name,$data_target){
