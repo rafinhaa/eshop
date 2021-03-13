@@ -25,8 +25,7 @@ class Relatorios extends CI_Controller {
 		$data['user_admin'] = $this->ion_auth->user()->row();
 		$data['users'] = $this->ion_auth->users()->result();
 
-		$data['view'] = 'admin/pedidos/listar';
-		$data['pedidos'] = $this->reports->getPedidos() ;
+		$data['view'] = 'admin/relatorios/relatorios';
 
 		$this->load->view('admin/template/index', $data);
 	}
@@ -45,7 +44,24 @@ class Relatorios extends CI_Controller {
 
 		$data['view'] = 'admin/relatorios/imprimir';
 		$data['report'] = $this->reports->getDiario();
-		//$data['itens'] = $this->reports->getItens($id_pedido);
+
+		if(is_null($data['report']) or isset($data['report'])){
+			setMsg('message','Não existe relatório nesse período.','Ops!','info');
+			redirect('admin/relatorios', 'refresh');	
+		}
+		
+		$t_frete = 0;
+		$t_pedido = 0;
+		$t_produto = 0;
+
+		foreach($data['report'] as $r ){
+			$t_frete += $r->total_frete;
+			$t_pedido += $r->total_pedido;
+			$t_produto += $r->total_produto;
+		}
+		$data['t_frete'] = $t_frete;
+		$data['t_pedido'] = $t_pedido;
+		$data['t_produto'] = $t_produto;
 
 		$this->load->model('config_model');
 		$data['loja'] = $this->config_model->getConfig();

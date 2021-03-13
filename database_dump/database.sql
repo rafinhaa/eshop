@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Mar-2021 às 00:38
+-- Tempo de geração: 11-Mar-2021 às 01:57
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.2.34
 
@@ -96,15 +96,16 @@ CREATE TABLE `config` (
   `email` varchar(150) DEFAULT NULL,
   `telefone` varchar(150) DEFAULT NULL,
   `p_destaque` tinyint(4) DEFAULT NULL,
-  `data_atualizacao` varchar(50) DEFAULT NULL
+  `data_atualizacao` varchar(50) DEFAULT NULL,
+  `endereco` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `config`
 --
 
-INSERT INTO `config` (`id`, `titulo`, `empresa`, `cep`, `bairro`, `complemento`, `cidade`, `estado`, `email`, `telefone`, `p_destaque`, `data_atualizacao`) VALUES
-(1, 'LojaWEB', 'ERRE Software', '08000000', 'Sé', 'comple', 'São Paulo', 'SP', 'admin@admin.com', '11-20205578', 30, 'Thu, 18 Feb 21 01:15:10 +0100');
+INSERT INTO `config` (`id`, `titulo`, `empresa`, `cep`, `bairro`, `complemento`, `cidade`, `estado`, `email`, `telefone`, `p_destaque`, `data_atualizacao`, `endereco`) VALUES
+(1, 'LojaWEB', 'ERRE Software', '08000000', 'Sé', 'comple', 'São Paulo', 'SP', 'admin@admin.com', '11-20205578', 30, 'Wed, 10 Mar 21 01:19:51 +0100', 'Agora foi ;)');
 
 -- --------------------------------------------------------
 
@@ -230,15 +231,17 @@ CREATE TABLE `pedidos` (
   `status` tinyint(1) DEFAULT NULL,
   `data_cadastro` varchar(200) DEFAULT NULL,
   `ultima_atualizacao` varchar(200) DEFAULT NULL,
-  `cod_rastreio` varchar(200) DEFAULT NULL
+  `cod_rastreio` varchar(200) DEFAULT NULL,
+  `forma_envio` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `pedidos`
 --
 
-INSERT INTO `pedidos` (`id`, `id_cliente`, `nome`, `cpf`, `email`, `cep`, `endereco`, `numero`, `bairro`, `complemento`, `cidade`, `estado`, `total_produto`, `total_frete`, `total_pedido`, `status`, `data_cadastro`, `ultima_atualizacao`, `cod_rastreio`) VALUES
-(1, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', '11.00', '25.00', '36.00', 1, NULL, NULL, NULL);
+INSERT INTO `pedidos` (`id`, `id_cliente`, `nome`, `cpf`, `email`, `cep`, `endereco`, `numero`, `bairro`, `complemento`, `cidade`, `estado`, `total_produto`, `total_frete`, `total_pedido`, `status`, `data_cadastro`, `ultima_atualizacao`, `cod_rastreio`, `forma_envio`) VALUES
+(1, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', '11.00', '25.00', '36.00', 2, '11-03-2021', '11-03-2021', NULL, 1),
+(2, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', '11.00', '25.00', '36.00', 3, '11-03-2021', '11-03-2021', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -261,7 +264,8 @@ CREATE TABLE `pedidos_item` (
 --
 
 INSERT INTO `pedidos_item` (`id`, `id_pedido`, `nome_item`, `quantidade`, `valor_unitario`, `valor_total`, `valor_total_item`) VALUES
-(1, 1, 'Teste', 1, '25.00', '25.00', '25.00');
+(1, 1, 'Teste', 1, '25.00', '25.00', '25.00'),
+(2, 1, 'Teste', 1, '25.00', '25.00', '25.00');
 
 -- --------------------------------------------------------
 
@@ -294,8 +298,9 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `valor`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`) VALUES
-(17, 1, 29, 'Teste', '1', '11.00', 1, 1, 1, 1, 'Tue, 16 Feb 21 01:11:30 +0100', 'Wed, 17 Feb 21 01:37:17 +0100', 1, 1, 1, 1, '1'),
-(18, 1, 29, '233', '2', '22.00', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2');
+(18, 1, 29, '233', '2', '22.00', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2'),
+(19, 1, 29, '233', '2', '22.00', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2'),
+(20, 1, 29, '233', '2', '22.00', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2');
 
 -- --------------------------------------------------------
 
@@ -342,7 +347,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1614719710, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1615420575, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -514,19 +519,19 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_item`
 --
 ALTER TABLE `pedidos_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `produtos_fotos`

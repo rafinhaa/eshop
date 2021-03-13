@@ -1,10 +1,4 @@
 <section class="invoice">
-<?php
- echo '<pre>';
- print_r($report);
- echo dataDiaDb();
- echo '</pre>';
-?>
       <!-- title row -->
       <div class="row">
         <div class="col-xs-12">
@@ -41,6 +35,7 @@
               <th>N. Pedido</th>
               <th>Cliente</th>
               <th>Tipo frete</th>
+              <th>Total produto</th>
               <th>Valor frete</th>
               <th>Total</th>
             </tr>
@@ -50,7 +45,7 @@
                 <tr>
                 <td><?= $r->id ?></td>
                 <td><?= $r->nome ?></td>
-                <td><?= $r->forma_envio ?></td>
+                <td><?= ($r->forma_envio == 1 ? 'SEDEX' : 'PAC') ?></td>
                 <td><?= formataMoedaReal($r->total_produto) ?></td>
                 <td><?= formataMoedaReal($r->total_frete) ?></td>
                 <td><?= formataMoedaReal($r->total_pedido) ?></td>
@@ -78,7 +73,19 @@
 
           <div class="table-responsive">
             <table class="table">
-
+              <tbody><tr>
+                <th style="width:50%">Total produtos:</th>
+                <td><?= formataMoedaReal($t_produto) ?></td>
+              </tr>
+              <tr>
+              <tr>
+                <th>Envio:</th>
+                <td><?= formataMoedaReal($t_frete) ?></td>
+              </tr>
+              <tr>
+                <th>Total:</th>
+                <td><?= formataMoedaReal($t_pedido) ?></td>
+              </tr>
             </tbody></table>
           </div>
         </div>
