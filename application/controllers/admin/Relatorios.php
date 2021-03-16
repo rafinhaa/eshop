@@ -47,7 +47,7 @@ class Relatorios extends CI_Controller {
 
 		if(is_null($data['report']) or isset($data['report'])){
 			setMsg('message','Não existe relatório nesse período.','Ops!','info');
-			redirect('admin/relatorios', 'refresh');	
+			redirect('admin/pedidos', 'refresh');	
 		}
 		
 		$t_frete = 0;
@@ -65,6 +65,30 @@ class Relatorios extends CI_Controller {
 
 		$this->load->model('config_model');
 		$data['loja'] = $this->config_model->getConfig();
+
+		$this->load->view('admin/template/index', $data);
+	}
+	public function mais_vendidos(){
+			
+		$data['title'] = 'LojasWEB - Relatório produtos mais vendidos';
+		$data['title_h2'] = 'Relatório peoduto mais vendidos';
+		$data['breadcrumb'] = array(
+			'home' => base_url('admin'),
+			'this_page' => $data['title_h2'],
+		);
+		$data['user_admin'] = $this->ion_auth->user()->row();
+		$data['users'] = $this->ion_auth->users()->result();
+
+		$this->load->model('config_model');
+		$data['loja'] = $this->config_model->getConfig();
+
+		$data['view'] = 'admin/relatorios/mais_vendidos';
+		$data['report'] = $this->reports->getProdutosMaisVendidos();
+/*
+		if(is_null($data['report']) or isset($data['report'])){
+			setMsg('message','Não existe relatório nesse período.','Ops!','info');
+			redirect('admin/pedidos', 'refresh');	
+		}*/
 
 		$this->load->view('admin/template/index', $data);
 	}

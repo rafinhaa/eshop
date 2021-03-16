@@ -98,9 +98,9 @@
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Vendas diárias</a></li>
+						<li><a href="<?= base_url('admin/relatorios/diario/') ?>">Vendas diárias</a></li>
 						<li><a href="#">Vendas por período</a></li>
-						<li><a href="#">Produtos mais vendidos</a></li>
+						<li><a href="<?= base_url('admin/relatorios/mais_vendidos/') ?>">Produtos mais vendidos</a></li>
 					</ul>
 					</div>					
 					<a href="<?= base_url('admin/') ?>" class="btn btn-sm btn-default btn-flat pull-right">Voltar</a>
