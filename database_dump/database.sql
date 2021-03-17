@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- Servidor:                     34.219.43.242
+-- Servidor:                     52.42.130.63
 -- Versão do servidor:           5.7.31-0ubuntu0.18.04.1 - (Ubuntu)
 -- OS do Servidor:               Linux
 -- HeidiSQL Versão:              11.2.0.6213
@@ -27,16 +27,17 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `ativo` tinyint(1) DEFAULT NULL,
   `metalink` varchar(100) DEFAULT NULL,
   `ultima_atualizacao` varchar(50) DEFAULT NULL,
+  `meta_link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela lojaweb.categorias: ~3 rows (aproximadamente)
 DELETE FROM `categorias`;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` (`id`, `nome`, `id_categoriapai`, `ativo`, `metalink`, `ultima_atualizacao`) VALUES
-	(29, 'Informática', NULL, 1, NULL, NULL),
-	(30, 'HD', 29, 1, NULL, NULL),
-	(31, 'Memoria', 29, 1, NULL, NULL);
+INSERT INTO `categorias` (`id`, `nome`, `id_categoriapai`, `ativo`, `metalink`, `ultima_atualizacao`, `meta_link`) VALUES
+	(29, 'Informática', NULL, 1, NULL, 'Wed, 17 Mar 21 16:45:35 +0000', 'informatica'),
+	(30, 'HD', 29, 1, NULL, 'Wed, 17 Mar 21 16:45:37 +0000', 'hd'),
+	(31, 'Memoria', 29, 1, NULL, 'Wed, 17 Mar 21 16:45:38 +0000', 'memoria');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.clientes
@@ -157,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela lojaweb.login_attempts: ~0 rows (aproximadamente)
 DELETE FROM `login_attempts`;
@@ -263,6 +264,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `largura` int(11) DEFAULT NULL,
   `comprimento` int(11) DEFAULT NULL,
   `info` longtext,
+  `meta_link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `produtos_categorias_id_fk` (`id_categoria`),
   KEY `produtos_marcas_id_fk` (`id_marca`),
@@ -270,13 +272,13 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   CONSTRAINT `produtos_marcas_id_fk` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela lojaweb.produtos: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela lojaweb.produtos: ~3 rows (aproximadamente)
 DELETE FROM `produtos`;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `valor`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`) VALUES
-	(18, 1, 29, '233', '3', 22.00, 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2'),
-	(19, 1, 29, '234', '4', 22.00, 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2'),
-	(20, 1, 29, '235', '5', 22.00, 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Feb 21 01:38:01 +0100', 2, 2, 2, 2, '2');
+INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `valor`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`, `meta_link`) VALUES
+	(18, 1, 29, 'dois tres tres', '3', 22.00, 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Mar 21 16:42:30 +0000', 2, 2, 2, 2, '2', 'dois-tres-tres'),
+	(19, 1, 29, '234', '4', 22.00, 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Mar 21 16:43:55 +0000', 2, 2, 2, 2, '2', '234'),
+	(20, 1, 29, '235', '5', 22.00, 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 'Wed, 17 Mar 21 16:43:59 +0000', 2, 2, 2, 2, '2', '235');
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.produtos_fotos
@@ -288,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `produtos_fotos` (
   PRIMARY KEY (`id`),
   KEY `fotos_produtos_id_fk` (`id_produto`),
   CONSTRAINT `fotos_produtos_id_fk` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela lojaweb.produtos_fotos: ~0 rows (aproximadamente)
 DELETE FROM `produtos_fotos`;
@@ -342,13 +344,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `uc_activation_selector` (`activation_selector`),
   UNIQUE KEY `uc_forgotten_password_selector` (`forgotten_password_selector`),
   UNIQUE KEY `uc_remember_selector` (`remember_selector`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela lojaweb.users: ~0 rows (aproximadamente)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1615910817, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1615998095, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.users_groups
@@ -363,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   KEY `fk_users_groups_groups1_idx` (`group_id`),
   CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela lojaweb.users_groups: ~2 rows (aproximadamente)
 DELETE FROM `users_groups`;
