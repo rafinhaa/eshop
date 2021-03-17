@@ -66,6 +66,7 @@ class Categorias extends CI_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			$dadosCategoria['nome'] = $this->input->post('name');
 			$dadosCategoria['ativo'] = $this->input->post('active');
+			$dadosCategoria['meta_link'] = slug($this->input->post('name'));
 
 			if($this->input->post('id_categoria_pai')){
 				$dadosCategoria['id_categoriapai'] = $this->input->post('id_categoria_pai');

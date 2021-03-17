@@ -80,6 +80,7 @@ class Produtos extends CI_Controller
 			$dadosProdutos['id_categoria'] = $this->input->post('category');
 			$dadosProdutos['destaque'] = $this->input->post('featured');
 			$dadosProdutos['ativo'] = $this->input->post('active');
+			$dadosProdutos['meta_link'] = slug($this->input->post('name'));
 
 			if($this->input->post('id')){
 				$dadosProdutos['ultima_atualizacao'] = dataDiaDb();
@@ -89,7 +90,8 @@ class Produtos extends CI_Controller
 
 				$id_produto = $this->input->post('id');
 				$foto_produto = $this->input->post('foto_produto');
-				$t_produto = count($foto_produto);
+				//$t_produto = count($foto_produto);
+				$t_produto = (is_array($foto_produto) ? count($foto_produto) : 0);
 				for ($i=0; $i < $t_produto; $i++){
 					$fotos['id_produto'] = $id_produto;
 					$fotos['foto'] = $foto_produto[$i];
@@ -101,7 +103,8 @@ class Produtos extends CI_Controller
 				$this->products->doInsert($dadosProdutos);
 				$id_produto = $this->session->userdata('last_id');
 				$foto_produto = $this->input->post('foto_produto');
-				$t_produto = count($foto_produto);
+				//$t_produto = count($foto_produto);
+				$t_produto = (is_array($foto_produto) ? count($foto_produto) : 0);
 				for ($i=0; $i < $t_produto; $i++){
 					$fotos['id_produto'] = $id_produto;
 					$fotos['foto'] = $foto_produto[$i];
