@@ -412,6 +412,10 @@ class Migration_Initial_migration extends CI_Migration {
                 'type' => 'VARCHAR',
                 'constraint' => 255
         ),
+        'valor' => array(
+                'type' => 'DECIMAL',
+                'constraint' => '(15,2)'
+        ),
         'destaque' => array(
                 'type' => 'TINYINT',
                 'constraint' => 1
