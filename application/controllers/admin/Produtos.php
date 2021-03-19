@@ -26,7 +26,7 @@ class Produtos extends CI_Controller
 
 		$data['view'] = 'admin/produtos/listar';
 
-		$data['produtos'] = $this->products->getProdutos() ;
+		$data['produtos'] = $this->products->getProdutos();
 
 
 		$this->load->view('admin/template/index', $data);

@@ -18,7 +18,7 @@
          <!-- small box -->
          <div class="small-box bg-aqua">
             <div class="inner">
-               <h3>150</h3>
+               <h3><?= $t_pedidos ?></h3>
                <p>Pedidos</p>
             </div>
             <div class="icon">
@@ -32,7 +32,7 @@
          <!-- small box -->
          <div class="small-box bg-green">
             <div class="inner">
-               <h3>53<sup style="font-size: 20px">%</sup></h3>
+               <h3><?= $t_produtos ?></h3>
                <p>Produtos</p>
             </div>
             <div class="icon">
@@ -46,7 +46,7 @@
          <!-- small box -->
          <div class="small-box bg-yellow">
             <div class="inner">
-               <h3>44</h3>
+               <h3><?= $t_clientes ?></h3>
                <p>Clientes</p>
             </div>
             <div class="icon">
@@ -60,7 +60,7 @@
          <!-- small box -->
          <div class="small-box bg-red">
             <div class="inner">
-               <h3>65</h3>
+               <h3><?= $t_categorias ?></h3>
                <p>Categorias</p>
             </div>
             <div class="icon">

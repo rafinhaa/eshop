@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Principal extends CI_Controller {
+class Principal extends CI_Controller
+{
 	public function __construct()
 	{
 		parent::__construct();
@@ -9,6 +10,7 @@ class Principal extends CI_Controller {
 		{
 			redirect('admin/login');
 		}
+		$this->load->model('dashboard_model','dashboard');
 	}
 
 	public function index()
@@ -21,9 +23,14 @@ class Principal extends CI_Controller {
 		);
 		$data['user_admin'] = $this->ion_auth->user()->row();
 		$data['users'] = $this->ion_auth->users()->result();
-
 		$data['view'] = 'admin/principal/dashboard';
-
+		
+		$data['t_pedidos'] = $this->dashboard->getTotal('pedidos') ;
+		$data['t_produtos'] = $this->dashboard->getTotal('produtos') ;
+		$data['t_clientes'] = $this->dashboard->getTotal('clientes') ;
+		$data['t_categorias'] = $this->dashboard->getTotal('categorias');
+		$data['pedidos'] = $this->dashboard->getPedidos();
+		$data['clientes'] = $this->dashboard->getClientes();
 
 		$this->load->view('admin/template/index', $data);
 	}
