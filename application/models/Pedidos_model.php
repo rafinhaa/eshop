@@ -5,7 +5,11 @@ class Pedidos_model extends CI_Model
 {
 	public function getPedidos()
 	{
-		return $this->db->get('pedidos')->result();
+		$this->db->select('p.*, s.id as status_id, s.titulo_status as titulo_status ');
+		$this->db->from('pedidos as p');
+		$this->db->join('status_pedido as s', 's.id = p.id_status');
+		$this->db->limit(10);
+		return $this->db->get()->result();
 	}
 	public function getPedido($id)
 	{

@@ -78,7 +78,7 @@
           
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
             <?php
-              switch ($pedido->status) {
+              switch ($pedido->id_status) {
                 case 1:
                   echo 'Aguardando pagamento';
                   break;

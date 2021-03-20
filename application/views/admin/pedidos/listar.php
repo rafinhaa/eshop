@@ -40,22 +40,22 @@
 								<td><?= $p->nome ?></td>
 								<td><?= formataMoedaReal($p->total_pedido) ?></td>
 								<td class="text-center">
-									<?php
-											switch ($p->status) {
-												case 1:
-													echo '<small class="label pull-center bg-blue">Aguardando pagamento</small>';
-													break;
-												case 2:
-													echo '<small class="label pull-center bg-green">Pagamento confirmado</small>';
-													break;
-												case 3:
-													echo '<small class="label pull-center bg-yellow">Enviado</small>';
-													break;
-												case 4:
-													echo '<small class="label pull-center bg-red">Cancelado</small>';
-													break;
-											}
-									?>
+								<?php
+									switch ($p->id_status) {
+										case 1:
+											echo '<small class="label pull-center bg-blue">Aguardando pagamento</small>';
+											break;
+										case 2:
+											echo '<small class="label pull-center bg-green">Pagamento confirmado</small>';
+											break;
+										case 3:
+											echo '<small class="label pull-center bg-yellow">Enviado</small>';
+											break;
+										case 4:
+											echo '<small class="label pull-center bg-red">Cancelado</small>';
+											break;
+									}
+								?>
 								</td>
 								<td class="text-center">
 									<div class="btn-group">

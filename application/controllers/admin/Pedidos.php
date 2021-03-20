@@ -55,12 +55,12 @@ class Pedidos extends CI_Controller {
 		}
 	}
 
-	public function mudar_status($id_pedido,$id_status=NULL){	
-		if(!id){
+	public function mudar_status($id_pedido=NULL,$id_status=NULL){	
+		if(!$id_pedido){
 			setMsg('message','Erro ao carregar o pedido.','Ops! um erro aconteceu.','erro');
 			redirect('admin/pedidos', 'refresh');	
 		}	
-		$dadosStatus['status'] = $this->input->post('new-status');
+		$dadosStatus['id_status'] = $this->input->post('new-status');
 		$dadosStatus['ultima_atualizacao'] = dataDiaDb();
 		$this->orders->doUpdate($dadosStatus,$id_pedido);
 		redirect('admin/pedidos', 'refresh');

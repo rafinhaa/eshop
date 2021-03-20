@@ -14,9 +14,6 @@ class Dashboard_model extends CI_Model
 		$this->db->join('status_pedido as s', 's.id = p.id_status');
 		$this->db->order_by('data_cadastro', 'DESC');
 		$this->db->limit(10);
-		$this->db->get()->result();
-		echo $this->db->last_query();
-		die;
 		return $this->db->get()->result();
 	}
 	public function getClientes(){
