@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Servidor:                     52.42.130.63
--- Versão do servidor:           5.7.31-0ubuntu0.18.04.1 - (Ubuntu)
--- OS do Servidor:               Linux
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           5.7.31 - MySQL Community Server (GPL)
+-- OS do Servidor:               Win64
 -- HeidiSQL Versão:              11.2.0.6213
 -- --------------------------------------------------------
 
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `config_correios` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela lojaweb.config_correios: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela lojaweb.config_correios: ~0 rows (aproximadamente)
 DELETE FROM `config_correios`;
 /*!40000 ALTER TABLE `config_correios` DISABLE KEYS */;
 INSERT INTO `config_correios` (`id`, `cep_origem`, `somar_frete`, `data_atualizacao`) VALUES
@@ -185,6 +185,19 @@ INSERT INTO `marcas` (`id`, `nome`, `ativo`, `ultima_atualizacao`) VALUES
 	(4, 'AMD', 0, 'Tue, 02 Feb 21 01:01:21 +0100');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
+-- Copiando estrutura para tabela lojaweb.migrations
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `version` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela lojaweb.migrations: 1 rows
+DELETE FROM `migrations`;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`version`) VALUES
+	(2);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
 -- Copiando estrutura para tabela lojaweb.pedidos
 DROP TABLE IF EXISTS `pedidos`;
 CREATE TABLE IF NOT EXISTS `pedidos` (
@@ -203,22 +216,24 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `total_produto` decimal(15,2) DEFAULT NULL,
   `total_frete` decimal(15,2) DEFAULT NULL,
   `total_pedido` decimal(15,2) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
+  `id_status` int(10) DEFAULT NULL,
   `data_cadastro` varchar(200) DEFAULT NULL,
   `ultima_atualizacao` varchar(200) DEFAULT NULL,
   `cod_rastreio` varchar(200) DEFAULT NULL,
   `forma_envio` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pedidos_clientes_id_fk` (`id_cliente`),
+  KEY `FK_status_pedidos` (`id_status`),
+  CONSTRAINT `FK_status_pedidos` FOREIGN KEY (`id_status`) REFERENCES `status_pedido` (`id`),
   CONSTRAINT `pedidos_clientes_id_fk` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela lojaweb.pedidos: ~2 rows (aproximadamente)
 DELETE FROM `pedidos`;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` (`id`, `id_cliente`, `nome`, `cpf`, `email`, `cep`, `endereco`, `numero`, `bairro`, `complemento`, `cidade`, `estado`, `total_produto`, `total_frete`, `total_pedido`, `status`, `data_cadastro`, `ultima_atualizacao`, `cod_rastreio`, `forma_envio`) VALUES
-	(1, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', 11.00, 25.00, 36.00, 2, '11-03-2021', '11-03-2021', NULL, 1),
-	(2, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', 11.00, 25.00, 36.00, 3, '11-03-2021', '11-03-2021', NULL, 2);
+INSERT INTO `pedidos` (`id`, `id_cliente`, `nome`, `cpf`, `email`, `cep`, `endereco`, `numero`, `bairro`, `complemento`, `cidade`, `estado`, `total_produto`, `total_frete`, `total_pedido`, `id_status`, `data_cadastro`, `ultima_atualizacao`, `cod_rastreio`, `forma_envio`) VALUES
+	(1, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', 11.00, 25.00, 36.00, NULL, '11-03-2021', '11-03-2021', NULL, 1),
+	(2, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', '1111', 11.00, 25.00, 36.00, NULL, '11-03-2021', '11-03-2021', NULL, 2);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.pedidos_item
@@ -308,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `produtos_mais_vendidos` (
   CONSTRAINT `FK_produtos_mais_vendidos` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.produtos_mais_vendidos: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela lojaweb.produtos_mais_vendidos: ~3 rows (aproximadamente)
 DELETE FROM `produtos_mais_vendidos`;
 /*!40000 ALTER TABLE `produtos_mais_vendidos` DISABLE KEYS */;
 INSERT INTO `produtos_mais_vendidos` (`id`, `id_produto`, `quant_vendidos`) VALUES
@@ -316,6 +331,24 @@ INSERT INTO `produtos_mais_vendidos` (`id`, `id_produto`, `quant_vendidos`) VALU
 	(2, 18, 7),
 	(3, 20, 10);
 /*!40000 ALTER TABLE `produtos_mais_vendidos` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela lojaweb.status_pedido
+DROP TABLE IF EXISTS `status_pedido`;
+CREATE TABLE IF NOT EXISTS `status_pedido` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela lojaweb.status_pedido: 0 rows
+DELETE FROM `status_pedido`;
+/*!40000 ALTER TABLE `status_pedido` DISABLE KEYS */;
+INSERT INTO `status_pedido` (`id`, `titulo_status`) VALUES
+	(1, 'Aguardando pagamento'),
+	(2, 'Pagamento confirmado'),
+	(3, 'Enviado'),
+	(4, 'Cancelado');
+/*!40000 ALTER TABLE `status_pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.users
 DROP TABLE IF EXISTS `users`;

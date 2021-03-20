@@ -314,15 +314,15 @@ class Migration_Initial_migration extends CI_Migration {
         ),
         'total_produto' => array(
                 'type' => 'DECIMAL',
-                'constraint' => '15.2'
+                'constraint' => '15,2'
         ),
         'total_frete' => array(
                 'type' => 'DECIMAL',
-                'constraint' => '15.2'
+                'constraint' => '15,2'
         ),
         'total_pedido' => array(
                 'type' => 'DECIMAL',
-                'constraint' => '15.2'
+                'constraint' => '15,2'
         ),
         'status' => array(
                 'type' => 'TINYINT',
@@ -414,7 +414,7 @@ class Migration_Initial_migration extends CI_Migration {
         ),
         'valor' => array(
                 'type' => 'DECIMAL',
-                'constraint' => '(15,2)'
+                'constraint' => '15,2'
         ),
         'destaque' => array(
                 'type' => 'TINYINT',
@@ -437,8 +437,8 @@ class Migration_Initial_migration extends CI_Migration {
                 'constraint' => 255
         ),
         'ultima_atualizacao' => array(
-                'type' => 'DECIMAL',
-                'constraint' => '10,2',
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => TRUE
         ),
         'peso' => array(
@@ -465,8 +465,8 @@ class Migration_Initial_migration extends CI_Migration {
                 'type' => 'longtext'
         ),
         'meta_link' => array(
-                'type' => 'DECIMAL',
-                'constraint' => '10,2'
+                'type' => 'VARCHAR',
+                'constraint' => 255
         ),
         'CONSTRAINT `produtos_categorias_id_fk` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`)',
         'CONSTRAINT `produtos_marcas_id_fk` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`)',

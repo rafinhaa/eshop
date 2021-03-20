@@ -9,14 +9,18 @@ class Dashboard_model extends CI_Model
 		return $this->db->get($tab)->num_rows();
  	}
 	public function getPedidos(){
-		$this->db->select('id, nome, total_pedido, status');
-		$this->db->from('pedidos');
+		$this->db->select('p.*, s.*');
+		$this->db->from('pedidos as p');
+		$this->db->join('status_pedido as s', 's.id = p.id_status');
 		$this->db->order_by('data_cadastro', 'DESC');
 		$this->db->limit(10);
+		$this->db->get()->result();
+		echo $this->db->last_query();
+		die;
 		return $this->db->get()->result();
 	}
 	public function getClientes(){
-		$this->db->select('nome, ');
+		$this->db->select('nome, id, data_cadastro');
 		$this->db->from('clientes');
 		$this->db->order_by('data_cadastro', 'DESC');
 		$this->db->limit(10);

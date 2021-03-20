@@ -81,7 +81,24 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-
+            <table class="table table-striped">
+                <tbody><tr>
+                  <th style="width: 10px">#</th>
+                  <th>Produto</th>
+                  <th>Data do pedido</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                </tr>
+                <?php foreach ($pedidos as $p) { ?>
+                  <tr>                
+                     <td><?= $p->id ?></td>
+                     <td><?= $p->nome ?></td>
+                     <td><?= formataDataDiaDb($p->data_cadastro) ?></td>
+                     <td><?= $p->titulo_status ?></td>
+                     <td><?= $p->total_pedido ?></td>
+                  </tr>  
+                <?php } ?>              
+              </tbody></table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
@@ -100,7 +117,20 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            
+            <table class="table table-striped">
+                <tbody><tr>
+                  <th style="width: 10px">#</th>
+                  <th>Usuário</th>
+                  <th>Data de Cadastro</th>
+                </tr>
+                <?php foreach ($clientes as $c) { ?>
+                  <tr>                
+                     <td><?= $p->id ?></td>
+                     <td><?= $p->nome ?></td>
+                     <td><?= formataDataDiaDb($p->data_cadastro) ?></td>
+                  </tr>  
+                <?php } ?> 
+              </tbody></table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
