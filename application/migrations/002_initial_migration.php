@@ -517,4 +517,18 @@ class Migration_Initial_migration extends CI_Migration {
     $this->dbforge->create_table('produtos_mais_vendidos');
 
     }
+
+    public function down() {
+        $this->dbforge->drop_database('produtos_mais_vendidos');
+        $this->dbforge->drop_database('produtos_fotos');
+        $this->dbforge->drop_database('produtos');
+        $this->dbforge->drop_database('pedidos_item');
+        $this->dbforge->drop_database('pedidos');
+        $this->dbforge->drop_database('marcas');
+        $this->dbforge->drop_database('config_pagseguro');
+        $this->dbforge->drop_database('config_correios');
+        $this->dbforge->drop_database('config');
+        $this->dbforge->drop_database('clientes');
+        $this->dbforge->drop_database('categorias');
+    }
 }

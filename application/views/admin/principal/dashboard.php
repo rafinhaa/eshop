@@ -125,9 +125,9 @@
                 </tr>
                 <?php foreach ($clientes as $c) { ?>
                   <tr>                
-                     <td><?= $p->id ?></td>
-                     <td><?= $p->nome ?></td>
-                     <td><?= formataDataDiaDb($p->data_cadastro) ?></td>
+                     <td><?= $c->id ?></td>
+                     <td><?= $c->nome ?></td>
+                     <td><?= formataDataDiaDb($c->data_cadastro) ?></td>
                   </tr>  
                 <?php } ?> 
               </tbody></table>

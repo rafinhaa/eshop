@@ -21,7 +21,7 @@ $config['migration_enabled'] = TRUE;
 | Migration file names may be based on a sequential identifier or on
 | a timestamp. Options are:
 |
-|   'sequential' = Sequential migration naming (001_add_blog.php)
+|   'sequential' = Sequential migration naming (003_add_blog.php)
 |   'timestamp'  = Timestamp migration naming (20121031104401_add_blog.php)
 |                  Use timestamp format YYYYMMDDHHIISS.
 |
@@ -69,7 +69,7 @@ $config['migration_auto_latest'] = FALSE;
 | be upgraded / downgraded to.
 |
 */
-$config['migration_version'] = 2;
+$config['migration_version'] = 3;
 
 /*
 |--------------------------------------------------------------------------
