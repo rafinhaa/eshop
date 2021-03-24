@@ -5,7 +5,8 @@ class Loja	extends CI_Controller {
 
 	public function index()
 	{
-		echo 'loja principal';
+		$data=null;
+		$this->load->view('loja/template/index', $data);
 	}
 
 }
