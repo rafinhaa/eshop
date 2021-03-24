@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-    <title>Eshop - eCommerce HTML5 Template.</title>
+    <title><?= $dados->titulo ?></title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="<?= base_url('public/images/favicon.png') ?>">
 	<!-- Web Font -->
@@ -69,8 +69,8 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> support@shophub.com</li>
+								<li><i class="ti-headphone-alt"></i> <?= $dados->telefone ?></li>
+								<li><i class="ti-email"></i> <?= $dados->email ?></li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -2297,7 +2297,7 @@
 								<a href="index.html"><img src="<?= base_url('public/images/logo2.png') ?>" alt="#"></a>
 							</div>
 							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+							<p class="call">Got Question? Call us 24/7<span><a href="tel:<?= $dados->telefone ?>"><?= $dados->telefone ?></a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -2336,10 +2336,11 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>NO. 342 - London Oxford Street.</li>
-									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
-									<li>+032 3456 7890</li>
+									<li><?= $dados->endereco ?></li>
+									<li><?= $dados->cidade . ' ' . $dados->estado ?></li>
+									<li><?= $dados->cep ?></li>
+									<li><?= $dados->email ?></li>
+									<li><?= $dados->telefone ?></li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->

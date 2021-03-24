@@ -15,7 +15,7 @@ class Config extends CI_Controller {
 
 	public function index()
 	{
-		$this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[5]|max_length[12]');
+		$this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[5]|max_length[255]');
 		if ($this->form_validation->run() == TRUE) {
 			/*echo '<pre>';
 			print_r($this->input->post());*/

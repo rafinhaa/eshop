@@ -199,8 +199,9 @@ class Migration_Users_schema extends CI_Migration {
         $data = array(
                 array(
                         'id' => "1",
+                        'ip_address' => "127.0.0.1",
                         'username' => "Administrator",
-                        'password' => "7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK",
+                        'password' => "$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK",
                         'email' => "admin@admin.com",
                         'activation_code' => NULL,
                         'forgotten_password_selector' => '',
