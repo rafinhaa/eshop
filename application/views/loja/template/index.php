@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
 	<!-- Meta Tag -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="copyright" content="">
+	<meta name='copyright' content=''>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
@@ -12,12 +12,12 @@
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="<?= base_url('public/images/favicon.png') ?>">
 	<!-- Web Font -->
-	<link href="https://fonts.googleapis.com/css-store?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	
 	<!-- StyleSheet -->
 	
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="<?= base_url('public/css-store/bootstrap.css') ?>">
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="<?= base_url('public/css-store/bootstrap.css') ?>">
 	<!-- Magnific Popup -->
     <link rel="stylesheet" href="<?= base_url('public/css-store/magnific-popup.min.css') ?>">
 	<!-- Font Awesome -->
@@ -42,13 +42,13 @@
 	<link rel="stylesheet" href="<?= base_url('public/css-store/style.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/css-store/responsive.css') ?>">
 
-
+	
 	
 </head>
 <body class="js">
 	
 	<!-- Preloader -->
-	<div class="preloader" style="display: none;">
+	<div class="preloader">
 		<div class="preloader-inner">
 			<div class="preloader-icon">
 				<span></span>
@@ -113,35 +113,17 @@
 							<!--/ End Search Form -->
 						</div>
 						<!--/ End Search Form -->
-						<div class="mobile-nav"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt"></span><span class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-													<li class="active"><a href="#" role="menuitem" tabindex="-1">Home</a></li>
-													<li><a href="#" role="menuitem" tabindex="-1">Product</a></li>												
-													<li><a href="#" role="menuitem" tabindex="-1">Service</a></li>
-													<li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#" tabindex="-1">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
-														<span class="slicknav_arrow">►</span></a><ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-															<li><a href="shop-grid.html" role="menuitem" tabindex="-1">Shop Grid</a></li>
-															<li><a href="cart.html" role="menuitem" tabindex="-1">Cart</a></li>
-															<li><a href="checkout.html" role="menuitem" tabindex="-1">Checkout</a></li>
-														</ul>
-													</li>
-													<li><a href="#" role="menuitem" tabindex="-1">Pages</a></li>									
-													<li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#" tabindex="-1">Blog<i class="ti-angle-down"></i></a>
-														<span class="slicknav_arrow">►</span></a><ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-															<li><a href="blog-single-sidebar.html" role="menuitem" tabindex="-1">Blog Single Sidebar</a></li>
-														</ul>
-													</li>
-													<li><a href="contact.html" role="menuitem" tabindex="-1">Contact Us</a></li>
-												</ul></div></div>
+						<div class="mobile-nav"></div>
 					</div>
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<select style="display: none;">
+								<select>
 									<option selected="selected">All Category</option>
 									<option>watch</option>
 									<option>mobile</option>
 									<option>kid’s item</option>
-								</select><div class="nice-select" tabindex="0"><span class="current">All Category</span><ul class="list"><li data-value="All Category" class="option selected">All Category</li><li data-value="watch" class="option">watch</li><li data-value="mobile" class="option">mobile</li><li data-value="kid’s item" class="option">kid’s item</li></ul></div>
+								</select>
 								<form>
 									<input name="search" placeholder="Search Products Here....." type="search">
 									<button class="btnn"><i class="ti-search"></i></button>
@@ -1779,20 +1761,9 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="owl-carousel popular-slider owl-theme owl-loaded">
+                    <div class="owl-carousel popular-slider">
 						<!-- Start Single Product -->
-						
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						
-						<!-- End Single Product -->
-                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1140px, 0px, 0px); transition: all 0.4s ease 0s; width: 3420px;"><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
+						<div class="single-product">
 							<div class="product-img">
 								<a href="product-details.html">
 									<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
@@ -1817,7 +1788,10 @@
 									<span>$50.00</span>
 								</div>
 							</div>
-						</div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
+						</div>
+						<!-- End Single Product -->
+						<!-- Start Single Product -->
+						<div class="single-product">
                             <div class="product-img">
                                 <a href="product-details.html">
                                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
@@ -1840,7 +1814,10 @@
                                     <span>$50.00</span>
                                 </div>
                             </div>
-                        </div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
+                        </div>
+						<!-- End Single Product -->
+						<!-- Start Single Product -->
+						<div class="single-product">
                             <div class="product-img">
                                 <a href="product-details.html">
                                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
@@ -1864,7 +1841,10 @@
                                     <span>$50.00</span>
                                 </div>
                             </div>
-                        </div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
+                        </div>
+						<!-- End Single Product -->
+						<!-- Start Single Product -->
+						<div class="single-product">
                             <div class="product-img">
                                 <a href="product-details.html">
                                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
@@ -1887,197 +1867,9 @@
                                     <span>$50.00</span>
                                 </div>
                             </div>
-                        </div></div><div class="owl-item active" style="width: 285px; margin-right: 0px;"><div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-									<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item active" style="width: 285px; margin-right: 0px;"><div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item active" style="width: 285px; margin-right: 0px;"><div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-									<span class="new">New</span>
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Pink Show</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item active" style="width: 285px; margin-right: 0px;"><div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Bags Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-									<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-									<span class="new">New</span>
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Pink Show</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item cloned" style="width: 285px; margin-right: 0px;"><div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-                                </a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Add to cart</a>
-									</div>
-								</div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Bags Collection</a></h3>
-                                <div class="product-price">
-                                    <span>$50.00</span>
-                                </div>
-                            </div>
-                        </div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style=""><i class="ti-angle-left"></i></div><div class="owl-next" style=""><i class="ti-angle-right"></i></div></div><div class="owl-dots" style="display: none;"></div></div></div>
+                        </div>
+						<!-- End Single Product -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -2282,6 +2074,35 @@
 	</section>
 	<!-- End Shop Home List  -->
 	
+	<!-- Start Cowndown Area -->
+	<section class="cown-down">
+		<div class="section-inner ">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 col-12 padding-right">
+						<div class="image">
+							<img src="https://via.placeholder.com/750x590" alt="#">
+						</div>	
+					</div>	
+					<div class="col-lg-6 col-12 padding-left">
+						<div class="content">
+							<div class="heading-block">
+								<p class="small-title">Deal of day</p>
+								<h3 class="title">Beatutyful dress for women</h3>
+								<p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
+								<h1 class="price">$1200 <s>$1890</s></h1>
+								<div class="coming-time">
+									<div class="clearfix" data-countdown="2021/02/30"></div>
+								</div>
+							</div>
+						</div>	
+					</div>	
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /End Cowndown Area -->	
+	
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
 		<div class="container">
@@ -2362,28 +2183,20 @@
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <!-- Product Slider -->
 									<div class="product-gallery">
-										<div class="quickview-slider-active owl-carousel owl-theme owl-hidden owl-loaded">
-											
-											
-											
-											
-										<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1650px, 0px, 0px); transition: all 0.4s ease 0s; width: 4400px;"><div class="owl-item cloned" style="width: 550px; margin-right: 0px;"><div class="single-slider">
+										<div class="quickview-slider-active">
+											<div class="single-slider">
 												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item cloned" style="width: 550px; margin-right: 0px;"><div class="single-slider">
+											</div>
+											<div class="single-slider">
 												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item" style="width: 550px; margin-right: 0px;"><div class="single-slider">
+											</div>
+											<div class="single-slider">
 												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item active" style="width: 550px; margin-right: 0px;"><div class="single-slider">
+											</div>
+											<div class="single-slider">
 												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item" style="width: 550px; margin-right: 0px;"><div class="single-slider">
-												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item" style="width: 550px; margin-right: 0px;"><div class="single-slider">
-												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item cloned" style="width: 550px; margin-right: 0px;"><div class="single-slider">
-												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div><div class="owl-item cloned" style="width: 550px; margin-right: 0px;"><div class="single-slider">
-												<img src="https://via.placeholder.com/569x528" alt="#">
-											</div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style=""><i class=" ti-arrow-left"></i></div><div class="owl-next" style=""><i class=" ti-arrow-right"></i></div></div><div class="owl-dots" style="display: none;"></div></div></div>
+											</div>
+										</div>
 									</div>
 								<!-- End Product slider -->
                             </div>
@@ -2413,21 +2226,21 @@
 										<div class="row">
 											<div class="col-lg-6 col-12">
 												<h5 class="title">Size</h5>
-												<select style="display: none;">
+												<select>
 													<option selected="selected">s</option>
 													<option>m</option>
 													<option>l</option>
 													<option>xl</option>
-												</select><div class="nice-select" tabindex="0"><span class="current">s</span><ul class="list"><li data-value="s" class="option selected">s</li><li data-value="m" class="option">m</li><li data-value="l" class="option">l</li><li data-value="xl" class="option">xl</li></ul></div>
+												</select>
 											</div>
 											<div class="col-lg-6 col-12">
 												<h5 class="title">Color</h5>
-												<select style="display: none;">
+												<select>
 													<option selected="selected">orange</option>
 													<option>purple</option>
 													<option>black</option>
 													<option>pink</option>
-												</select><div class="nice-select" tabindex="0"><span class="current">orange</span><ul class="list"><li data-value="orange" class="option selected">orange</li><li data-value="purple" class="option">purple</li><li data-value="black" class="option">black</li><li data-value="pink" class="option">pink</li></ul></div>
+												</select>
 											</div>
 										</div>
 									</div>
@@ -2439,7 +2252,7 @@
 													<i class="ti-minus"></i>
 												</button>
 											</div>
-											<input type="text" name="quant[1]" class="input-number" data-min="1" data-max="1000" value="1">
+											<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
 											<div class="button plus">
 												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
 													<i class="ti-plus"></i>
@@ -2495,7 +2308,7 @@
 							<ul>
 								<li><a href="#">About Us</a></li>
 								<li><a href="#">Faq</a></li>
-								<li><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
 								<li><a href="#">Contact Us</a></li>
 								<li><a href="#">Help</a></li>
 							</ul>
@@ -2571,9 +2384,7 @@
 	<!-- Popper JS -->
 	<script src="<?= base_url('public/js-store/popper.min.js') ?>"></script>
 	<!-- Bootstrap JS -->
-	<script src="<?= base_url('public/js-store/bootstrap.min.js') ?>"></script>
-	<!-- Color JS -->
-	<script src="<?= base_url('public/js-store/colors.js') ?>"></script>
+	<script src="<?= base_url('public/js-store/bootstrap.min.js') ?>"></script>	
 	<!-- Slicknav JS -->
 	<script src="<?= base_url('public/js-store/slicknav.min.js') ?>"></script>
 	<!-- Owl Carousel JS -->
@@ -2596,6 +2407,5 @@
 	<script src="<?= base_url('public/js-store/easing.js') ?>"></script>
 	<!-- Active JS -->
 	<script src="<?= base_url('public/js-store/active.js') ?>"></script>
-
-<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: none;"><span><i class="fa fa-angle-up"></i></span></a></body>
+</body>
 </html>
