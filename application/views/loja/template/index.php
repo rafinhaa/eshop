@@ -183,24 +183,21 @@
 				<div class="cat-nav-head">
 					<div class="row">
 						<div class="col-lg-3">
-							<div class="all-category">
-								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIAS</h3>
-								<ul class="main-category">								
-									<?php foreach ($categorias as $c) { ?>										
-										<?php if ( is_null($c->id_categoriapai) ) { ?>
-											<?php $sub_cat = $this->loja_model->getSubCategoria($c->id)?>
-											<li><a href="<?= base_url('categoria/' . $c->meta_link) ?>"><?= $c->nome ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-												<?php if ( $sub_cat ) { ?>
-													<ul class="sub-category">
-													<?php foreach ($sub_cat as $sub) { ?>											
-														<li><a href="<?= base_url('categoria/' . $sub->meta_link) ?>"><?=$sub->nome?></a></li>																					
-													<?php } ?>
-													</ul>						
-												<?php }  ?>
-											</li>	
-									<?php }else{ ?>
-										<li><a href="<?= base_url('categoria/' . $c->meta_link) ?>"><?= $c->nome ?></a></li>
-									<?php } } ?>
+						<div class="all-category">
+								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+								<ul class="main-category">
+									<?php foreach ($categorias as $c){ ?>										
+										<li><a href="<?=base_url('categoria/'.$c->meta_link)?>"><?= $c->nome ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+											<ul class="sub-category">
+												<?php foreach ($subcat as $sub){ ?>												
+													<?php if($c->id == $sub->id_categoriapai){ ?>	
+															<li><a href="<?=base_url('categoria/'.$sub->meta_link)?>"><?=$sub->nome?></a></li>													
+													<?php } ?>												
+												<?php } ?>
+											</ul>
+										</li>																						
+									<?php } ?>
+									<li><a href="<?=base_url('categoria/'.$c->meta_link)?>"><?=$c->nome?> </a></li>																				
 								</ul>
 							</div>
 						</div>

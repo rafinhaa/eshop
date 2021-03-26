@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Loja_model extends CI_Model
 {
 	public function getCategorias(){
-		$this->db->where('ativo',1);
+		$this->db->where(['ativo' => 1, 'id_categoriapai' => NULL]);
 		return $this->db->get('categorias')->result();
 	}	
-	public function getSubCategoria($id_categoriapai=NULL){
-		$this->db->where(['ativo' => 1, 'id_categoriapai' => $id_categoriapai]);
+	public function getSubCategoria(){
+		$this->db->where(['ativo' => 1, 'id_categoriapai !=' => NULL]);
 		return $this->db->get('categorias')->result();
 	}
 }
