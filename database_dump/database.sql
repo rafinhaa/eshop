@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           10.4.13-MariaDB - mariadb.org binary distribution
--- OS do Servidor:               Win32
+-- Versão do servidor:           5.7.31 - MySQL Community Server (GPL)
+-- OS do Servidor:               Win64
 -- HeidiSQL Versão:              11.2.0.6213
 -- --------------------------------------------------------
 
@@ -28,15 +28,19 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `ultima_atualizacao` varchar(255) DEFAULT NULL,
   `meta_link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.categorias: 3 rows
+-- Copiando dados para a tabela lojaweb.categorias: 7 rows
 DELETE FROM `categorias`;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` (`id`, `nome`, `id_categoriapai`, `ativo`, `ultima_atualizacao`, `meta_link`) VALUES
 	(29, 'Informática', NULL, 1, 'Wed, 17 Mar 21 16:45:35 +0000', 'informatica'),
 	(30, 'HD', 29, 1, 'Wed, 17 Mar 21 16:45:37 +0000', 'hd'),
-	(31, 'Memoria', 29, 1, 'Wed, 17 Mar 21 16:45:38 +0000', 'memoria');
+	(31, 'Memoria', 29, 1, 'Wed, 17 Mar 21 16:45:38 +0000', 'memoria'),
+	(32, 'Mecanica', NULL, 1, 'Wed, 17 Mar 21 16:45:35 +0000', 'mecanica'),
+	(33, 'Cooler', 29, 1, 'Wed, 17 Mar 21 16:45:37 +0000', 'cooler'),
+	(34, 'Limpeza', NULL, 1, NULL, 'limpeza'),
+	(35, 'Detergente', 34, 1, NULL, 'detergente');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.clientes
@@ -92,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `config` (
 DELETE FROM `config`;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
 INSERT INTO `config` (`id`, `titulo`, `empresa`, `cep`, `complemento`, `cidade`, `estado`, `email`, `bairro`, `telefone`, `p_destaque`, `data_atualizacao`, `endereco`) VALUES
-	(1, 'LojaWEB', 'ERRE Software', '08000000', 'comple', 'São Paulo', 'SP', 'admin@admin.com', 'Sé', '11-20205578', 30, 'Wed, 10 Mar 21 01:19:51 +0100', 'Agora foi ;)');
+	(1, 'Eshop - eCommerce', 'Eshop', '08000000', '', 'São Paulo', 'SP', 'contato@eshop.com', 'Sé', '(11)2020-5578', 9, 'Mon, 29 Mar 21 13:52:37 +0000', 'Rua noventa e nove');
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.config_correios
@@ -225,12 +229,9 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   KEY `FK_pedidos_status_pedido` (`id_status`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.pedidos: 2 rows
+-- Copiando dados para a tabela lojaweb.pedidos: 0 rows
 DELETE FROM `pedidos`;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` (`id`, `id_cliente`, `nome`, `cpf`, `email`, `cep`, `endereco`, `numero`, `bairro`, `complemento`, `cidade`, `estado`, `total_produto`, `total_frete`, `total_pedido`, `id_status`, `data_cadastro`, `ultima_atualizacao`, `cod_rastreio`, `forma_envio`) VALUES
-	(1, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', 127, 11, 25, 36, 3, '11-03-2021', 'Sat, 20 Mar 21 15:51:49 +0000', '', 1),
-	(2, 4, 'abcv', '222.222.222-22', '1111@AA.COM', '00000-000', '111111', '111', '11111', '1111', '111', 127, 11, 25, 36, 4, '11-03-2021', '11-03-2021', '', 2);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.pedidos_item
@@ -247,12 +248,9 @@ CREATE TABLE IF NOT EXISTS `pedidos_item` (
   KEY `pedidos_item_pedidos_id_fk` (`id_pedido`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.pedidos_item: 2 rows
+-- Copiando dados para a tabela lojaweb.pedidos_item: 0 rows
 DELETE FROM `pedidos_item`;
 /*!40000 ALTER TABLE `pedidos_item` DISABLE KEYS */;
-INSERT INTO `pedidos_item` (`id`, `id_pedido`, `nome_item`, `quantidade`, `valor_unitario`, `valor_total`, `valor_total_item`) VALUES
-	(1, 1, 'Teste', '1', 25.00, 25.00, 25.00),
-	(2, 1, 'Teste', '1', 25.00, 25.00, 25.00);
 /*!40000 ALTER TABLE `pedidos_item` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.produtos
@@ -274,20 +272,33 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `largura` int(11) NOT NULL,
   `comprimento` int(11) NOT NULL,
   `info` longtext NOT NULL,
-  `meta_link` decimal(10,2) NOT NULL,
+  `meta_link` varchar(255) NOT NULL DEFAULT '',
   `valor` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `produtos_categorias_id_fk` (`id_categoria`),
   KEY `produtos_marcas_id_fk` (`id_marca`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.produtos: 3 rows
+-- Copiando dados para a tabela lojaweb.produtos: 16 rows
 DELETE FROM `produtos`;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
 INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`, `meta_link`, `valor`) VALUES
-	(18, 1, 29, 'dois tres tres', '3', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 0.00, 2, 2, 2, 2, '2', 0.00, 22),
-	(19, 1, 29, '234', '4', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 0.00, 2, 2, 2, 2, '2', 234.00, 22),
-	(20, 1, 29, '235', '5', 1, 1, 1, 2, 'Wed, 17 Feb 21 01:08:31 +0100', 0.00, 2, 2, 2, 2, '2', 235.00, 22);
+	(22, 1, 29, 'Samsung Galaxy Note 8 256G Preto', '231545487', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, 'Informação do produto', 'samsung-galaxy-note-8-256g-preto', 40),
+	(23, 1, 29, 'Hard Disk 2tb Sata3', '47154931', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, '25', 'hard-disk-2tb-sata3', 5),
+	(20, 1, 29, 'Notebook Samsung Essentials E30', '56489789', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 35, 35, 35, 'Informações do produto', 'notebook-samsung-essentials-e30', 17),
+	(21, 1, 29, 'iphone X 256G Branco', '8975641321', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 17, 18, 18, 'Informações do produto', 'iphone-x-256g-branco', 50),
+	(18, 1, 29, 'Cafeteira Expresso 3 Em 1', '4dsa564a', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, '25', 'cafeteira-expresso-3-em-1', 6),
+	(19, 1, 29, 'Notebook Samsung Expert X22', '54564897', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 25, 25, 25, 'Informações do produto', 'notebook-samsung-expert-x22', 19),
+	(17, 1, 29, 'Cafeteira Elétrica Cadence Single', '564654564', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 20, 20, 20, '20', 'cafeteira-eletrica-cadence-single', 2),
+	(16, 1, 29, 'Secador de Cabelos', '564564', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 15, 15, 15, '15', 'secador-de-cabelos', 1),
+	(15, 1, 29, 'SSD 240Gb SanDisk® PLUS', '564654', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 15, 15, 15, '15', 'ssd-240gb-sandisk-plus', 4),
+	(14, 1, 29, 'Smartphone Samsung Galaxy S9', '564654', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 10, 25, 25, '25', 'smartphone-samsung-galaxy-s9', 30),
+	(13, 1, 29, 'Notebook Acer Es1-572-51nj', '564564', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 40, 13, 40, '40', 'notebook-acer-es1-572-51nj', 16),
+	(12, 1, 29, 'Monitor Samsung 27', '00021564', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 50, 15, 50, '50', 'monitor-samsung-27', 15),
+	(1, 1, 29, 'Computador Intel Core i5, 16G, SSD 500GB', '1', 1, 1, 1, 2, '2018-05-15', 0.00, 1, 45, 30, 50, '50', 'computador-intel-core-i5-16g-ssd-500gb', 599),
+	(11, 1, 29, 'Iphone 6 64G Cinza Espacial', '564564', 1, 1, 0, 0, '2018-05-15', 0.00, 1, 10, 11, 16, '15', 'iphone-6-64g-cinza-espacial', 18),
+	(2, 1, 29, 'Smart TV LED 32” HD LG', '00002', 1, 1, 0, 0, '2018-05-15', 0.00, 4, 60, 30, 90, '90', 'smart-tv-led-32-hd-lg', 10),
+	(10, 1, 29, 'Gravador DVD', '564564', 1, 1, 0, 0, '2018-05-15', 0.00, 1, 0, 0, 0, '0', 'gravador-dvd', 16);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.produtos_fotos
@@ -298,11 +309,28 @@ CREATE TABLE IF NOT EXISTS `produtos_fotos` (
   `foto` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fotos_produtos_id_fk` (`id_produto`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.produtos_fotos: 0 rows
+-- Copiando dados para a tabela lojaweb.produtos_fotos: 16 rows
 DELETE FROM `produtos_fotos`;
 /*!40000 ALTER TABLE `produtos_fotos` DISABLE KEYS */;
+INSERT INTO `produtos_fotos` (`id`, `id_produto`, `foto`) VALUES
+	(102, 12, '05.jpg'),
+	(114, 1, '02.jpg'),
+	(104, 10, '01.jpg'),
+	(98, 16, '09.jpg'),
+	(101, 13, '06.jpg'),
+	(99, 15, '08.jpg'),
+	(103, 11, '03.jpg'),
+	(112, 18, '10.jpg'),
+	(105, 2, '04.jpg'),
+	(100, 14, '07.jpg'),
+	(97, 17, '11.jpg'),
+	(107, 23, '16.jpg'),
+	(108, 22, '15.jpg'),
+	(109, 21, '14.jpg'),
+	(110, 20, '12.jpg'),
+	(111, 19, '13.jpg');
 /*!40000 ALTER TABLE `produtos_fotos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.produtos_mais_vendidos
@@ -315,13 +343,9 @@ CREATE TABLE IF NOT EXISTS `produtos_mais_vendidos` (
   KEY `FK_produtos_mais_vendidos` (`id_produto`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.produtos_mais_vendidos: 3 rows
+-- Copiando dados para a tabela lojaweb.produtos_mais_vendidos: 0 rows
 DELETE FROM `produtos_mais_vendidos`;
 /*!40000 ALTER TABLE `produtos_mais_vendidos` DISABLE KEYS */;
-INSERT INTO `produtos_mais_vendidos` (`id`, `id_produto`, `quant_vendidos`) VALUES
-	(1, 19, '5'),
-	(2, 18, '7'),
-	(3, 20, '10');
 /*!40000 ALTER TABLE `produtos_mais_vendidos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.status_pedido
@@ -375,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1616253388, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1617025927, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.users_groups
