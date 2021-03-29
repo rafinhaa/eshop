@@ -13,12 +13,9 @@ class Loja	extends CI_Controller {
 	{
 		$data['dados'] = $this->config_model->getConfig();
 		$data['categorias'] = $this->loja_model->getCategorias();
-		$data['subcat'] = $this->loja_model->getSubCategoria();
-		$data['cat'] = NULL;
-		//echo '<pre>';
-	
+		$data['subcat'] = $this->loja_model->getSubCategoria();		
+		$data['destaque'] = $this->loja_model->getProdutoDestaque($data['dados']->p_destaque);
 		
-		//print_r($data['subcat']);
 		$this->load->view('loja/template/index', $data);
 	}
 
