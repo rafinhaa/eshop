@@ -46,7 +46,20 @@
 	
 </head>
 <body class="js">
-		<?php
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+		<?php		
+			if(isset($header)){
+				$this->load->view($header);
+			}
 			if(isset($view)){
 				$this->load->view($view);
 			}

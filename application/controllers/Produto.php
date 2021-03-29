@@ -20,8 +20,12 @@ class Produto extends CI_Controller {
 		$data['subcat'] = $this->loja_model->getSubCategoria();
 
 		$data['produto'] = $this->produto_model->getProdutoMeta($meta_link);
-		
+		$data['fotos'] = $this->produto_model->getFotos($data['produto']->id);
+		$data['count_fotos'] = count($data['fotos']);
+
+		$data['header'] = 'loja/template/header2';
 		$data['view'] = 'loja/produto';
+		
 		$this->load->view('loja/template/index', $data);
 	}
 

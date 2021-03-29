@@ -11,6 +11,13 @@ class Produto_model extends CI_Model
 			return $this->db->get('produtos')->row();
 		}
 	}
+
+	public function getFotos($id){
+		if($id){			
+			$this->db->where('id_produto', $id);
+			return $this->db->get('produtos_fotos')->result();
+		}
+	}
 }
 
 /* End of file .php */
