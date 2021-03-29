@@ -53,8 +53,11 @@ $route['default_controller'] = 'loja';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-//ROTAS LOJA VIRTUAL
+//ROTAS ADMIN
 $route['admin'] = 'admin/principal';
 $route['admin/(:any)'] = 'admin/$1';
 $route['admin/(:any)/(:any)'] = 'admin/$1/$2';
 $route['admin/(:any)/(:any)/(:any)'] = 'admin/$1/$2/$3';
+
+//ROTAS LOJA
+$route['produto/(:any)'] = 'produto/index/$1';
