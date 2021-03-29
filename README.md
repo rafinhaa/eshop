@@ -29,14 +29,12 @@ git clone https://github.com/rafinhaa/loja-web.git
 cd loja-web
 ```
 
-
 ## ℹ️ Info
 - N/D
 
 ## 📄 Changelog
 ##### v0.0.1
 - Update README.md
-
 
 ## 📝 License
 [MIT](LICENSE.txt)
