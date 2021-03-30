@@ -62,6 +62,7 @@ class Marcas extends CI_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			$dadosMarca['nome'] = $this->input->post('name');
 			$dadosMarca['ativo'] = $this->input->post('active');
+			$dadosMarca['meta_link'] = slug($this->input->post('name'));
 			if($this->input->post('id')){
 				$dadosMarca['ultima_atualizacao'] = dataDiaDb();
 				if($this->brands->doUpdate($dadosMarca,$this->input->post('id'))){

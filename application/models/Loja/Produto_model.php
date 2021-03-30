@@ -20,7 +20,7 @@ class Produto_model extends CI_Model
 	}
 	public function getMarca($id){
 		if($id){			
-			$this->db->select('m.nome');
+			$this->db->select('m.nome, m.meta_link');
 			$this->db->from('marcas as m');
 			$this->db->join('produtos as p','m.id = p.id_marca');
 			$this->db->where('p.id', $id);
@@ -30,7 +30,7 @@ class Produto_model extends CI_Model
 
 	public function getCategoria($id){
 		if($id){			
-			$this->db->select('c.nome');
+			$this->db->select('c.nome, c.meta_link');
 			$this->db->from('categorias as c');
 			$this->db->join('produtos as p','c.id = p.id_categoria');
 			$this->db->where('p.id', $id);

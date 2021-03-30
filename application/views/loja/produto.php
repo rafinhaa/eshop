@@ -47,21 +47,42 @@
                         <div class="content">
                             <ul>
                                 <li>Descrição<span><?= $produto->info ?></span></li>
-                                <li>Marca<span><?= $marca->nome ?></span></li>
-                                <li>Categoria<span><?= $categoria->nome ?></span></li>
+                                <li>Marca<span><a href="<?= base_url('marca/'.$marca->nome) ?>"><?= $marca->nome ?></a></span></li>
+                                <li>Categoria<span><a href="<?= base_url('categoria/'.$categoria->nome) ?>"><?= $categoria->nome ?></a></span></li>
                                 <?php if($produto->estoque == 1) {?>
                                     <li>Estoque<span><?= $produto->estoque ?></span></li>
                                 <?php } ?>
-                                <li>Sub Total<span><?= formataMoedaReal($produto->valor) ?></span></li>
-                                <li>(+) Frete<span><?= formataMoedaReal($produto->frete) ?></span></li>
-                                <li class="last">Total<span><?= formataMoedaReal($produto->total) ?></span></li>
+                                <li class="last">Valor<span><?= formataMoedaReal($produto->valor) ?></span></li>
                             </ul>
                         </div>
                     </div>
                     <!--/ End Order Widget -->
+                    <div class="single-widget">
+                        <h2>CEP</h2>
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <div class="checkout-form">
+                                        <form class="form">
+                                            <div class="row">                                                
+                                                <div class="form-group">
+                                                    <input type="text" name="name" placeholder="CEP" required="required" style="margin-left: 15px;">
+                                                </div>
+                                                <div class="button" style="margin-left: 15px;">
+                                                    <button class="btn btn-calcular-frete-produto">CALCULAR</button>
+                                                </div>                                                
+                                            </div>
+                                        </form>
+                                        
+                                    </div>   
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <!-- Order Widget -->
                     <div class="single-widget">
-                        <h2>Payments</h2>
+                        <h2>Forma de Pagamento</h2>
                         <div class="content">
                             <div class="checkbox">
                                 <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
