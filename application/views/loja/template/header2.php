@@ -7,8 +7,8 @@
                     <!-- Top Left -->
                     <div class="top-left">
                         <ul class="list-main">
-                            <li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-                            <li><i class="ti-email"></i> support@shophub.com</li>
+                            <li><i class="ti-headphone-alt"></i> <?= $dados->telefone ?></li>
+                            <li><i class="ti-email"></i> <?= $dados->email ?></li>
                         </ul>
                     </div>
                     <!--/ End Top Left -->
@@ -17,10 +17,10 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-location-pin"></i> Store location</li>
-                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-                            <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                            <li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+                            <li><i class="ti-location-pin"></i> <?= $dados->endereco ?></li>
+                            <li><i class="ti-alarm-clock"></i> <a href="#">Descontos</a></li>
+                            <li><i class="ti-user"></i> <a href="#">Minha conta</a></li>
+                            <li><i class="ti-power-off"></i><a href="login.html#">Entrar</a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -35,7 +35,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="<?= base_url('public/images/logo.png') ?>" alt="logo"></a>
+                        <a href="<?= base_url('/'); ?>"><img src="<?= base_url('public/images/logo.png') ?>" alt="logo"></a>
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->
@@ -75,13 +75,22 @@
                     <div class="search-bar-top">
                         <div class="search-bar">
                             <select style="display: none;">
-                                <option selected="selected">All Category</option>
-                                <option>watch</option>
-                                <option>mobile</option>
-                                <option>kid’s item</option>
-                            </select><div class="nice-select" tabindex="0"><span class="current">All Category</span><ul class="list"><li data-value="All Category" class="option selected">All Category</li><li data-value="watch" class="option">watch</li><li data-value="mobile" class="option">mobile</li><li data-value="kid’s item" class="option">kid’s item</li></ul></div>
+                                <option selected="selected">Categorias</option>
+                                <?php foreach ($categorias as $c){ ?>
+                                    <option value="<?= $c->id ?>"><?= $c->nome ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="nice-select" tabindex="0">
+                                <span class="current">Categorias</span>
+                                <ul class="list">
+                                    <li data-value="All Category" class="option selected">Todas</li>
+                                    <?php foreach ($categorias as $c){ ?>
+                                        <li data-value="<?= $c->nome ?>" class="option"><?= $c->nome ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                             <form>
-                                <input name="search" placeholder="Search Products Here....." type="search">
+                                <input name="search" placeholder="Pesquise produtos aqui....." type="search">
                                 <button class="btnn"><i class="ti-search"></i></button>
                             </form>
                         </div>

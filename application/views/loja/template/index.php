@@ -77,21 +77,21 @@
 							<div class="logo">
 								<a href="index.html"><img src="<?= base_url('public/images/logo2.png') ?>" alt="#"></a>
 							</div>
-							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:<?= $dados->telefone ?>"><?= $dados->telefone ?></a></span></p>
+							<p class="text">O Eshop. é uma aplicação de ecommerce, que permite a criação de uma loja virtual integrada com o gateway de pagamento PAGSEGURO.</p>
+							<p class="call">Alguma questão? Ligue agora!<span><a href="tel:<?= $dados->telefone ?>"><?= $dados->telefone ?></a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Information</h4>
+							<h4>Informações</h4>
 							<ul>
-								<li><a href="#">About Us</a></li>
+								<li><a href="#">Sobre</a></li>
 								<li><a href="#">Faq</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Help</a></li>
+								<li><a href="#">Termos e Condições</a></li>
+								<li><a href="#">Contato</a></li>
+								<li><a href="#">Ajuda</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -99,13 +99,13 @@
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Customer Service</h4>
+							<h4>Cliente</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Pagamentos</a></li>
+								<li><a href="#">Cash Back</a></li>
+								<li><a href="#">Devolução</a></li>
+								<li><a href="#">Envio</a></li>
+								<li><a href="#">Privacidade</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -113,7 +113,7 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>Contato</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
@@ -144,7 +144,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-12">
 							<div class="left">
-								<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+								<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved. Criado por <a href="https://github.com/rafinhaa" target="_blank">Rafinhaa</a></p>								
 							</div>
 						</div>
 						<div class="col-lg-6 col-12">
