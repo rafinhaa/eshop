@@ -33,6 +33,6 @@ class Migration_Status_pedido extends CI_Migration {
     }
 
     public function down() {
-
+        $this->dbforge->drop_table('status_pedido',TRUE);
     }
 }
