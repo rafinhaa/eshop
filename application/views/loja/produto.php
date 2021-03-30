@@ -47,8 +47,8 @@
                         <div class="content">
                             <ul>
                                 <li>Descrição<span><?= $produto->info ?></span></li>
-                                <li>Marca<span><a href="<?= base_url('marca/'.$marca->nome) ?>"><?= $marca->nome ?></a></span></li>
-                                <li>Categoria<span><a href="<?= base_url('categoria/'.$categoria->nome) ?>"><?= $categoria->nome ?></a></span></li>
+                                <li>Marca<span><a href="<?= base_url('marca/'.$marca->meta_link) ?>"><?= $marca->nome ?></a></span></li>
+                                <li>Categoria<span><a href="<?= base_url('categoria/'.$categoria->meta_link) ?>"><?= $categoria->nome ?></a></span></li>
                                 <?php if($produto->estoque == 1) {?>
                                     <li>Estoque<span><?= $produto->estoque ?></span></li>
                                 <?php } ?>

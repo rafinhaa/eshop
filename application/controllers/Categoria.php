@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produto extends CI_Controller {
+class Categoria extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('config_model');
 		$this->load->model('loja/loja_model');
-		$this->load->model('loja/produto_model');
+		$this->load->model('loja/categoria_model');
 	}
 
 	public function index($meta_link=NULL)	
@@ -19,14 +19,11 @@ class Produto extends CI_Controller {
 		$data['categorias'] = $this->loja_model->getCategorias();
 		$data['subcat'] = $this->loja_model->getSubCategoria();
 
-		$data['produto'] = $this->produto_model->getProdutoMeta($meta_link);
-		$data['fotos'] = $this->produto_model->getFotos($data['produto']->id);
-		$data['count_fotos'] = count($data['fotos']);
-		$data['marca'] = $this->produto_model->getMarca($data['produto']->id);
-		$data['categoria'] = $this->produto_model->getCategoria($data['produto']->id);
-
+		$id_categoria = $this->categoria_model->getCategoriaId($meta_link);
+		$data['produtos'] = $this->categoria_model->getProdutosCategorias($id_categoria->id);
+		
 		$data['header'] = 'loja/template/header2';
-		$data['view'] = 'loja/produto';
+		$data['view'] = 'loja/list/categorias';
 		
 		$this->load->view('loja/template/index', $data);
 	}
