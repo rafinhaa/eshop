@@ -22,7 +22,9 @@ class Produto extends CI_Controller {
 		$data['produto'] = $this->produto_model->getProdutoMeta($meta_link);
 		$data['fotos'] = $this->produto_model->getFotos($data['produto']->id);
 		$data['count_fotos'] = count($data['fotos']);
-
+		$data['marca'] = $this->produto_model->getMarca($data['produto']->id);
+		$data['categoria'] = $this->produto_model->getCategoria($data['produto']->id);
+		
 		$data['header'] = 'loja/template/header2';
 		$data['view'] = 'loja/produto';
 		

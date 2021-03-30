@@ -18,6 +18,25 @@ class Produto_model extends CI_Model
 			return $this->db->get('produtos_fotos')->result();
 		}
 	}
+	public function getMarca($id){
+		if($id){			
+			$this->db->select('m.nome');
+			$this->db->from('marcas as m');
+			$this->db->join('produtos as p','m.id = p.id_marca');
+			$this->db->where('p.id', $id);
+			return $this->db->get()->row();
+		}
+	}
+
+	public function getCategoria($id){
+		if($id){			
+			$this->db->select('c.nome');
+			$this->db->from('categorias as c');
+			$this->db->join('produtos as p','c.id = p.id_categoria');
+			$this->db->where('p.id', $id);
+			return $this->db->get()->row();
+		}
+	}
 }
 
 /* End of file .php */

@@ -46,9 +46,15 @@
                         <h2><?= $produto->nome ?></h2>
                         <div class="content">
                             <ul>
-                                <li>Sub Total<span>$330.00</span></li>
-                                <li>(+) Shipping<span>$10.00</span></li>
-                                <li class="last">Total<span>$340.00</span></li>
+                                <li>Descrição<span><?= $produto->info ?></span></li>
+                                <li>Marca<span><?= $marca->nome ?></span></li>
+                                <li>Categoria<span><?= $categoria->nome ?></span></li>
+                                <?php if($produto->estoque == 1) {?>
+                                    <li>Estoque<span><?= $produto->estoque ?></span></li>
+                                <?php } ?>
+                                <li>Sub Total<span><?= formataMoedaReal($produto->valor) ?></span></li>
+                                <li>(+) Frete<span><?= formataMoedaReal($produto->frete) ?></span></li>
+                                <li class="last">Total<span><?= formataMoedaReal($produto->total) ?></span></li>
                             </ul>
                         </div>
                     </div>
