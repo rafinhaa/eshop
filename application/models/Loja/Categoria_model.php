@@ -13,9 +13,9 @@ class Categoria_model extends CI_Model
 	public function getProdutosCategorias($id_categoria=NULL){
 		if($id_categoria){
 			$this->db->select('
-				p.nome as p_nome,
+				p.nome,
 				p.valor,
-				p.meta_link as p_metalink,
+				p.meta_link,
 				f.foto
 			');
 			$this->db->from('produtos as p');
