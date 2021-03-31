@@ -39,6 +39,7 @@ class Someclass
         $indice = 0;
         $return = [];
         $result = [];
+        $total = 0;
         foreach($_SESSION['carrinho'] as $id => $quant){
            $result = $CI->carrinho_model->getProduto($id);
            $return[$indice] = $result;
