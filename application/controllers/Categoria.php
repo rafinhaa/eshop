@@ -22,6 +22,12 @@ class Categoria extends CI_Controller {
 		$id_categoria = $this->categoria_model->getCategoriaId($meta_link);
 		$data['produtos'] = $this->categoria_model->getProdutosCategorias($id_categoria->id);
 		
+		$data['breadcrumb'] = array(
+			'home' => base_url('/'),
+			'categoria' => base_url('/categoria'),
+			'this_page' => $id_categoria->nome,
+		);
+		
 		$data['header'] = 'loja/template/header2';
 		$data['view'] = 'loja/list/categorias';
 		

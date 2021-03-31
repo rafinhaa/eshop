@@ -6,7 +6,7 @@ class Categoria_model extends CI_Model
 
 	public function getCategoriaId($categoria=NULL){
 		if($categoria){
-			$this->db->select('id');
+			$this->db->select('id,nome');
 			return  $this->db->get_where('categorias', array('meta_link' => $categoria))->row();
 		}
 	}

@@ -25,6 +25,12 @@ class Produto extends CI_Controller {
 		$data['marca'] = $this->produto_model->getMarca($data['produto']->id);
 		$data['categoria'] = $this->produto_model->getCategoria($data['produto']->id);
 
+		$data['breadcrumb'] = array(
+			'home' => base_url('/'),
+			'categoria' => base_url('/categoria'),
+			'this_page' => $data['produto']->nome,
+		);
+
 		$data['header'] = 'loja/template/header2';
 		$data['view'] = 'loja/produto';
 		
