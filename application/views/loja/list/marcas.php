@@ -6,7 +6,7 @@
                 <div class="bread-inner">
                     <ul class="bread-list">
                         <li><a href="<?= $breadcrumb['home'] ?>">Home<i class="ti-arrow-right"></i></a></li>
-                        <li><a href="<?= $breadcrumb['categoria'] ?>">Categorias<i class="ti-arrow-right"></i></a></li>
+                        <li><a href="<?= $breadcrumb['marcas'] ?>">Marcas<i class="ti-arrow-right"></i></a></li>
                         <li class="active"><a href="<?= $breadcrumb['this_page'] ?>"><?= $breadcrumb['this_page'] ?></a></li>
                     </ul>
                 </div>

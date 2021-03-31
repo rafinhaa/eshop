@@ -52,7 +52,7 @@
                     </div>
                     <!--/ End Search Form -->
                     <div class="mobile-nav"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt"></span><span class="slicknav_icon slicknav_no-text"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                                            <li class="active"><a href="#" role="menuitem" tabindex="-1">Home</a></li>
+                                            <li class="active"><a href="<?= base_url('/'); ?>" role="menuitem" tabindex="-1">Home</a></li>
                                             <li><a href="#" role="menuitem" tabindex="-1">Product</a></li>												
                                             <li><a href="#" role="menuitem" tabindex="-1">Service</a></li>
                                             <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#" tabindex="-1">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -154,7 +154,7 @@
                                 <div class="navbar-collapse">	
                                     <div class="nav-inner">	
                                         <ul class="nav main-menu menu navbar-nav">
-                                            <li class="active"><a href="#">Home</a></li>
+                                            <li class="active"><a href="<?= base_url('/'); ?>">Home</a></li>
                                             <li><a href="#">Product</a></li>												
                                             <li><a href="#">Service</a></li>
                                             <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>

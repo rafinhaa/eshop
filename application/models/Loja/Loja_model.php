@@ -11,6 +11,12 @@ class Loja_model extends CI_Model
 		$this->db->where(['ativo' => 1, 'id_categoriapai !=' => NULL]);
 		return $this->db->get('categorias')->result();
 	}
+
+	public function getMarcas(){
+		$this->db->where(['ativo' => 1]);
+		return $this->db->get('marcas')->result();
+	}
+
 	public function getProdutoDestaque($quantidade=NULL){
 		if($quantidade){
 			$this->db->select('p.*, f.foto');
