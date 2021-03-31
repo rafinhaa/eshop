@@ -29,22 +29,27 @@ class Carrinho	extends CI_Controller {
 
 		$this->load->view('loja/template/index', $data);
 	}
-	public function add()
+	public function adicionar()
 	{		
 		$this->someclass->add(1,5);
+		$this->someclass->add(2,1);
 	}
 
-	public function clearCart()
+	public function limparcarrinho()
 	{
 		$this->someclass->clearCart();
 	}
-	public function alter()
+	public function alterar()
 	{
 		$this->someclass->alterQuant(1,1);
 	}
-	public function clearItem()
+	public function apagarItem()
 	{
 		$this->someclass->del(1);
+	}
+	public function listar()
+	{
+		print_r($this->someclass->list());
 	}
 
 }

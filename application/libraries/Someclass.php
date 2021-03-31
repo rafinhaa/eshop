@@ -34,7 +34,19 @@ class Someclass
     }
     public function list()
 	{
-        echo 'list';
+        $CI =& get_instance();
+        $CI->load->model('loja/carrinho_model');
+        $indice = 0;
+        $return = [];
+        $result = [];
+        foreach($_SESSION['carrinho'] as $id => $quant){
+           $result = $CI->carrinho_model->getProduto($id);
+           $return[$indice] = $result;
+           $return[$indice]->quant = $quant;
+           $return[$indice]->subtotal = number_format($quant * $return[$indice]->valor,2,'.','');
+           $indice++;
+        }
+        return $return;
     }
     public function clearCart()
 	{
