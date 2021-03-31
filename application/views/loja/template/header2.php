@@ -89,7 +89,7 @@
                                     <?php } ?>
                                 </ul>
                             </div>
-                            <form>
+                            <form action="<?= base_url('busca') ?>" method="POST">
                                 <input name="search" placeholder="Pesquise produtos aqui....." type="search">
                                 <button class="btnn"><i class="ti-search"></i></button>
                             </form>
