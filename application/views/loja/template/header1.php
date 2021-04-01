@@ -89,8 +89,8 @@
                                 </div>
                                 <ul class="shopping-list">
                                     <?php foreach($produtos_cart as $p) { ?>
-                                        <li>
-                                            <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+                                        <li class="itemCart<?= $p->id ?>">
+                                            <a href="#" class="remove" title="Remove this item" data-id="<?= $p->id ?>"><i class="fa fa-remove"></i></a>
                                             <a class="cart-img" href="#"><img src="<?= base_url('upload/produtos/'.$p->foto) ?>" alt="#"></a>
                                             <h4><a href="<?= base_url('/produto/'.$p->meta_link) ?>"><?= $p->nome ?></a></h4>
                                             <p class="quantity"><?= $p->quant ?>x - <span class="amount"><?= formataMoedaReal($p->valor) ?></span></p>

@@ -33,7 +33,7 @@
 						</thead>
 						<tbody>
 							<?php foreach ($produtos as $p) { ?>
-								<tr>
+								<tr class="itemCartFin<?= $p->id ?>">
 									<td class="image" data-title="No"><img src="<?= base_url('/upload/produtos/'.$p->foto) ?>" alt="#"></td>
 									<td class="product-des" data-title="Description">
 										<p class="product-name"><a href="#"><?= $p->nome ?></a></p>
@@ -57,7 +57,7 @@
 										<!--/ End Input Order -->
 									</td>
 									<td class="total-amount" data-title="Total"><span><span><?= formataMoedaReal($p->subtotal) ?></span></td>
-									<td class="action" data-title="Remove"><a href="<?= base_url('/carrinho/apagar/'.$p->id) ?>"><i class="ti-trash remove-icon"></i></a></td>
+									<td class="action" data-title="Remove"><a href="#" class="removeCarrinhoFin" data-id="<?= $p->id ?>"><i class="ti-trash remove-icon"></i></a></td>
 								</tr>
 							<?php } ?>
 						</tbody>
@@ -92,9 +92,9 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Subtotal<span><?= formataMoedaReal($total) ?></span></li>
-										<li>Peso<span><?= $peso ?></span></li>
-										<li class="last">Total<span><?= formataMoedaReal($total) ?></span></li>
+										<li>Subtotal<span class="SubTotalFin"><?= formataMoedaReal($total) ?></span></li>
+										<li>Peso<span class="PesoFin"><?= $peso ?></span></li>
+										<li class="last">Total<span class="TotalFin"><?= formataMoedaReal($total) ?></span></li>
 									</ul>
 									<div class="button5">
 										<a href="#" class="btn">COMPRAR</a>

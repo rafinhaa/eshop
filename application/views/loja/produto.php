@@ -106,7 +106,7 @@
                     <div class="single-widget get-button">
                         <div class="content">
                             <div class="button">
-                                <a href="#" class="btn">ADICIONAR NO CARRINHO</a>
+                                <a href="#" data-id="<?= $produto->id ?>" class="btn btn-add-produto-cart">ADICIONAR NO CARRINHO</a>
                             </div>
                         </div>
                     </div>

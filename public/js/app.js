@@ -1,5 +1,51 @@
 var App = function(){
 
+    var delProdutoCarrinho = function(){
+        $('.remove').on('click', function (){
+            var id_produto = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: url + 'carrinho/apagar',
+                data: {id:id_produto},
+                dataType: 'json'
+            }).then(function(response){
+                if(response.erro == 0){
+                    $('.itemCart'+id_produto).remove();
+                    $('.total-count').html(response.count);
+                    $('.countItens').html(response.count + ' ITENS');
+                    $('.total-amount').html(response.total);
+                }else{
+                    alert(response.msg);
+                }
+            }, function(){
+                alert('Erro ao remover');
+            });
+        });
+    }
+
+    var delProdutoCarrinhoFin = function(){
+        $('.removeCarrinhoFin').on('click', function (){
+            var id_produto = $(this).attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: url + 'carrinho/apagar',
+                data: {id:id_produto},
+                dataType: 'json'
+            }).then(function(response){
+                if(response.erro == 0){
+                    $('.itemCartFin'+id_produto).remove();
+                    $('.PesoFin').html(response.peso);
+                    $('.TotalFin').html(response.total);
+                    $('.SubTotalFin').html(response.total);
+                }else{
+                    alert(response.msg);
+                }
+            }, function(){
+                alert('Erro ao remover');
+            });
+        });
+    }
+
     var addProdutoCarrinho = function(){
         $('.btn-add-produto-cart').on('click', function (){
             var id_produto = $(this).attr('data-id');
@@ -14,9 +60,9 @@ var App = function(){
                     $('.countItens').html(response.count + ' ITENS');
                     $('.total-amount').html(response.total);
                     var newItem = 
-                    '<li>'+
+                    '<li class="itemCart' + response.item['id'] +'">'+
                         '<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>'+
-                        '<a class="cart-img" href="#"><img src="'+ url + 'upload/produtos/' + response.item['foto'] +'" alt="#"></a>'+
+                        '<a class="cart-img" href="'+ url + '/produto/' + response.item['meta_link'] +'"><img src="'+ url + 'upload/produtos/' + response.item['foto'] +'" alt="#"></a>'+
                         '<h4><a href="">'+ response.item['nome'] +'</a></h4>'+
                         '<p class="quantity">1x - <span class="amount">'+ response.item['valor'] +'</span></p>'+
                     '</li>';     
@@ -32,6 +78,8 @@ var App = function(){
     return {
         init: function(){
             addProdutoCarrinho();
+            delProdutoCarrinho();
+            delProdutoCarrinhoFin();
         }
     }
 

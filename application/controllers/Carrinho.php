@@ -45,13 +45,15 @@ class Carrinho	extends CI_Controller {
 
 			$produtos = $this->someclass->list();
 			$total = 0;	
+			$peso = 0;
 			//echo '<pre>'; print_r($data['produtos']); die;
 	
 			foreach ($produtos as $p){
 				$total += ($p->valor * $p->quant);
+				$peso += $p->peso;
 			}
 			$json = ['erro' => 0,
-					 'msg' => 'Produto adicionado ao carrinho com sucesso',
+					 'msg' => 'Produto adicionado ao carrinho com sucesso!',
 					 'total' => formataMoedaReal($total),
 					 'count' => count($produtos),
 					 'item' => $this->someclass->listOne($id)	
@@ -69,11 +71,27 @@ class Carrinho	extends CI_Controller {
 	{
 		$this->someclass->alterQuant(1,1);
 	}
-	public function apagar($id)
+	public function apagar($id=NULL)
 	{	
-		if($id){
+		if($id || $this->input->post('id')){
+			if(is_null($id)){
+				$id = $this->input->post('id');
+			}
 			$this->someclass->del($id);
-			redirect('carrinho');
+
+			$produtos = $this->someclass->list();
+			$total = 0;	
+			//echo '<pre>'; print_r($data['produtos']); die;
+	
+			foreach ($produtos as $p){
+				$total += ($p->valor * $p->quant);
+			}
+			$json = ['erro' => 0,
+					 'msg' => 'Produto removido do carrinho com sucesso!',
+					 'total' => formataMoedaReal($total),
+					 'count' => count($produtos)
+					];
+			echo json_encode($json);			
 		}		
 	}
 }
