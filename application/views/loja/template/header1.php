@@ -80,11 +80,11 @@
                             <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar shopping">
-                            <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count"><?= count($produtos_cart) ?></span></a>
+                            <a href="<?= base_url('carrinho') ?>" class="single-icon"><i class="ti-bag"></i> <span class="total-count"><?= count($produtos_cart) ?></span></a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
-                                    <span><?= count($produtos_cart) ?> Itens</span>
+                                    <span class="countItens"><?= count($produtos_cart) ?> Itens</span>
                                     <a href="<?= base_url('carrinho') ?>">Ver carrinho</a>
                                 </div>
                                 <ul class="shopping-list">

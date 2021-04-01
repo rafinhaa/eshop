@@ -16,6 +16,7 @@ class Carrinho	extends CI_Controller {
 		$data['categorias'] = $this->loja_model->getCategorias();
 		$data['subcat'] = $this->loja_model->getSubCategoria();	
 		$data['produtos'] = $this->someclass->list();
+		$data['produtos_cart'] = $data['produtos'];
 		$data['total'] = 0;
 		$data['peso'] = 0;
 
@@ -41,7 +42,20 @@ class Carrinho	extends CI_Controller {
 		if($this->input->post('id')){
 			$id = $this->input->post('id');
 			$this->someclass->add($id,1);
-			$json = ['erro' => 0, 'msg' => 'Produto adicionado ao carrinho com sucesso'];
+
+			$produtos = $this->someclass->list();
+			$total = 0;	
+			//echo '<pre>'; print_r($data['produtos']); die;
+	
+			foreach ($produtos as $p){
+				$total += ($p->valor * $p->quant);
+			}
+			$json = ['erro' => 0,
+					 'msg' => 'Produto adicionado ao carrinho com sucesso',
+					 'total' => formataMoedaReal($total),
+					 'count' => count($produtos),
+					 'item' => $this->someclass->listOne($id)	
+					];
 			echo json_encode($json);
 			//return json_encode($json);
 		}		
@@ -62,5 +76,4 @@ class Carrinho	extends CI_Controller {
 			redirect('carrinho');
 		}		
 	}
-
 }

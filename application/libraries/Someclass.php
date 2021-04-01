@@ -53,4 +53,16 @@ class Someclass
 	{
         unset($_SESSION['carrinho']);
     }
+    public function listOne($id)
+	{
+        $CI =& get_instance();
+        $CI->load->model('loja/carrinho_model');
+        $indice = 0;
+        $return = [];
+        $result = [];
+        $total = 0;
+           $result = $CI->carrinho_model->getProduto($id);
+           $result->valor = formataMoedaReal($result->valor);
+        return $result;
+    }
 }
