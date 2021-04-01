@@ -38,8 +38,13 @@ class Carrinho	extends CI_Controller {
 	}
 	public function adicionar()
 	{		
-		$this->someclass->add(1,5);
-		$this->someclass->add(2,1);
+		if($this->input->post('id')){
+			$id = $this->input->post('id');
+			$this->someclass->add($id,1);
+			$json = ['erro' => 0, 'msg' => 'Produto adicionado ao carrinho com sucesso'];
+			echo json_encode($json);
+			//return json_encode($json);
+		}		
 	}
 
 	public function limparcarrinho()

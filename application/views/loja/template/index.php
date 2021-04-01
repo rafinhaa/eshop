@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="pt-br">
 <head>
 	<!-- Meta Tag -->
     <meta charset="utf-8">
@@ -41,7 +41,9 @@
 	<link rel="stylesheet" href="<?= base_url('public/css-store/reset.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('public/css-store/style.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/css-store/responsive.css') ?>">
-
+	<script type="text/javascript">
+		var url = "<?= base_url('/') ?>";
+	</script>
 	
 	
 </head>
