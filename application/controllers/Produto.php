@@ -8,6 +8,7 @@ class Produto extends CI_Controller {
 		$this->load->model('config_model');
 		$this->load->model('loja/loja_model');
 		$this->load->model('loja/produto_model');
+		$this->load->library('someclass');
 	}
 
 	public function index($meta_link=NULL)	
@@ -24,6 +25,13 @@ class Produto extends CI_Controller {
 		$data['count_fotos'] = count($data['fotos']);
 		$data['marca'] = $this->produto_model->getMarca($data['produto']->id);
 		$data['categoria'] = $this->produto_model->getCategoria($data['produto']->id);
+
+		$data['produtos_cart'] = $this->someclass->list();
+		$data['total'] = 0;
+		//echo '<pre>'; print_r($data['produtos_cart']); die;
+		foreach ($data['produtos_cart'] as $p){
+			$data['total'] += ($p->valor * $p->quant);
+		}
 
 		$data['breadcrumb'] = array(
 			'home' => base_url('/'),

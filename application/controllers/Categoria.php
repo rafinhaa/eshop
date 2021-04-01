@@ -8,6 +8,7 @@ class Categoria extends CI_Controller {
 		$this->load->model('config_model');
 		$this->load->model('loja/loja_model');
 		$this->load->model('loja/categoria_model');
+		this->load->library('someclass');
 	}
 
 	public function index($meta_link=NULL)	
@@ -22,6 +23,13 @@ class Categoria extends CI_Controller {
 		$id_categoria = $this->categoria_model->getCategoriaId($meta_link);
 		$data['produtos'] = $this->categoria_model->getProdutosCategorias($id_categoria->id);
 		
+		$data['produtos_cart'] = $this->someclass->list();
+		$data['total'] = 0;
+		//echo '<pre>'; print_r($data['produtos_cart']); die;
+		foreach ($data['produtos_cart'] as $p){
+			$data['total'] += ($p->valor * $p->quant);
+		}
+
 		$data['breadcrumb'] = array(
 			'home' => base_url('/'),
 			'categoria' => base_url('/categoria'),

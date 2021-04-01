@@ -7,7 +7,7 @@ class Carrinho	extends CI_Controller {
 		parent::__construct();
 		$this->load->model('config_model');
 		$this->load->model('loja/loja_model');
-		$this->load->library('someclass');
+		$this->load->library('someclass');		
 	}
 
 	public function index()

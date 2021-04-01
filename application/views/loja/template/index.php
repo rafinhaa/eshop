@@ -189,5 +189,7 @@
 <script src="<?= base_url('public/js-store/easing.js') ?>"></script>
 <!-- Active JS -->
 <script src="<?= base_url('public/js-store/active.js') ?>"></script>
+<!-- Cart -->
+<script src="<?= base_url('public/js/app.js') ?>"></script>
 </body>
 </html>
