@@ -1,5 +1,53 @@
 var App = function(){
 
+    var alterProdutoCarrinho = function(){
+        $('.btn-plus').on('click', function (){
+            var id_produto = $(this).attr('data-field');
+            var inputName = 'input[name='+id_produto+']';
+            var valor = $(inputName).val();
+            $.ajax({
+                type: 'POST',
+                url: url + 'carrinho/alterar',
+                data: {id:id_produto,value:valor},
+                dataType: 'json'
+            }).then(function(response){
+                if(response.erro == 0){
+                    $('.sub-total').html(response.totalProduto);                    
+                    $('.PesoFin').html(response.peso);
+                    $('.TotalFin').html(response.total);
+                    $('.SubTotalFin').html(response.total);
+                }else{
+                    alert(response.msg);
+                }
+            }, function(){
+                alert('Erro ao remover');
+            });
+        });
+
+        $('.btn-minus').on('click', function (){
+            var id_produto = $(this).attr('data-field');
+            var inputName = 'input[name='+id_produto+']';
+            var valor = $(inputName).val();
+            $.ajax({
+                type: 'POST',
+                url: url + 'carrinho/alterar',
+                data: {id:id_produto,value:valor},
+                dataType: 'json'
+            }).then(function(response){
+                if(response.erro == 0){
+                    $('.sub-total').html(response.totalProduto);                    
+                    $('.PesoFin').html(response.peso);
+                    $('.TotalFin').html(response.total);
+                    $('.SubTotalFin').html(response.total);
+                }else{
+                    alert(response.msg);
+                }
+            }, function(){
+                alert('Erro ao remover');
+            });
+        });
+    }
+
     var delProdutoCarrinho = function(){
         $('.remove').on('click', function (){
             var id_produto = $(this).attr('data-id');
@@ -80,6 +128,7 @@ var App = function(){
             addProdutoCarrinho();
             delProdutoCarrinho();
             delProdutoCarrinhoFin();
+            alterProdutoCarrinho();
         }
     }
 

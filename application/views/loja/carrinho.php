@@ -43,20 +43,20 @@
 									<td class="qty" data-title="Qty"><!-- Input Order -->
 										<div class="input-group">
 											<div class="button minus">
-												<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="<?= $p->id ?>">
+												<button type="button" class="btn btn-primary btn-number btn-minus" disabled="disabled" data-type="minus" data-field="<?= $p->id ?>">
 													<i class="ti-minus"></i>
 												</button>
 											</div>
 											<input type="text" name="<?= $p->id ?>" class="input-number"  data-min="1" data-max="100" value="<?= $p->quant ?>">
 											<div class="button plus">
-												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="<?= $p->id ?>">
+												<a href="#" type="button" class="btn btn-primary btn-number btn-plus" data-type="plus" data-field="<?= $p->id ?>">
 													<i class="ti-plus"></i>
-												</button>
+												</a>
 											</div>
 										</div>
 										<!--/ End Input Order -->
 									</td>
-									<td class="total-amount" data-title="Total"><span><span><?= formataMoedaReal($p->subtotal) ?></span></td>
+									<td class="total-amount" data-title="Total"><span><span class="sub-total"><?= formataMoedaReal($p->subtotal) ?></span></td>
 									<td class="action" data-title="Remove"><a href="#" class="removeCarrinhoFin" data-id="<?= $p->id ?>"><i class="ti-trash remove-icon"></i></a></td>
 								</tr>
 							<?php } ?>

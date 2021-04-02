@@ -69,7 +69,33 @@ class Carrinho	extends CI_Controller {
 	}
 	public function alterar()
 	{
-		$this->someclass->alterQuant(1,1);
+		if($this->input->post('id')){
+			$id = $this->input->post('id');			
+			$quant = $this->input->post('value');			
+			$this->someclass->alterQuant($id,$quant);
+
+			$produtos = $this->someclass->list();
+			$totalProduto = 0;	
+			$total = 0;	
+			$peso = 0;
+			//echo '<pre>'; print_r($data['produtos']); die;
+	
+			foreach ($produtos as $p){
+				if($p->id == $id){
+					$totalProduto += ($p->valor * $p->quant);					
+				}
+				$total += ($p->valor * $p->quant);					
+				$peso += $p->peso;	
+			}
+			$json = ['erro' => 0,
+					 'msg' => 'Produto do carrinho alterado com sucesso!',
+					 'total' => formataMoedaReal($total),
+					 'totalProduto' => formataMoedaReal($totalProduto),
+					 'count' => count($produtos)
+					];
+			echo json_encode($json);
+			//return json_encode($json);
+		}				
 	}
 	public function apagar($id=NULL)
 	{	
