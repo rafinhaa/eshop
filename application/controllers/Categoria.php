@@ -8,7 +8,7 @@ class Categoria extends CI_Controller {
 		$this->load->model('config_model');
 		$this->load->model('loja/loja_model');
 		$this->load->model('loja/categoria_model');
-		this->load->library('someclass');
+		$this->load->library('someclass');
 	}
 
 	public function index($meta_link=NULL)	
@@ -19,6 +19,7 @@ class Categoria extends CI_Controller {
 		$data['dados'] = $this->config_model->getConfig();
 		$data['categorias'] = $this->loja_model->getCategorias();
 		$data['subcat'] = $this->loja_model->getSubCategoria();
+		$data['marcas'] = $this->loja_model->getMarcas();
 
 		$id_categoria = $this->categoria_model->getCategoriaId($meta_link);
 		$data['produtos'] = $this->categoria_model->getProdutosCategorias($id_categoria->id);

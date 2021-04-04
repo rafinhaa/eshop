@@ -45,4 +45,25 @@ class Produto extends CI_Controller {
 		$this->load->view('loja/template/index', $data);
 	}
 
+	public function calcularFrete(){
+		$url  = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?';
+		$url .= 'nCdEmpresa=';
+		$url .= '&sDsSenha+=';
+		$url .= '&nCdServico=';
+		$url .= '&sCepOrigem=';
+		$url .= '&sCepDestino=';
+		$url .= '&nVlPeso=';
+		$url .= '&=nCdFormato';
+		$url .= '&=nVlComprimento';
+		$url .= '&=nVlAltura';
+		$url .= '&=nVlLargura';
+		$url .= '&=nVlDiametro';
+		$url .= '&=sCdMaoPropria';
+		$url .= '&=nVlValorDeclarado';
+		$url .= '&=sCdAvisoRecebimento';
+
+		echo $url;
+
+	}
+	
 }

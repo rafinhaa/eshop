@@ -8,6 +8,7 @@ class Busca extends CI_Controller {
 		$this->load->model('config_model');
 		$this->load->model('loja/loja_model');
 		$this->load->model('loja/busca_model');
+		$this->load->library('someclass');
 	}
 
 	public function index()	
@@ -22,6 +23,13 @@ class Busca extends CI_Controller {
 
 		$data['produtos'] = $this->busca_model->getProdutoSearch($this->input->post('search'));
 		
+		$data['produtos_cart'] = $this->someclass->list();
+		$data['total'] = 0;
+		//echo '<pre>'; print_r($data['produtos_cart']); die;
+		foreach ($data['produtos_cart'] as $p){
+			$data['total'] += ($p->valor * $p->quant);
+		}
+
 		$data['breadcrumb'] = array(
 			'home' => base_url('/'),
 			'this_page' => $this->input->post('search'),

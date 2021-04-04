@@ -125,7 +125,7 @@
                             <h3 class="title">Marcas</h3>
                             <ul class="categor-list">
                                 <?php foreach ($marcas as $m) { ?>
-                                    <li><a href="<?= base_url('/marcas/'.$m->meta_link) ?>"><?= $m->nome ?></a></li>
+                                    <li><a href="<?= base_url('/marca/'.$m->meta_link) ?>"><?= $m->nome ?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>
