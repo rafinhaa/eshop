@@ -63,22 +63,21 @@
                     <div class="single-widget">
                         <h2>CEP</h2>
                         <div class="content">
-                            <ul>
+                            <ul class="calculoDeCEP">
                                 <li>
                                     <div class="checkout-form">
-                                        <form class="form">
+                                        <div class="form">
                                             <div class="row">                                                
                                                 <div class="form-group">
-                                                    <input type="text" name="name" placeholder="CEP" required="required" style="margin-left: 15px;">
+                                                    <input type="text" class="cep" name="cep" placeholder="CEP" required="required" style="margin-left: 15px;">
                                                 </div>
                                                 <div class="button" style="margin-left: 15px;">
-                                                    <button class="btn btn-calcular-frete-produto">CALCULAR</button>
+                                                    <button class="btn btn-calcular-frete-produto" data-field="<?= $produto->id ?>">CALCULAR</button>
                                                 </div>                                                
                                             </div>
-                                        </form>
-                                        
+                                        </div>                                        
                                     </div>   
-                                </li>
+                                </li>                                
                             </ul>
                         </div>
                     </div>

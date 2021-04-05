@@ -193,5 +193,9 @@
 <script src="<?= base_url('public/js-store/active.js') ?>"></script>
 <!-- Cart -->
 <script src="<?= base_url('public/js/app.js') ?>"></script>
+<!-- jQuery Mask -->
+<script src="<?= base_url('/public/dist/jquery-mask-plugin/jquery.mask.min.js') ?>"></script>
+<!-- jQuery Mask -->
+<script src="<?= base_url('public/js/custom_front.js') ?>"></script>
 </body>
 </html>

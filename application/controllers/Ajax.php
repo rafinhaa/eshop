@@ -46,6 +46,8 @@ class Ajax extends CI_Controller {
 		$xml = json_encode($xml);
 
 		$result = json_decode($xml);
+		$result->cServico->Valor = 'R$ ' . $result->cServico->Valor;
+		$result->cServico->erro = 0;
 		echo json_encode($result);
 	}
 	

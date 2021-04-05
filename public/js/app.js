@@ -1,5 +1,28 @@
 var App = function(){
 
+    var calcularFreteCEP = function(){
+        $('.btn-calcular-frete-produto').on('click', function (){
+            var id_produto = $(this).attr('data-field');
+            var inputValue = $('.cep').val();
+            $.ajax({
+                type: 'POST',
+                url: url + 'ajax/calcularFrete',
+                data: {id:id_produto,cep:inputValue},
+                dataType: 'json'
+            }).then(function(response){
+                if(response['cServico']['erro'] == 0){
+                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+'</span></li>';
+                    $('.calculoDeCEP').append(newItem);
+                }else{
+                    var newItem = '<li>'+response.msg+'</li>';
+                    $('.calculoDeCEP').append(newItem);
+                }
+            }, function(){
+                var newItem = '<li>Erro ao consultar o CEP</li>';
+                $('.calculoDeCEP').append(newItem);
+            });
+        });
+    }
     var alterProdutoCarrinho = function(){
         $('.btn-plus').on('click', function (){
             var id_produto = $(this).attr('data-field');
@@ -129,6 +152,7 @@ var App = function(){
             delProdutoCarrinho();
             delProdutoCarrinhoFin();
             alterProdutoCarrinho();
+            calcularFreteCEP();
         }
     }
 
