@@ -6,14 +6,28 @@ class Ajax extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('loja/produto_model');
+		$this->load->model('loja/ajax_model');
 	}
 
 	public function calcularFrete(){
+
+		if($this->input->post('cep') && $this->input->post('id')){
+			$cep = $this->input->post('cep');
+			$id  = $this->input->post('id');
+			if(!preg_match('/[0-9]{5}-[0-9]{3}/',$cep)){
+				$return['erro'] = 15;
+				$return['msg'] = 'Formato do CEP está inválido!';
+				echo json_encode($return);
+				die;
+			}
+		}
+		$config = $this->ajax_model->getParamEnvio();
+
 		$url  = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?';
 		$url .= 'nCdServico=04014';
 		$url .= '&nCdEmpresa=';
 		$url .= '&sDsSenha=';
-		$url .= '&sCepDestino=88801000';
+		$url .= '&sCepDestino=' .$config->cep_origem;
 		$url .= '&sCepOrigem=88820000';
 		$url .= '&nVlAltura=10';
 		$url .= '&nVlLargura=11';
