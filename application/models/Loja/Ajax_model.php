@@ -8,6 +8,11 @@ class Ajax_model extends CI_Model
 		$this->db->limit(1);
 		return $this->db->get('config_correios')->row();
 	}
+	public function getProduto($id){
+		$this->db->where(['id' => $id, 'ativo' => 1]);
+		$this->db->limit(1);
+		return $this->db->get('produtos')->row();
+	}
 }
 
 /* End of file .php */

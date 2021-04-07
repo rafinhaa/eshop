@@ -74,7 +74,7 @@
 								<div class="left">
 									<div class="coupon">
 											<form action="#" target="_blank">
-												<input name="cep" placeholder="Digite seu CEP">
+												<input class="cep" name="cep" placeholder="Digite seu CEP">
 												<button class="btn">Calcular</button>
 											</form>
 									</div></br>

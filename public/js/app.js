@@ -10,8 +10,9 @@ var App = function(){
                 data: {id:id_produto,cep:inputValue},
                 dataType: 'json'
             }).then(function(response){
+                $('.calculoDeCEP').html('');
                 if(response['cServico']['erro'] == 0){
-                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+'</span></li>';
+                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+ ' - Entrega: '+ response['cServico']['PrazoEntrega'] +' dias úteis</span></li>'; 
                     $('.calculoDeCEP').append(newItem);
                 }else{
                     var newItem = '<li>'+response.msg+'</li>';

@@ -175,17 +175,18 @@ CREATE TABLE IF NOT EXISTS `marcas` (
   `nome` varchar(255) NOT NULL,
   `ativo` varchar(255) NOT NULL,
   `ultima_atualizacao` varchar(255) DEFAULT NULL,
+  `meta_link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela lojaweb.marcas: 4 rows
 DELETE FROM `marcas`;
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
-INSERT INTO `marcas` (`id`, `nome`, `ativo`, `ultima_atualizacao`) VALUES
-	(1, 'Philco', '1', 'Tue, 02 Feb 21 01:01:11 +0100'),
-	(2, 'Positivo', '0', 'Tue, 02 Feb 21 01:01:15 +0100'),
-	(3, 'Intel', '1', 'Tue, 02 Feb 21 01:00:21 +0100'),
-	(4, 'AMD', '0', 'Tue, 02 Feb 21 01:01:21 +0100');
+INSERT INTO `marcas` (`id`, `nome`, `ativo`, `ultima_atualizacao`, `meta_link`) VALUES
+	(1, 'Philco', '1', 'Tue, 02 Feb 21 01:01:11 +0100', 'Philco'),
+	(2, 'Positivo', '0', 'Tue, 02 Feb 21 01:01:15 +0100', 'Positivo'),
+	(3, 'Intel', '1', 'Tue, 02 Feb 21 01:00:21 +0100', 'Intel'),
+	(4, 'AMD', '0', 'Tue, 02 Feb 21 01:01:21 +0100', 'AMD');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.migrations
@@ -198,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`version`) VALUES
-	(2);
+	(3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.pedidos
@@ -283,18 +284,18 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 DELETE FROM `produtos`;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
 INSERT INTO `produtos` (`id`, `id_marca`, `id_categoria`, `nome`, `cod_produto`, `destaque`, `ativo`, `controlar_estoque`, `estoque`, `data_cadastro`, `ultima_atualizacao`, `peso`, `altura`, `largura`, `comprimento`, `info`, `meta_link`, `valor`) VALUES
-	(22, 1, 29, 'Samsung Galaxy Note 8 256G Preto', '231545487', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, 'Informação do produto', 'samsung-galaxy-note-8-256g-preto', 40),
-	(23, 1, 29, 'Hard Disk 2tb Sata3', '47154931', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, '25', 'hard-disk-2tb-sata3', 5),
-	(20, 1, 29, 'Notebook Samsung Essentials E30', '56489789', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 35, 35, 35, 'Informações do produto', 'notebook-samsung-essentials-e30', 17),
-	(21, 1, 29, 'iphone X 256G Branco', '8975641321', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 17, 18, 18, 'Informações do produto', 'iphone-x-256g-branco', 50),
-	(18, 1, 29, 'Cafeteira Expresso 3 Em 1', '4dsa564a', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, '25', 'cafeteira-expresso-3-em-1', 6),
-	(19, 1, 29, 'Notebook Samsung Expert X22', '54564897', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 25, 25, 25, 'Informações do produto', 'notebook-samsung-expert-x22', 19),
-	(17, 1, 29, 'Cafeteira Elétrica Cadence Single', '564654564', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 20, 20, 20, '20', 'cafeteira-eletrica-cadence-single', 2),
-	(16, 1, 29, 'Secador de Cabelos', '564564', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 15, 15, 15, '15', 'secador-de-cabelos', 1),
-	(15, 1, 29, 'SSD 240Gb SanDisk® PLUS', '564654', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 15, 15, 15, '15', 'ssd-240gb-sandisk-plus', 4),
-	(14, 1, 29, 'Smartphone Samsung Galaxy S9', '564654', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 10, 25, 25, '25', 'smartphone-samsung-galaxy-s9', 30),
-	(13, 1, 29, 'Notebook Acer Es1-572-51nj', '564564', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 40, 13, 40, '40', 'notebook-acer-es1-572-51nj', 16),
-	(12, 1, 29, 'Monitor Samsung 27', '00021564', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 50, 15, 50, '50', 'monitor-samsung-27', 15),
+	(22, 1, 34, 'Samsung Galaxy Note 8 256G Preto', '231545487', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, 'Informação do produto', 'samsung-galaxy-note-8-256g-preto', 40),
+	(23, 1, 34, 'Hard Disk 2tb Sata3', '47154931', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, '25', 'hard-disk-2tb-sata3', 5),
+	(20, 1, 34, 'Notebook Samsung Essentials E30', '56489789', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 35, 35, 35, 'Informações do produto', 'notebook-samsung-essentials-e30', 17),
+	(21, 1, 34, 'iphone X 256G Branco', '8975641321', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 17, 18, 18, 'Informações do produto', 'iphone-x-256g-branco', 50),
+	(18, 1, 34, 'Cafeteira Expresso 3 Em 1', '4dsa564a', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 25, 25, 25, '25', 'cafeteira-expresso-3-em-1', 6),
+	(19, 1, 34, 'Notebook Samsung Expert X22', '54564897', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 25, 25, 25, 'Informações do produto', 'notebook-samsung-expert-x22', 19),
+	(17, 1, 34, 'Cafeteira Elétrica Cadence Single', '564654564', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 20, 20, 20, '20', 'cafeteira-eletrica-cadence-single', 2),
+	(16, 1, 30, 'Secador de Cabelos', '564564', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 15, 15, 15, '15', 'secador-de-cabelos', 1),
+	(15, 1, 31, 'SSD 240Gb SanDisk® PLUS', '564654', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 15, 15, 15, '15', 'ssd-240gb-sandisk-plus', 4),
+	(14, 1, 32, 'Smartphone Samsung Galaxy S9', '564654', 1, 1, 0, 0, '2018-10-01', 0.00, 1, 10, 25, 25, '25', 'smartphone-samsung-galaxy-s9', 30),
+	(13, 1, 33, 'Notebook Acer Es1-572-51nj', '564564', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 40, 13, 40, '40', 'notebook-acer-es1-572-51nj', 16),
+	(12, 1, 34, 'Monitor Samsung 27', '00021564', 1, 1, 0, 0, '2018-10-01', 0.00, 2, 50, 15, 50, '50', 'monitor-samsung-27', 15),
 	(1, 1, 29, 'Computador Intel Core i5, 16G, SSD 500GB', '1', 1, 1, 1, 2, '2018-05-15', 0.00, 1, 45, 30, 50, '50', 'computador-intel-core-i5-16g-ssd-500gb', 599),
 	(11, 1, 29, 'Iphone 6 64G Cinza Espacial', '564564', 1, 1, 0, 0, '2018-05-15', 0.00, 1, 10, 11, 16, '15', 'iphone-6-64g-cinza-espacial', 18),
 	(2, 1, 29, 'Smart TV LED 32” HD LG', '00002', 1, 1, 0, 0, '2018-05-15', 0.00, 4, 60, 30, 90, '90', 'smart-tv-led-32-hd-lg', 10),
@@ -309,15 +310,16 @@ CREATE TABLE IF NOT EXISTS `produtos_fotos` (
   `foto` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fotos_produtos_id_fk` (`id_produto`)
-) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela lojaweb.produtos_fotos: 16 rows
+-- Copiando dados para a tabela lojaweb.produtos_fotos: 17 rows
 DELETE FROM `produtos_fotos`;
 /*!40000 ALTER TABLE `produtos_fotos` DISABLE KEYS */;
 INSERT INTO `produtos_fotos` (`id`, `id_produto`, `foto`) VALUES
 	(102, 12, '05.jpg'),
 	(114, 1, '02.jpg'),
 	(104, 10, '01.jpg'),
+	(115, 15, '09.jpg'),
 	(98, 16, '09.jpg'),
 	(101, 13, '06.jpg'),
 	(99, 15, '08.jpg'),
@@ -399,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1617025927, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1617212241, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.users_groups
