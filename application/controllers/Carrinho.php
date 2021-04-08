@@ -10,6 +10,11 @@ class Carrinho	extends CI_Controller {
 		$this->load->library('someclass');		
 	}
 
+	public function teste(){
+        $maior = $this->someclass->getMaiorProduto();
+        print_r($maior);
+    }
+
 	public function index()
 	{		
 		$data['dados'] = $this->config_model->getConfig();
