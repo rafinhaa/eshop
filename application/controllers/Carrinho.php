@@ -125,7 +125,7 @@ class Carrinho	extends CI_Controller {
 	public function calculaFreteCarrinho(){
 		$this->load->model('loja/ajax_model');
 
-		if($this->input->post('cep') && $this->input->post('id')){
+		if($this->input->post('cep')){
 			$cep = $this->input->post('cep');
 			$id  = $this->input->post('id');
 			if(!preg_match('/[0-9]{5}-[0-9]{3}/',$cep)){
@@ -163,5 +163,9 @@ class Carrinho	extends CI_Controller {
 		
 
 		$result = json_decode($xml);
+		$new_value = number_format(formataDecimal($result->cServico->Valor)) + number_format($config->somar_frete);
+		$result->cServico->Valor = formataMoedaReal($new_value);
+		$result->cServico->erro = 0;
+		echo json_encode($result);
 	}
 }

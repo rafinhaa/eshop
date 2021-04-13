@@ -73,10 +73,10 @@
 							<div class="col-lg-8 col-md-5 col-12">
 								<div class="left">
 									<div class="coupon">
-											<form action="#" target="_blank">
+											<div class="form">
 												<input class="cep" name="cep" placeholder="Digite seu CEP">
 												<button class="btn btn-calcular-frete-carrinho">Calcular</button>
-											</form>
+											</div>
 									</div></br>
 									<div class="coupon">
 										<form action="#" target="_blank">
@@ -84,14 +84,11 @@
 											<button class="btn">Aplicar</button>
 										</form>
 									</div>
-									<div class="checkbox">
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-									</div>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
-									<ul>
+									<ul class="calculoDeCEP">
 										<li>Subtotal<span class="SubTotalFin"><?= formataMoedaReal($total) ?></span></li>
 										<li>Peso<span class="PesoFin"><?= $peso ?></span></li>
 										<li class="last">Total<span class="TotalFin"><?= formataMoedaReal($total) ?></span></li>

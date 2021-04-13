@@ -3,23 +3,26 @@ var App = function(){
     var calcularFreteCarrinho = function(){
         $('.btn-calcular-frete-carrinho').on('click', function (){
             var inputValue = $('.cep').val();
+            var totalValue = parseFloat($('.SubTotalFin').text().substring(3).replace(",", "."));
             $.ajax({
                 type: 'POST',
-                url: url + 'ajax/calcularFreteCarrinho',
+                url: url + 'carrinho/calculaFreteCarrinho',
                 data: {cep:inputValue},
                 dataType: 'json'
             }).then(function(response){
-                $('.calculoDeCEP').html('');
                 if(response['cServico']['erro'] == 0){
                     var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+ ' - Entrega: '+ response['cServico']['PrazoEntrega'] +' dias úteis</span></li>'; 
                     $('.calculoDeCEP').append(newItem);
+                    var newvalue = response['cServico']['Valor'].replace(".", ",");
+                    var newItem2 = '<li class="last">Total + Frete<span>'+(newvalue+totalValue)+'</span></li>'; 
+                    $('.calculoDeCEP').append(newItem2);                    
                 }else{
                     var newItem = '<li>'+response.msg+'</li>';
                     $('.calculoDeCEP').append(newItem);
                 }
             }, function(){
                 var newItem = '<li>Erro ao consultar o CEP</li>';
-                $('.calculoDeCEP').append(newItem);
+                $('.last').append(newItem);
             });
         });
     }
