@@ -1,5 +1,29 @@
 var App = function(){
 
+    var calcularFreteCarrinho = function(){
+        $('.btn-calcular-frete-carrinho').on('click', function (){
+            var inputValue = $('.cep').val();
+            $.ajax({
+                type: 'POST',
+                url: url + 'ajax/calcularFreteCarrinho',
+                data: {cep:inputValue},
+                dataType: 'json'
+            }).then(function(response){
+                $('.calculoDeCEP').html('');
+                if(response['cServico']['erro'] == 0){
+                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+ ' - Entrega: '+ response['cServico']['PrazoEntrega'] +' dias úteis</span></li>'; 
+                    $('.calculoDeCEP').append(newItem);
+                }else{
+                    var newItem = '<li>'+response.msg+'</li>';
+                    $('.calculoDeCEP').append(newItem);
+                }
+            }, function(){
+                var newItem = '<li>Erro ao consultar o CEP</li>';
+                $('.calculoDeCEP').append(newItem);
+            });
+        });
+    }
+
     var calcularFreteCEP = function(){
         $('.btn-calcular-frete-produto').on('click', function (){
             var id_produto = $(this).attr('data-field');
@@ -36,7 +60,7 @@ var App = function(){
                 dataType: 'json'
             }).then(function(response){
                 if(response.erro == 0){
-                    $('.sub-total').html(response.totalProduto);                    
+                    $('.sub-total'+id_produto).html(response.totalProduto);                    
                     $('.PesoFin').html(response.peso);
                     $('.TotalFin').html(response.total);
                     $('.SubTotalFin').html(response.total);
@@ -154,6 +178,7 @@ var App = function(){
             delProdutoCarrinhoFin();
             alterProdutoCarrinho();
             calcularFreteCEP();
+            calcularFreteCarrinho();
         }
     }
 

@@ -43,7 +43,7 @@
 									<td class="qty" data-title="Qty"><!-- Input Order -->
 										<div class="input-group">
 											<div class="button minus">
-												<button type="button" class="btn btn-primary btn-number btn-minus" disabled="disabled" data-type="minus" data-field="<?= $p->id ?>">
+												<button type="button" class="btn btn-primary btn-number btn-minus" data-type="minus" data-field="<?= $p->id ?>">
 													<i class="ti-minus"></i>
 												</button>
 											</div>
@@ -56,7 +56,7 @@
 										</div>
 										<!--/ End Input Order -->
 									</td>
-									<td class="total-amount" data-title="Total"><span><span class="sub-total"><?= formataMoedaReal($p->subtotal) ?></span></td>
+									<td class="total-amount" data-title="Total"><span><span class="sub-total<?= $p->id ?>"><?= formataMoedaReal($p->subtotal) ?></span></td>
 									<td class="action" data-title="Remove"><a href="#" class="removeCarrinhoFin" data-id="<?= $p->id ?>"><i class="ti-trash remove-icon"></i></a></td>
 								</tr>
 							<?php } ?>
@@ -75,7 +75,7 @@
 									<div class="coupon">
 											<form action="#" target="_blank">
 												<input class="cep" name="cep" placeholder="Digite seu CEP">
-												<button class="btn">Calcular</button>
+												<button class="btn btn-calcular-frete-carrinho">Calcular</button>
 											</form>
 									</div></br>
 									<div class="coupon">

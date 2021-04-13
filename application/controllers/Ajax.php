@@ -36,12 +36,12 @@ class Ajax extends CI_Controller {
 		$url .= 'nCdServico=04014';
 		$url .= '&nCdEmpresa=';
 		$url .= '&sDsSenha=';
-		$url .= '&sCepDestino=' .$config->cep_origem;
-		$url .= '&sCepOrigem=88820000';
+		$url .= '&sCepDestino=' .$cep; 
+		$url .= '&sCepOrigem='.$config->cep_origem;
 		$url .= '&nVlAltura=' .$produto->altura;
 		$url .= '&nVlLargura=' .$produto->largura;
 		$url .= '&nVlDiametro=0';
-		$url .= '&nVlComprimento=20';
+		$url .= '&nVlComprimento='.$produto->comprimento;
 		$url .= '&nVlPeso=' .$produto->peso;
 		$url .= '&nCdFormato=1';
 		$url .= '&sCdMaoPropria=N';

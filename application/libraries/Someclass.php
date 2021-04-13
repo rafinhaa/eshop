@@ -104,4 +104,14 @@ class Someclass
         }
         return $item;
     }
+    public function getTotalPeso()
+	{        
+        $produtos = $this->list();
+        $pesoTotal = 0;
+
+        foreach($produtos as $indice => $linha){
+            $pesoTotal += $linha->peso * $linha->quant;
+        }
+        return $pesoTotal;
+    }
 }

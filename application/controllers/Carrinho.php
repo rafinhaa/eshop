@@ -10,11 +10,6 @@ class Carrinho	extends CI_Controller {
 		$this->load->library('someclass');		
 	}
 
-	public function teste(){
-        $maior = $this->someclass->getMaiorProduto();
-        print_r($maior);
-    }
-
 	public function index()
 	{		
 		$data['dados'] = $this->config_model->getConfig();
@@ -29,7 +24,7 @@ class Carrinho	extends CI_Controller {
 
 		foreach ($data['produtos'] as $p){
 			$data['total'] += ($p->valor * $p->quant);
-			$data['peso'] += $p->peso;
+			$data['peso'] += ($p->peso * $p->quant);
 		}
 		
 		$data['breadcrumb'] = array(
@@ -90,12 +85,13 @@ class Carrinho	extends CI_Controller {
 					$totalProduto += ($p->valor * $p->quant);					
 				}
 				$total += ($p->valor * $p->quant);					
-				$peso += $p->peso;	
+				$peso += ($p->peso * $p->quant);	
 			}
 			$json = ['erro' => 0,
 					 'msg' => 'Produto do carrinho alterado com sucesso!',
 					 'total' => formataMoedaReal($total),
 					 'totalProduto' => formataMoedaReal($totalProduto),
+					 'peso' => $peso,
 					 'count' => count($produtos)
 					];
 			echo json_encode($json);
@@ -124,5 +120,48 @@ class Carrinho	extends CI_Controller {
 					];
 			echo json_encode($json);			
 		}		
+	}
+
+	public function calculaFreteCarrinho(){
+		$this->load->model('loja/ajax_model');
+
+		if($this->input->post('cep') && $this->input->post('id')){
+			$cep = $this->input->post('cep');
+			$id  = $this->input->post('id');
+			if(!preg_match('/[0-9]{5}-[0-9]{3}/',$cep)){
+				$return['erro'] = 15;
+				$return['msg'] = 'Formato do CEP está inválido!';
+				echo json_encode($return);
+				die;
+			}
+		}		
+		$config = $this->ajax_model->getParamEnvio();
+		$maiorProduto = $this->someclass->getMaiorProduto();
+		$pesoTotal = $this->someclass->getTotalPeso();
+
+		$url  = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?';
+		$url .= 'nCdServico=04014';
+		$url .= '&nCdEmpresa=';
+		$url .= '&sDsSenha=';
+		$url .= '&sCepDestino=' .$cep;
+		$url .= '&sCepOrigem=' .$config->cep_origem;
+		$url .= '&nVlAltura=' .$maiorProduto['altura'];
+		$url .= '&nVlLargura=' .$maiorProduto['largura'];
+		$url .= '&nVlDiametro=0';
+		$url .= '&nVlComprimento=' .$maiorProduto['comprimento'];
+		$url .= '&nVlPeso=' .$pesoTotal;
+		$url .= '&nCdFormato=1';
+		$url .= '&sCdMaoPropria=N';
+		$url .= '&nVlValorDeclarado=0';
+		$url .= '&sCdAvisoRecebimento=N';
+		$url .= '&StrRetorno=xml';
+
+		//echo $url; die;
+
+		$xml = simplexml_load_file($url);
+		$xml = json_encode($xml);
+		
+
+		$result = json_decode($xml);
 	}
 }
