@@ -11,11 +11,13 @@ var App = function(){
                 dataType: 'json'
             }).then(function(response){
                 if(response['cServico']['erro'] == 0){
-                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+ ' - Entrega: '+ response['cServico']['PrazoEntrega'] +' dias úteis</span></li>'; 
-                    $('.calculoDeCEP').append(newItem);
-                    var newvalue = response['cServico']['Valor'].replace(".", ",");
-                    var newItem2 = '<li class="last">Total + Frete<span>'+(newvalue+totalValue)+'</span></li>'; 
-                    $('.calculoDeCEP').append(newItem2);                    
+                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+'</span></li>'; 
+                    $(newItem).insertBefore('.last');  
+                    var newItem2 = '<li>ENTREGA<span>'+ response['cServico']['PrazoEntrega'] +' dias úteis</span></li>'; 
+                    $(newItem2).insertBefore('.last');   
+                    var newvalue =  parseFloat(response['cServico']['Valor'].substring(3).replace(",", "."));
+                    var total = newvalue+totalValue;
+                    $('.TotalFin').html('R$ ' + total.toFixed(2).toString().replace(".", ","));                                        
                 }else{
                     var newItem = '<li>'+response.msg+'</li>';
                     $('.calculoDeCEP').append(newItem);

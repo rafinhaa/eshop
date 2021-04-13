@@ -34,7 +34,7 @@
 						<tbody>
 							<?php foreach ($produtos as $p) { ?>
 								<tr class="itemCartFin<?= $p->id ?>">
-									<td class="image" data-title="No"><img src="<?= base_url('/upload/produtos/'.$p->foto) ?>" alt="#"></td>
+									<td class="image" data-title="No"><img src="<?= base_url('/upload/produtos/'.$p->foto) ?>" alt="<?= base_url('/produto/'.$p->meta_link) ?>"></td>
 									<td class="product-des" data-title="Description">
 										<p class="product-name"><a href="#"><?= $p->nome ?></a></p>
 										<p class="product-des"><?= $p->info ?></p>
@@ -77,13 +77,7 @@
 												<input class="cep" name="cep" placeholder="Digite seu CEP">
 												<button class="btn btn-calcular-frete-carrinho">Calcular</button>
 											</div>
-									</div></br>
-									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Código do cupom">
-											<button class="btn">Aplicar</button>
-										</form>
-									</div>
+                                	</div>									
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
