@@ -3323,9 +3323,9 @@ Version:1.0
 }
 .shop.checkout .single-widget .checkbox label {
 	color: #555555;
-	position: relative;
+	/*position: relative;*/
 	font-size: 14px;
-	padding-left: 20px;
+	/*padding-left: 20px;*/
 	margin-top: -5px;
 	font-weight: 400;
 	display: block;
@@ -3338,7 +3338,7 @@ Version:1.0
 	cursor:pointer;
 }
 .shop.checkout .single-widget .checkbox label input{
-	display:none;
+	/*display:none;*/
 }
 .shop.checkout .single-widget .checkbox label::before {
 	position: absolute;

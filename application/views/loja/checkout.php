@@ -141,22 +141,55 @@
 					<!--/ End Order Widget -->
 					<!-- Order Widget -->
 					<div class="single-widget">
-						<h2>Payments</h2>
+						<h2>Pagamento</h2>
 						<div class="content">
 							<div class="checkbox">
-								<label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
-								<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
-								<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
+								<label class="checkbox-inline" for="1"><input name="payment" id="1" type="radio"> Cartão de crédito</label>
+								<label class="checkbox-inline" for="2"><input name="payment" id="2" type="radio"> Boleto</label>
+								<label class="checkbox-inline" for="3"><input name="payment" id="3" type="radio"> Transferência bancária</label>							
 							</div>
-						</div>
 					</div>
 					<!--/ End Order Widget -->
 					<!-- Payment Method Widget -->
-					<div class="single-widget payement">
-						<div class="content">
-							<img src="images/payment-method.png" alt="#">
-						</div>
-					</div>
+					<div class="single-widget">
+                        <h2>Dados do cartão</h2>
+                        <div class="content">
+                            <ul class="dadosCartao">
+                                <li>
+                                    <div class="checkout-form">
+                                        <div class="form">
+                                            <div class="row">
+												<div class="col-lg-12 col-md-12 col-12">
+													<div class="form-group">
+														<label>Número do cartão<span>*</span></label>
+														<input type="text" name="cc_numero" placeholder="" required="required">
+													</div>
+												</div> 
+												<div class="col-lg-12 col-md-12 col-12">
+													<div class="form-group">
+														<label>Nome do titular<span>*</span></label>
+														<input type="text" name="cc_titular" placeholder="" required="required">
+													</div>
+												</div>  
+												<div class="col-lg-12 col-md-12 col-12">
+													<div class="form-group">
+														<label>Validade do cartão<span>*</span></label>
+														<input type="text" name="cc_validade" placeholder="" required="required">
+													</div>
+												</div>  
+												<div class="col-lg-12 col-md-12 col-12">
+													<div class="form-group">
+														<label>Código de segurança<span>*</span></label>
+														<input type="text" name="cc_codigo" placeholder="" required="required">
+													</div>
+												</div>   
+                                            </div>
+                                        </div>                                        
+                                    </div>   
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
 					<!--/ End Payment Method Widget -->
 					<!-- Button Widget -->
 					<div class="single-widget get-button">
