@@ -13,4 +13,7 @@ $(document).ready(function () {
         };
 
     $('.sp_celphones').mask(SPMaskBehavior, spOptions);
+    $('.cart-number').mask('0000 0000 0000 0000');
+    $('.cart-val').mask('00/0000');
+    $('.cart-code').mask('000');
 });
