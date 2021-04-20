@@ -129,7 +129,7 @@
 				<div class="order-details">
 					<!-- Order Widget -->
 					<div class="single-widget">
-						<h2>CART  TOTALS</h2>
+						<h2>TOTAL</h2>
 						<div class="content">
 							<ul>
 								<li>Sub Total<span>$330.00</span></li>
@@ -143,15 +143,15 @@
 					<div class="single-widget">
 						<h2>Pagamento</h2>
 						<div class="content">
-							<div class="checkbox">
-								<label class="checkbox-inline" for="1"><input name="payment" id="1" type="radio"> Cartão de crédito</label>
-								<label class="checkbox-inline" for="2"><input name="payment" id="2" type="radio"> Boleto</label>
-								<label class="checkbox-inline" for="3"><input name="payment" id="3" type="radio"> Transferência bancária</label>							
+							<div class="checkbox ">
+								<label class="checkbox-inline " for="1"><input name="payment" class="select-option-checkout" id="1" value="1" type="radio"> Cartão de crédito</label>
+								<label class="checkbox-inline " for="2"><input name="payment" class="select-option-checkout" id="2" value="2" type="radio"> Boleto</label>
+								<label class="checkbox-inline " for="3"><input name="payment" class="select-option-checkout" id="3" value="3" type="radio"> Transferência bancária</label>							
 							</div>
 					</div>
 					<!--/ End Order Widget -->
 					<!-- Payment Method Widget -->
-					<div class="single-widget">
+					<div class="single-widget pagamento-cartao d-none">
                         <h2>Dados do cartão</h2>
                         <div class="content">
                             <ul class="dadosCartao">
@@ -186,6 +186,29 @@
                                             </div>
                                         </div>                                        
                                     </div>   
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
+					<!-- Payment Method Widget -->
+					<div class="single-widget pagamento-boleto d-none">
+                        <h2>Boleto</h2>
+                        <div class="content">
+                            <ul class="boleto">
+                                <li>
+									Você será redirecionado para imprimir o boleto
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
+					<!--/ End Payment Method Widget -->
+					<!-- Payment Method Widget -->
+					<div class="single-widget pagamento-transferencia d-none">
+                        <h2>Transferência</h2>
+                        <div class="content">
+                            <ul class="transferencia">
+                                <li>
+									Você será redirecionado para a página com os dados
                                 </li>                                
                             </ul>
                         </div>

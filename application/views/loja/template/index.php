@@ -195,7 +195,9 @@
 <script src="<?= base_url('public/js/app.js') ?>"></script>
 <!-- jQuery Mask -->
 <script src="<?= base_url('/public/dist/jquery-mask-plugin/jquery.mask.min.js') ?>"></script>
-<!-- jQuery Mask -->
+<!-- jQuery Front -->
 <script src="<?= base_url('public/js/custom_front.js') ?>"></script>
+<!-- jQuery Checkout -->
+<script src="<?= base_url('public/js/checkout.js') ?>"></script>
 </body>
 </html>
