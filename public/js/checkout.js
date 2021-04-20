@@ -1,8 +1,30 @@
 var Checkout = function(){
 
     var calculoFreteCheckout = function(){
-        $(".cep").focusout(function (){
-            alert("Check");
+        $(".checkout-cep").focusout(function (){
+            var inputValue = $('.checkout-cep').val();
+            $.ajax({
+                type: 'POST',
+                url: url + 'checkout/calculaFreteCheckout',
+                data: {cep:inputValue},
+                dataType: 'json'
+            }).then(function(response){
+                if(response['cServico']['erro'] == 0){
+                    var newItem = '<li>SEDEX<span>'+response['cServico']['Valor']+'</span></li>'; 
+                    $(newItem).insertBefore('.last');  
+                    var newItem2 = '<li>ENTREGA<span>'+ response['cServico']['PrazoEntrega'] +' dias úteis</span></li>'; 
+                    $(newItem2).insertBefore('.last');   
+                    var newvalue =  parseFloat(response['cServico']['Valor'].substring(3).replace(",", "."));
+                    var total = newvalue+totalValue;
+                    $('.TotalFin').html('R$ ' + total.toFixed(2).toString().replace(".", ","));                                        
+                }else{
+                    var newItem = '<li>'+response.msg+'</li>';
+                    $('.calculoDeCEP').append(newItem);
+                }
+            }, function(){
+                var newItem = '<li>Erro ao consultar o CEP</li>';
+                $('.last').append(newItem);
+            });
         });
     }
     
@@ -29,7 +51,6 @@ var Checkout = function(){
                         $('.pagamento-transferencia').removeClass('d-none');
                         $('.pagamento-cartao input').prop('disabled',true);
                         break;
-
             }            
         });
     }

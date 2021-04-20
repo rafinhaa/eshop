@@ -85,7 +85,7 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>CEP<span>*</span></label>
-									<input class="cep" type="text" name="post" placeholder="" required="required">
+									<input class="cep checkout-cep" type="text" name="post" placeholder="" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
@@ -152,9 +152,10 @@
 						<h2>TOTAL</h2>
 						<div class="content">
 							<ul>
-								<li>Sub Total<span>$330.00</span></li>
-								<li>(+) Shipping<span>$10.00</span></li>
-								<li class="last">Total<span>$340.00</span></li>
+								<?php foreach ($produtos as $p ) {?>
+									<li><?= (strlen($p->nome) > 25 ) ? '...'.substr($p->nome, 10) : $p->nome ?><span><?= formataMoedaReal($p->valor) ?></span></li>
+								<?php } ?>	
+								<li class="last">Total<span class="TotalFin"><?= formataMoedaReal($total) ?></span></li>
 							</ul>
 						</div>
 					</div>
@@ -200,7 +201,7 @@
 												<div class="col-lg-12 col-md-12 col-12">
 													<div class="form-group">
 														<label>Código de segurança<span>*</span></label>
-														<input class="cart-code" type="text" name="cc_codigo" placeholder="" required="required">
+														<input class="cart-number" type="text" name="cc_codigo" placeholder="" required="required">
 													</div>
 												</div>   
                                             </div>

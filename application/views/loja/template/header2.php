@@ -128,7 +128,7 @@
                                         <span>Total</span>
                                         <span class="total-amount"><?= formataMoedaReal($total) ?></span>
                                     </div>
-                                    <a href="checkout.html" class="btn animate">Comprar</a>
+                                    <a href="<?= base_url('/checkout') ?>" class="btn animate">Comprar</a>
                                 </div>
                             </div>
                             <!--/ End Shopping Item -->
