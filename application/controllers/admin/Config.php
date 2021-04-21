@@ -65,6 +65,7 @@ class Config extends CI_Controller {
 			$dadosPagseguro['token'] = $this->input->post('token');
 			$dadosPagseguro['boleto'] = $this->input->post('boleto');
 			$dadosPagseguro['cartao'] = $this->input->post('cartao');
+			$dadosPagseguro['sandbox'] = ($this->input->post('sandbox') == 'on' ? '1' : '0');
 			$dadosPagseguro['transferencia'] = $this->input->post('transferencia');
 			$dadosPagseguro['data_atualizacao'] = dataDiaDb();
 

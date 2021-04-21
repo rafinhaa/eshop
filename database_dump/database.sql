@@ -126,14 +126,15 @@ CREATE TABLE IF NOT EXISTS `config_pagseguro` (
   `boleto` tinyint(1) NOT NULL,
   `transferencia` tinyint(1) NOT NULL,
   `data_atualizacao` varchar(255) DEFAULT NULL,
+  `sandbox` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela lojaweb.config_pagseguro: 1 rows
 DELETE FROM `config_pagseguro`;
 /*!40000 ALTER TABLE `config_pagseguro` DISABLE KEYS */;
-INSERT INTO `config_pagseguro` (`id`, `email`, `token`, `cartao`, `boleto`, `transferencia`, `data_atualizacao`) VALUES
-	(1, 'aa@aa.com.br', 'ABCDEFGHI0123456789', 1, 0, 0, 'Thu, 18 Feb 21 01:39:08 +0100');
+INSERT INTO `config_pagseguro` (`id`, `email`, `token`, `cartao`, `boleto`, `transferencia`, `data_atualizacao`, `sandbox`) VALUES
+	(1, 'aa@aa.com.br', 'ABCDEFGHI0123456789', 1, 0, 0, 'Wed, 21 Apr 21 19:18:14 +0000', 0);
 /*!40000 ALTER TABLE `config_pagseguro` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.groups
@@ -199,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`version`) VALUES
-	(3);
+	(5);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.pedidos
@@ -401,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1617212241, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
+	(1, '127.0.0.1', 'administrator', '$2y$12$7ydZ6dRfxweWSERELeKmquQugcylbhosNUn6rSh3QUJgfMyvBeRYK', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1619031462, 1, 'Rafael', 'Soncine', 'ADMIN', '0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela lojaweb.users_groups

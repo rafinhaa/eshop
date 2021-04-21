@@ -31,7 +31,14 @@
 				<div class="form-group">
 					<label for="exampleInputToken">Token</label>
 					<input type="text" class="form-control" id="exampleInputToken" placeholder="Token" name="token" value="<?= $query->token?>">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="sandbox" <?= ($query->sandbox) ? 'checked' : '' ?>>
+							Sandbox
+						</label>
+                  </div>
 				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-4">
 					<label>Boleto</label>
