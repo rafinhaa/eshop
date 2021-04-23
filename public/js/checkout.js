@@ -54,11 +54,25 @@ var Checkout = function(){
             }            
         });
     }
+
+    var setSessionIdPagseguro = function(){
+        $.ajax({            
+            url: url + 'pagar/pg_session_id',            
+            dataType: 'json',
+            success: function(res){
+                PagSeguroDirectPayment.setSessionId(res.id_sessao);
+            }, 
+            error: function(res){
+                alert('error');
+            }
+        })
+    }
     
     return {
         init: function(){
             formataPagamentoCheckout();
             calculoFreteCheckout();
+            setSessionIdPagseguro();
         }
     }
 
