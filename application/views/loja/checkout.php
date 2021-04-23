@@ -151,11 +151,11 @@
 					<div class="single-widget">
 						<h2>TOTAL</h2>
 						<div class="content">
-							<ul>
+							<ul class="checkout-list">
 								<?php foreach ($produtos as $p ) {?>
 									<li><?= (strlen($p->nome) > 25 ) ? '...'.substr($p->nome, 10) : $p->nome ?><span><?= formataMoedaReal($p->valor) ?></span></li>
 								<?php } ?>	
-								<li class="last">Total<span class="TotalFin"><?= formataMoedaReal($total) ?></span></li>
+								<li class="last">Total<span class="total-checkout"><?= formataMoedaReal($total) ?></span></li>
 							</ul>
 						</div>
 					</div>
@@ -209,6 +209,15 @@
                                     </div>   
                                 </li>                                
                             </ul>
+							<!-- Button Widget -->
+							<div class="single-widget get-button">
+								<div class="content">
+									<div class="button">
+										<a href="#" class="btn btn-transferencia">FINALIZAR COMPRA</a>
+									</div>
+								</div>
+							</div>
+							<!--/ End Button Widget -->
                         </div>
                     </div>
 					<!-- Payment Method Widget -->
@@ -220,6 +229,15 @@
 									Você será redirecionado para imprimir o boleto
                                 </li>                                
                             </ul>
+								<!-- Button Widget -->
+								<div class="single-widget get-button">
+								<div class="content">
+									<div class="button">
+										<a href="#" class="btn btn-boleto">FINALIZAR COMPRA</a>
+									</div>
+								</div>
+							</div>
+							<!--/ End Button Widget -->
                         </div>
                     </div>
 					<!--/ End Payment Method Widget -->
@@ -232,18 +250,19 @@
 									Você será redirecionado para a página com os dados
                                 </li>                                
                             </ul>
+							<!-- Button Widget -->
+							<div class="single-widget get-button">
+								<div class="content">
+									<div class="button">
+										<a href="#" class="btn btn-transferencia">FINALIZAR COMPRA</a>
+									</div>
+								</div>
+							</div>
+							<!--/ End Button Widget -->
                         </div>
                     </div>
 					<!--/ End Payment Method Widget -->
-					<!-- Button Widget -->
-					<div class="single-widget get-button">
-						<div class="content">
-							<div class="button">
-								<a href="#" class="btn">proceed to checkout</a>
-							</div>
-						</div>
-					</div>
-					<!--/ End Button Widget -->
+
 				</div>
 			</div>
 		</div>

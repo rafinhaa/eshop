@@ -88,8 +88,8 @@
 										<li class="last">Total<span class="TotalFin"><?= formataMoedaReal($total) ?></span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">COMPRAR</a>
-										<a href="<?= base_url('/checkout') ?>" class="btn">Continuar comprando</a>
+										<a href="<?= base_url('/checkout') ?>" class="btn">COMPRAR</a>
+										<a href="<?= base_url('/') ?>" class="btn">Continuar comprando</a>
 									</div>
 								</div>
 							</div>

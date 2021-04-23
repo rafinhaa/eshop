@@ -16,10 +16,11 @@ var Checkout = function(){
                     $(newItem2).insertBefore('.last');   
                     var newvalue =  parseFloat(response['cServico']['Valor'].substring(3).replace(",", "."));
                     var total = newvalue+totalValue;
-                    $('.TotalFin').html('R$ ' + total.toFixed(2).toString().replace(".", ","));                                        
+                    //$('.TotalFin').html('R$ ' + total.toFixed(2).toString().replace(".", ","));                                        
+                    $('.total-checkout').html('Alo galeraaaaa');                                        
                 }else{
                     var newItem = '<li>'+response.msg+'</li>';
-                    $('.calculoDeCEP').append(newItem);
+                    $('.checkout-list').append(newItem);
                 }
             }, function(){
                 var newItem = '<li>Erro ao consultar o CEP</li>';
@@ -38,20 +39,23 @@ var Checkout = function(){
                         $('.pagamento-boleto').addClass('d-none');
                         $('.pagamento-transferencia').addClass('d-none');
                         $('.pagamento-cartao input').prop('disabled',false);
+                        $('.btn-checkout').addClass( "btn-cartao");                        
                         break;
                 case '2': 
                         $('.pagamento-cartao').addClass('d-none');
                         $('.pagamento-boleto').removeClass('d-none');
                         $('.pagamento-transferencia').addClass('d-none');
                         $('.pagamento-cartao input').prop('disabled',true);
+                        $('.btn-checkout').addClass( "btn-boleto");
                         break;
                 case '3': 
                         $('.pagamento-cartao').addClass('d-none');
                         $('.pagamento-boleto').addClass('d-none');
                         $('.pagamento-transferencia').removeClass('d-none');
                         $('.pagamento-cartao input').prop('disabled',true);
-                        break;
-            }            
+                        $('.btn-checkout').addClass( "btn-transferencia");
+                        break;                
+            }
         });
     }
 
@@ -63,16 +67,36 @@ var Checkout = function(){
                 PagSeguroDirectPayment.setSessionId(res.id_sessao);
             }, 
             error: function(res){
-                alert('error');
+                //alert('error');
             }
         })
     }
     
+    var pagarBoleto = function(){
+        $('.btn-boleto').on('click', function (){
+            alert('boleto');
+        });
+    }
+
+    var pagarCartao = function(){
+        $('.btn-cartao').on('click', function (){
+            alert('cartao');
+        });
+    } 
+    var pagarTransferencia = function(){
+        $('.btn-transferencia').on('click', function (){
+            alert('transferencia');
+        });
+    }
+
     return {
         init: function(){
             formataPagamentoCheckout();
             calculoFreteCheckout();
             setSessionIdPagseguro();
+            pagarBoleto();
+            pagarCartao();
+            pagarTransferencia();
         }
     }
 
