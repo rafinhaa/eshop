@@ -33,7 +33,7 @@ class Pagar	extends CI_Controller {
 		//curl_setopt($ch,CURL_HTTPHEADER,array('Content-Type: application/x-www-form-urlencoded; charset=ISO-UTF-8'));
 
 		curl_setopt($ch,CURLOPT_URL,$url);
-		curl_setopt($ch,CURLOPT_POST,2);
+		curl_setopt($ch,CURLOPT_POST,count($param));
 		curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($param));
 		curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,30);
 		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
@@ -45,7 +45,22 @@ class Pagar	extends CI_Controller {
 		curl_close($ch);
 
 		$xml = simplexml_load_file($result);
+		$json = json_encode($xml);
+		$std = json_decode($json);
+		$return;
+		if(isset($std->id )){
+			$return = [
+				'erro'=> 0,
+				'msg'=> 'Sucesso!',
+				'id_sessao' => $std->id
+			];
+		}else{
+			$return = [
+				'erro'=> 5000,
+				'msg' => 'Erro ao gerar sessão de pagamento, tente novamente!'
+			];
+		}
 
-		echo json_encode($xml);
+		echo json_encode($return);
 	}
 }
