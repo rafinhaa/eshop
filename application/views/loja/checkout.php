@@ -18,6 +18,7 @@
 <!-- Start Checkout -->
 <section class="shop checkout section">
 	<div class="container">
+	<form class="form form-checkout" method="post" action="#">
 		<div class="row"> 
 			<div class="col-lg-8 col-12">
 				<div class="checkout-form">
@@ -30,7 +31,7 @@
 						</div>
 					</div>
 					<!-- Form -->
-					<form class="form" method="post" action="#">
+					
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
@@ -141,7 +142,7 @@
 								</div>
 							</div>							
 						</div>
-					</form>
+					
 					<!--/ End Form -->
 				</div>
 			</div>
@@ -266,6 +267,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 </section>
 <!--/ End Checkout -->

@@ -74,7 +74,22 @@ var Checkout = function(){
     
     var pagarBoleto = function(){
         $('.btn-boleto').on('click', function (){
-            alert('boleto');
+            var form = $('.form-checkout');
+            $.ajax({
+                type: 'POST',
+                url: url + 'pagar/pg_boleto',
+                data: form.serialize(),
+                dataType: 'json'
+            }).then(function(response){
+                if (res.erro == 0){ 
+                    alert('enviado')
+                }else{
+                    alert(res.erro)
+                }
+            }, function(){
+                alert('erro');
+            });
+
         });
     }
 

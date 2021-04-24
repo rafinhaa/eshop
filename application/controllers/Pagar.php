@@ -63,4 +63,8 @@ class Pagar	extends CI_Controller {
 
 		echo json_encode($return);
 	}
+	public function pg_boleto()
+	{		
+		print_r($this->input->post());
+	}
 }
