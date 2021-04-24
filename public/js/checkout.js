@@ -79,17 +79,17 @@ var Checkout = function(){
                 type: 'POST',
                 url: url + 'pagar/pg_boleto',
                 data: form.serialize(),
-                dataType: 'json'
-            }).then(function(response){
-                if (res.erro == 0){ 
-                    alert('enviado')
-                }else{
-                    alert(res.erro)
+                dataType: 'json',
+                beforeSend: function(){
+                    $('.status-checkout').html('Aguarde...');
+                },
+                success: function(){
+                    $('.status-checkout').html('Pagamento Aprovado!');
+                }, 
+                error: function (){
+                    $('.status-checkout').html('Falha ao processar o pagamento, consulte a operadora do cartão');
                 }
-            }, function(){
-                alert('erro');
             });
-
         });
     }
 

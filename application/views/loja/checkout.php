@@ -214,7 +214,7 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="#" class="btn btn-transferencia">FINALIZAR COMPRA</a>
+										<a href="#" class="btn btn-cartao">FINALIZAR COMPRA</a>
 									</div>
 								</div>
 							</div>
@@ -263,7 +263,14 @@
                         </div>
                     </div>
 					<!--/ End Payment Method Widget -->
-
+					<div class="single-widget">                        
+                        <div class="content">
+                            <ul class="">
+                                <li class="status-checkout">									
+                                </li>                                
+                            </ul>
+                        </div>
+					</div>
 				</div>
 			</div>
 		</div>
