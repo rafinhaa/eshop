@@ -99,7 +99,6 @@ class Config extends CI_Controller {
 			$dadosCorreios['cep_origem'] = $this->input->post('cep_origem');
 			$dadosCorreios['somar_frete'] = formataDecimal($this->input->post('somar_frete'));
 			$dadosCorreios['data_atualizacao'] = dataDiaDb();
-
 			if ($this->config_model->doUpdateCorreios($dadosCorreios)) {
 				setMsg('message', 'Todas as configurações foram salvas.', 'Sucesso!', 'sucesso');
 				redirect('admin/config/correios', 'refresh');
