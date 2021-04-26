@@ -26,46 +26,46 @@
 				<?= errosValidacao('message') ?>
 				<div class="form-group">
 					<label for="exampleInputTitle1">Título</label>
-					<input type="text" class="form-control" id="exampleInputTitle1" placeholder="Título" name="titulo" value="<?= $query->titulo?>">
+					<input type="text" class="form-control" id="exampleInputTitle1" placeholder="Título" name="titulo" value="<?= (isset($query->titulo) && $query->titulo != NULL) ? $query->titulo : set_value('titulo')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmpresa">Empresa</label>
-					<input type="text" class="form-control" id="exampleInputEmpresa" placeholder="Empresa" name="empresa" value="<?= $query->empresa?>">
+					<input type="text" class="form-control" id="exampleInputEmpresa" placeholder="Empresa" name="empresa" value="<?= (isset($query->empresa) && $query->empresa != NULL) ? $query->empresa : set_value('empresa')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputCEP">CEP</label>
-					<input type="text" class="form-control" id="exampleInputCEP" placeholder="CEP" name="cep" value="<?= $query->cep?>">
+					<input type="text" class="form-control" id="exampleInputCEP" placeholder="CEP" name="cep" value="<?= (isset($query->cep) && $query->cep != NULL) ? $query->cep : set_value('cep')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEndereco">Endereço</label>
-					<input type="text" class="form-control" id="exampleInputEndereco" placeholder="Endereço" name="endereco" value="<?= $query->endereco?>">
+					<input type="text" class="form-control" id="exampleInputEndereco" placeholder="Endereço" name="endereco" value="<?= (isset($query->endereco) && $query->endereco != NULL) ? $query->endereco : set_value('endereco')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputBairro">Bairro</label>
-					<input type="text" class="form-control" id="exampleInputBairro" placeholder="Bairro" name="bairro" value="<?= $query->bairro?>">
+					<input type="text" class="form-control" id="exampleInputBairro" placeholder="Bairro" name="bairro" value="<?= (isset($query->bairro) && $query->bairro != NULL) ? $query->bairro : set_value('bairro')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputCom">Complemento</label>
-					<input type="text" class="form-control" id="exampleInputCom" placeholder="Complemento" name="complemento" value="<?= $query->complemento?>">
+					<input type="text" class="form-control" id="exampleInputCom" placeholder="Complemento" name="complemento" value="<?= (isset($query->complemento) && $query->complemento != NULL) ? $query->complemento : set_value('complemento')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputCidade">Cidade</label>
-					<input type="text" class="form-control" id="exampleInputCidade" placeholder="Cidade" name="cidade" value="<?= $query->cidade?>">
+					<input type="text" class="form-control" id="exampleInputCidade" placeholder="Cidade" name="cidade" value="<?= (isset($query->cidade) && $query->cidade != NULL) ? $query->cidade : set_value('cidade')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEstado">Estado</label>
-					<input type="text" class="form-control" id="exampleInputEstado" placeholder="Estado" name="estado" value="<?= $query->estado?>">
+					<input type="text" class="form-control" id="exampleInputEstado" placeholder="Estado" name="estado" value="<?= (isset($query->estado) && $query->estado != NULL) ? $query->estado : set_value('estado')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail">Email</label>
-					<input type="email" class="form-control" id="exampleInputEmail" placeholder="Email" name="email" value="<?= $query->email?>">
+					<input type="email" class="form-control" id="exampleInputEmail" placeholder="Email" name="email" value="<?= (isset($query->email) && $query->email != NULL) ? $query->email : set_value('email')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputTelefone">Telefone</label>
-					<input type="text" class="form-control" id="exampleInputTelefone" placeholder="Telefone" name="telefone" value="<?= $query->telefone?>">
+					<input type="text" class="form-control" id="exampleInputTelefone" placeholder="Telefone" name="telefone" value="<?= (isset($query->telefone) && $query->telefone != NULL) ? $query->telefone : set_value('telefone')?>">
 				</div><div class="form-group">
 					<label for="exampleInputPDestaque">Produtos em destaque</label>
-					<input type="text" class="form-control" id="exampleInputPDestaque" placeholder="Produtos em destaque" name="p_destaque" value="<?= $query->p_destaque?>">
+					<input type="text" class="form-control" id="exampleInputPDestaque" placeholder="Produtos em destaque" name="p_destaque" value="<?= (isset($query->p_destaque) && $query->p_destaque != NULL) ? $query->cep : set_value('p_destaque')?>">
 				</div>
 			</div>
 			<!-- /.box-body -->

@@ -50,7 +50,7 @@ class Config extends CI_Controller {
 				'this_page' => $data['title_h2'],
 			);
 			$data['view'] = 'admin/config/config';
-			$data['query'] = $this->config_model->getConfig();
+			$data['query'] = $this->config_model->getConfig();			
 
 			$this->load->view('admin/template/index', $data);
 		}

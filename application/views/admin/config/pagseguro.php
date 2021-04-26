@@ -26,14 +26,14 @@
 				<?= errosValidacao('message') ?>
 				<div class="form-group">
 					<label for="exampleInputEmail">Email</label>
-					<input type="email" class="form-control" id="exampleInputEmail" placeholder="Email" name="email" value="<?= $query->email?>">
+					<input type="email" class="form-control" id="exampleInputEmail" placeholder="Email" name="email" value="<?= (isset($query->email) && $query->email != NULL) ? $query->email : set_value('email')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputToken">Token</label>
-					<input type="text" class="form-control" id="exampleInputToken" placeholder="Token" name="token" value="<?= $query->token?>">
+					<input type="text" class="form-control" id="exampleInputToken" placeholder="Token" name="token" value="<?= (isset($query->token) && $query->token != NULL) ? $query->token : set_value('token')?>">
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" name="sandbox" <?= ($query->sandbox) ? 'checked' : '' ?>>
+							<input type="checkbox" name="sandbox" <?= (isset($query->sandbox)) ? 'checked' : '' ?>>
 							Sandbox
 						</label>
                   </div>
@@ -43,8 +43,8 @@
 					<div class="col-sm-4">
 					<label>Boleto</label>
 						<select name="boleto" class="form-control">
-							<option value="0" <?= ($query->boleto == 0 ? 'selected' : '') ?>>Desativado</option>
-							<option value="1" <?= ($query->boleto == 1 ? 'selected' : '') ?>>Ativo</option>
+							<option value="0" <?= (isset($query->boleto) == 0 ? 'selected' : '') ?>>Desativado</option>
+							<option value="1" <?= (isset($query->boleto) == 1 ? 'selected' : '') ?>>Ativo</option>
 						</select>
 					</div>
 				</div>
@@ -52,8 +52,8 @@
 					<div class="col-sm-4">
 					<label>Cartão</label>
 					<select name="cartao" class="form-control">
-						<option value="0" <?= ($query->cartao == 0 ? 'selected' : '') ?>>Desativado</option>
-						<option value="1" <?= ($query->cartao == 1 ? 'selected' : '') ?>>Ativo</option>
+						<option value="0" <?= (isset($query->cartao) == 0 ? 'selected' : '') ?>>Desativado</option>
+						<option value="1" <?= (isset($query->cartao) == 1 ? 'selected' : '') ?>>Ativo</option>
 					</select>
 					</div>
 				</div>
@@ -61,8 +61,8 @@
 					<div class="col-sm-4">
 					<label>Transferência</label>
 					<select name="transferencia" class="form-control">
-						<option value="0" <?= ($query->transferencia == 0 ? 'selected' : '') ?>>Desativado</option>
-						<option value="1" <?= ($query->transferencia == 1 ? 'selected' : '') ?>>Ativo</option>
+						<option value="0" <?= (isset($query->transferencia) == 0 ? 'selected' : '') ?>>Desativado</option>
+						<option value="1" <?= (isset($query->transferencia) == 1 ? 'selected' : '') ?>>Ativo</option>
 					</select>
 					</div>
 				</div>

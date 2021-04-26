@@ -26,11 +26,11 @@
 				<?= errosValidacao('message') ?>
 				<div class="form-group">
 					<label for="exampleInputEmail">Cep de origem</label>
-					<input type="text" class="form-control cep" id="exampleInputEmail" placeholder="CEP" name="cep_origem" value="<?= $query->cep_origem?>">
+					<input type="text" class="form-control cep" id="exampleInputEmail" placeholder="CEP" name="cep_origem" value="<?= (isset($query->cep_origem) && $query->cep_origem != NULL) ? $query->cep_origem : set_value('cep_origem')?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputFrete">Somar frete</label>
-					<input type="text" class="form-control money" id="exampleInputFrete" placeholder="00,0" name="somar_frete" value="<?= $query->somar_frete?>">
+					<input type="text" class="form-control money" id="exampleInputFrete" placeholder="00,0" name="somar_frete" value="<?= (isset($query->somar_frete) && $query->somar_frete != NULL) ? $query->somar_frete : set_value('somar_frete')?>">
 				</div>
 			<!-- /.box-body -->
 
