@@ -6,6 +6,7 @@ class Pagar	extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('loja/pagar_model');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -64,7 +65,31 @@ class Pagar	extends CI_Controller {
 		echo json_encode($return);
 	}
 	public function pg_boleto()
-	{		
-		print_r($this->input->post());
+	{			
+		$this->form_validation->set_rules('name','Nome','required');
+		$this->form_validation->set_rules('last-name','Sobrenome','required');
+		$this->form_validation->set_rules('cpf','CPF é obrigatorio','required|is_unique[clientes.cpf]');
+		$this->form_validation->set_rules('number','Número de telefone é obrigatorio','required');
+		$this->form_validation->set_rules('email','E-mail é obrigatorio','required|valid_email|is_unique[clientes.email]');
+		$this->form_validation->set_rules('senha','Senha é obrigatorio','required|min_length[6]');
+		$this->form_validation->set_rules('country_name','Pais é obrigatorio','required');
+		$this->form_validation->set_rules('cep','CEP é obrigatorio','required');
+		$this->form_validation->set_rules('state-province','Estado é obrigatorio','required');
+		$this->form_validation->set_rules('address','Estado é obrigatorio','required');
+		$this->form_validation->set_rules('number_house','Número da casa é obrigatorio','required');		
+
+		if($this->form_validation->run()){
+			$retorno = [
+				'erro' => 0,
+				'msg' => 'Enviado com sucesso',
+			];
+		}else{
+			$retorno = [
+				'erro' => 10,
+				'msg' => validation_errors(),
+			];
+		}
+		echo json_encode($retorno);
+
 	}
 }

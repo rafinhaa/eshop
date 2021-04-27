@@ -19,6 +19,7 @@
 <section class="shop checkout section">
 	<div class="container">
 	<form class="form form-checkout" method="post" action="#">
+		<input type="hidden" name="hash" value="" placeholder="ABCDEF123" required="required">
 		<div class="row"> 
 			<div class="col-lg-8 col-12">
 				<div class="checkout-form">
@@ -42,7 +43,7 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Sobrenome<span>*</span></label>
-									<input type="text" name="name" placeholder="" required="required">
+									<input type="text" name="last-name" placeholder="" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
@@ -66,7 +67,7 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Senha<span>*</span></label>
-									<input type="password" name="email" placeholder="" required="required">
+									<input type="password" name="senha" placeholder="" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
@@ -86,7 +87,7 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>CEP<span>*</span></label>
-									<input class="cep checkout-cep" type="text" name="post" placeholder="" required="required">
+									<input class="cep checkout-cep" type="text" name="cep" placeholder="" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
@@ -132,7 +133,7 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Número<span>*</span></label>
-									<input type="number" name="number" placeholder="" required="required">
+									<input type="number" name="number_house" placeholder="" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
