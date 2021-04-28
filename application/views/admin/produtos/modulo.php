@@ -91,7 +91,7 @@
 							<select name="brandy" class="form-control">
 								<?php if ($it_product ) { ?>
 									<?php foreach ($marcas as $m) { ?>
-										<option value="<?= $m->id ?>" <?= ($it_product->id == $m->id ? 'selected' : '') ?> ><?= $m->nome ?></option>
+										<option value="<?= $m->id ?>" <?= ($it_product->id_marca == $m->id ? 'selected' : '') ?> ><?= $m->nome ?></option>
 									<?php } ?>
 								<?php } else { ?>
 									<?php foreach ($marcas as $m) { ?>
@@ -105,7 +105,7 @@
 							<select name="category" class="form-control">
 								<?php if ($it_product ) { ?>
 									<?php foreach ($categorias as $c) { ?>
-										<option value="<?= $c->id ?>" <?= ($it_product->id == $c->id ? 'selected' : '') ?> ><?= $c->nome ?></option>
+										<option value="<?= $c->id ?>" <?= ($it_product->id_categoria == $c->id ? 'selected' : '') ?> ><?= $c->nome ?></option>
 									<?php } ?>
 								<?php } else { ?>
 									<?php foreach ($categorias as $c) { ?>

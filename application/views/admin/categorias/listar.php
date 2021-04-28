@@ -26,7 +26,7 @@
 						<thead>
 						<tr>
 							<th style="width: 10px">#</th>
-							<th>Usuário</th>
+							<th>Nome</th>
 							<th>Categoria pai</th>
 							<th>Status</th>
 							<th>Opções</th>
