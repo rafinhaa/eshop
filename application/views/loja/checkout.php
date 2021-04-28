@@ -24,7 +24,8 @@
 			<div class="col-lg-8 col-12">
 				<div class="checkout-form">
 					<h2>Finalizar compra</h2>
-					<p>Porf favor faça <u><a href="<?php base_url("checkout/login"); ?>">login</a></u> ou crie uma nova conta.</p>
+					<p>Por favor faça <u><a href="<?php base_url("checkout/login"); ?>">login</a></u> ou crie uma nova conta.</p>
+					<div class="erros_validacao"></div>
 					<div class="col-12">
 						<div class="create-account">
 							<input id="cbox" type="checkbox">
@@ -128,6 +129,12 @@
 								<div class="form-group">
 									<label>Endereço<span>*</span></label>
 									<input type="text" name="address" placeholder="" required="required">
+								</div>
+							</div>							
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="form-group">
+									<label>Bairro</label>
+									<input type="text" name="bairro" placeholder="">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">

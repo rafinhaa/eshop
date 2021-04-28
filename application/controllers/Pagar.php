@@ -70,19 +70,45 @@ class Pagar	extends CI_Controller {
 		$this->form_validation->set_rules('last-name','Sobrenome','required');
 		$this->form_validation->set_rules('cpf','CPF é obrigatorio','required|is_unique[clientes.cpf]');
 		$this->form_validation->set_rules('number','Número de telefone é obrigatorio','required');
-		$this->form_validation->set_rules('email','E-mail é obrigatorio','required|valid_email|is_unique[clientes.email]');
+		$this->form_validation->set_rules('email','E-mail é obrigatorio','required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('senha','Senha é obrigatorio','required|min_length[6]');
 		$this->form_validation->set_rules('country_name','Pais é obrigatorio','required');
 		$this->form_validation->set_rules('cep','CEP é obrigatorio','required');
 		$this->form_validation->set_rules('state-province','Estado é obrigatorio','required');
 		$this->form_validation->set_rules('address','Estado é obrigatorio','required');
 		$this->form_validation->set_rules('number_house','Número da casa é obrigatorio','required');		
+		$this->form_validation->set_rules('bairro','Bairro é obrigatorio','required');		
 
 		if($this->form_validation->run()){
 			$retorno = [
 				'erro' => 0,
 				'msg' => 'Enviado com sucesso',
 			];
+
+			$cliente = [
+				'nome' => $this->input->post('name'),
+				'cpf' => $this->input->post('cpf'),
+				'cep' => $this->input->post('cep'),
+				'endereco' => $this->input->post('address'),
+				'numero' => $this->input->post('number_house'),
+				'bairro' => $this->input->post('bairro'),
+				'cidade' => $this->input->post('country_name'),
+				'estado' => $this->input->post('state-province'),
+			];
+
+			$this->pagar_model->doInsertCliente($cliente);
+			$id_cliente = $this->session->userdata('last_id');
+
+			$username = $this->input->post('email');
+			$password = $this->input->post('senha');
+			$email = $this->input->post('email');		
+			$additional_data = [
+				'id_cliente' => $id_cliente,
+			];	
+			$group = array('2'); // Sets user to admin.
+		
+			$this->ion_auth->register($username, $password, $email, $additional_data, $group);
+
 		}else{
 			$retorno = [
 				'erro' => 10,

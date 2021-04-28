@@ -74,7 +74,8 @@ var Checkout = function(){
     
     var pagarBoleto = function(){
         $('.btn-boleto').on('click', function (){            
-            var hash__pagamento = PagSeguroDirectPayment.getSenderHash();
+            //var hash__pagamento = PagSeguroDirectPayment.getSenderHash();
+            var hash__pagamento = 'ASDASDASDASDASD';
             $('[name="hash"]').val(hash__pagamento);
             var form = $('.form-checkout');
             $.ajax({
