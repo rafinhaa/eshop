@@ -48,8 +48,8 @@ O Eshop. é uma aplicação de ecommerce, que permite a criação de uma loja vi
 ## 🏁 How to run the project
 #### Clone the repository
 ```bash
-git clone https://github.com/rafinhaa/loja-web.git
-cd loja-web
+git clone https://github.com/rafinhaa/eshop.git
+cd eshop
 ```
 
 #### Database config
