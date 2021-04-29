@@ -38,37 +38,37 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Nome<span>*</span></label>
-									<input type="text" name="name" placeholder="" required="required">
+									<input type="text" name="name" placeholder="Nome" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Sobrenome<span>*</span></label>
-									<input type="text" name="last-name" placeholder="" required="required">
+									<input type="text" name="last-name" placeholder="Sobrenome" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>CPF<span>*</span></label>
-									<input class="cpf" type="text" name="cpf" placeholder="" required="required">
+									<input class="cpf" type="text" name="cpf" placeholder="CPF" required="required">
 								</div>
 							</div>							
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Telefone<span>*</span></label>
-									<input class="sp_celphones" type="text" name="number" placeholder="" required="required">
+									<input class="sp_celphones" type="text" name="number" placeholder="Telefone" required="required">
 								</div>
 							</div>
 							<div class="col-lg-12 col-md-12 col-12">
 								<div class="form-group">
 									<label>Email<span>*</span></label>
-									<input type="email" name="email" placeholder="" required="required">
+									<input type="email" name="email" placeholder="Email" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Senha<span>*</span></label>
-									<input type="password" name="senha" placeholder="" required="required">
+									<input type="password" name="senha" placeholder="Senha" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
@@ -88,7 +88,7 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>CEP<span>*</span></label>
-									<input class="cep checkout-cep" type="text" name="cep" placeholder="" required="required">
+									<input class="cep checkout-cep" type="text" name="cep" placeholder="CEP" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
@@ -128,25 +128,25 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Endereço<span>*</span></label>
-									<input type="text" name="address" placeholder="" required="required">
+									<input type="text" name="address" placeholder="Endereço" required="required">
 								</div>
 							</div>							
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Bairro</label>
-									<input type="text" name="bairro" placeholder="">
+									<input type="text" name="bairro" placeholder="Bairro">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Número<span>*</span></label>
-									<input type="number" name="number_house" placeholder="" required="required">
+									<input type="number" name="number_house" placeholder="Número" required="required">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="form-group">
 									<label>Complemento</label>
-									<input type="text" name="complement" placeholder="">
+									<input type="text" name="complement" placeholder="Complemento">
 								</div>
 							</div>							
 						</div>

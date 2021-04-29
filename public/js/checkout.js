@@ -76,23 +76,47 @@ var Checkout = function(){
         $('.btn-boleto').on('click', function (){            
             //var hash__pagamento = PagSeguroDirectPayment.getSenderHash();
             var hash__pagamento = 'ASDASDASDASDASD';
+            $('.erros_validacao').html('');
             $('[name="hash"]').val(hash__pagamento);
             var form = $('.form-checkout');
-            $.ajax({
-                type: 'POST',
-                url: url + 'pagar/pg_boleto',
-                data: form.serialize(),
-                dataType: 'json',
-                beforeSend: function(){
-                    $('.status-checkout').html('Aguarde...');
-                },
-                success: function(){
-                    $('.status-checkout').html('Pagamento Aprovado!');
-                }, 
-                error: function (){
-                    $('.status-checkout').html('Falha ao processar o pagamento, consulte a operadora do cartão');
+            var erro_validacao = false;
+            var retorno_erro_validacao = '';
+
+            $(form).find('select, input').each(function(){
+                if($(this).prop('required') && $(this).prop('disabled') == false){
+                    if(!$(this).val()){
+                        erro_validacao = true;
+                        var nome_campo = $(this).attr('placeholder');
+                        retorno_erro_validacao += '<p>' + nome_campo + ' é um campo obrigatório</p>';
+
+                    }
                 }
             });
+
+            if(!erro_validacao){
+                $.ajax({
+                    type: 'POST',
+                    url: url + 'pagar/pg_boleto',
+                    data: form.serialize(),
+                    dataType: 'json',
+                    beforeSend: function(){
+                        $('.status-checkout').html('Aguarde...');
+                    },
+                    success: function(res){
+                        if(res.erro=0){
+                            $('.status-checkout').html('Pagamento Aprovado!');
+                        }else{
+                            $('.erros_validacao').html('<div class="alert alert-danger"><p>'+ res.msg +'</p></div>');
+                        }                        
+                    }, 
+                    error: function (){
+                        $('.status-checkout').html('Falha ao processar o pagamento, consulte a operadora do cartão');
+                    }
+                });
+            } else {
+                $('.erros_validacao').html('<div class="alert alert-danger"><p>'+ retorno_erro_validacao +'</p></div>');
+            }           
+            
         });
     }
 
