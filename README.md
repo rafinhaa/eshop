@@ -17,7 +17,7 @@
   <img width="600" style="border-radius: 10px" height="auto" alt="Screenshot" title="Screenshot" src="docs/images/frontend/Screenshot_1.png" />
   <div style="display: flex; flex-direction: row;">
     <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Screenshot" src="docs/images/frontend/Screenshot_2.png" />
-    <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Level Up" src="docs/images/docs/images/frontend/Screenshot_3.png" />
+    <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Level Up" src="docs/images/frontend/Screenshot_3.png" />
   <div>
   <div style="display: flex; flex-direction: row;">
     <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Screenshot" src="docs/images/frontend/Screenshot_4.png" />
@@ -28,7 +28,7 @@
   <img width="600" style="border-radius: 10px" height="auto" alt="Screenshot" title="Screenshot" src="docs/images/backend/Screenshot_1.png" />
   <div style="display: flex; flex-direction: row;">
     <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Screenshot" src="docs/images/backend/Screenshot_2.png" />
-    <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Level Up" src="docs/images/docs/images/backend/Screenshot_3.png" />
+    <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Level Up" src="docs/images/backend/Screenshot_3.png" />
   <div>
   <div style="display: flex; flex-direction: row;">
     <img width="400" style="border-radius: 10px" height="auto" alt="Screenshot" title="Screenshot" src="docs/images/backend/Screenshot_4.png" />
